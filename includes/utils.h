@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/06 13:49:33 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/06 17:25:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@
 //[tgetent] [tgetflag] [tgetnum] [tgetstr] [tgoto] [tputs]
 # include <curses.h>
 # include <term.h>
+
+//	check_error_quotes return 1 on success(did not find an error*) -1 if error
+int	check_error_quotes(char *prompt);
 
 #endif
