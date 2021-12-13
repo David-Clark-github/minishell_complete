@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 15:05:45 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/06 17:39:12 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/13 16:42:33 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
-typedef struct	s_quotes {
-	int	sin_qt;
-	int	dou_qt;
-}				t_quotes;
 
 void	init_value(int *a, int *b, int *c)
 {
@@ -61,15 +56,14 @@ int	check_error_quotes(char *prompt)
 int main(int ac, char **av)
 {
 	char	*prompt;
-	t_quotes	data_st;
-	int	error = 1;
+	int	quotes = 1;
 
 	prompt = "1";
-	while (strlen(prompt) && error == 1) {
+	while (strlen(prompt) && quotes == 1) {
 		prompt = readline("Minishell: ");
 		add_history(prompt);
-		error = check_error_quotes(prompt);
-		printf("error = %d\n", error);
+		quotes = check_error_quotes(prompt);
+		printf("quotes = %d\n", quotes);
 	}
 	rl_clear_history();
 	free(prompt);
