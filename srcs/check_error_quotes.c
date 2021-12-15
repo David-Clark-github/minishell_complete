@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:20:03 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/06 17:40:54 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/15 13:33:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utlis.h"
+#include "utils.h"
 
 static void	init_value(int *a, int *b, int *c)
 {

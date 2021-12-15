@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/06 17:25:55 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/15 13:36:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,30 @@
 # include <signal.h>
 # include <dirent.h>
 # include <sys/time.h>
-# include <sys/ressource.h>
+# include <sys/resource.h>
 # include <sys/wait.h>
 
 //[tgetent] [tgetflag] [tgetnum] [tgetstr] [tgoto] [tputs]
 # include <curses.h>
 # include <term.h>
 
+typedef struct s_lst	t_lst;
+
+//log:
+//	1 = COMMAND
+//	2 = redirection
+//	3 = string
+
+struct s_lst {
+	t_lst	*next;
+	int		log;
+	char	*str;
+};
+
 //	check_error_quotes return 1 on success(did not find an error*) -1 if error
-int	check_error_quotes(char *prompt);
+int		check_error_quotes(char *prompt);
+void	add_lst_back(t_lst **head, char *str, int log);
+void	print_lst(t_lst **head);
+t_lst	*parsing(char *prompt);
 
 #endif
