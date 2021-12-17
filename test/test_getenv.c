@@ -3,6 +3,11 @@
 
 int main(int ac, char **av)
 {
+	if (ac == 1)
+	{
+		printf("not enough argument !\n");
+		return 1;
+	}
 	char *str;
 	str = getenv(av[1]);
 	if (str == NULL) {
