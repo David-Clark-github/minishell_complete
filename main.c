@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 18:34:09 by david            ###   ########.fr       */
+/*   Updated: 2021/12/18 21:59:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 		if (check_error_quotes(prompt) == 1)
 		{
 			buffer = parsing(prompt);
-			buffer = expension(buffer);
+			printf("%s\n", buffer);
 		}
 	}
 }
