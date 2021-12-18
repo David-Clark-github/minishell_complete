@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   expension.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 18:32:38 by david            ###   ########.fr       */
+/*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
+/*   Updated: 2021/12/18 18:41:24 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-char	*parsing(char *prompt)
+char	*expension(char *buffer)
 {
-	int	i;
-	t_lst	*list;
+	char	*dest;
+	int		q_1;
+	int		i;
 
-	list = NULL;
+	dest = NULL;
 	i = 0;
-	while (prompt[i] == ' ')
-		i++;
-	add_lst_back(&list, "toto", 5);
-	add_lst_back(&list, "tutu", 4);
-	add_lst_back(&list, "tata", 2);
-	print_lst(&list);
-	return (prompt);
+	q_1 = 0;
+	while (buffer[i])
+	{
+	}
 }
