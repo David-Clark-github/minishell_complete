@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 13:31:00 by david            ###   ########.fr       */
+/*   Updated: 2021/12/18 17:48:49 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ struct s_lst {
 	char	*str;
 };
 
-//	check_error_quotes return 1 on success(did not find an error*) -1 if error
+//	check_error_quotes return 1 on success(did not find an error*) 0 if error
 int		check_error_quotes(char *prompt);
 void	add_lst_back(t_lst **head, char *str, int log);
 void	print_lst(t_lst **head);

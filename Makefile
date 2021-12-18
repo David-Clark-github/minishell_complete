@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2021/12/15 13:35:42 by dclark           ###   ########.fr        #
+#    Updated: 2021/12/18 17:42:34 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -lreadline
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)
 
 CC		= gcc
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) -o $@ $< -I $(HEADER)
+#%.o: %.c
+#	$(CC) -c $(CFLAGS) -o $@ $< -I $(HEADER)
 
 all:	$(NAME)
 
@@ -41,6 +41,6 @@ re:		fclean
 	make
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline
 
 .PHONY: all clean fclean re
