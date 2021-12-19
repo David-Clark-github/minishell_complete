@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 21:59:21 by david            ###   ########.fr       */
+/*   Updated: 2021/12/19 13:48:50 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main()
 		{
 			buffer = parsing(prompt);
 			printf("%s\n", buffer);
+			free(buffer);
 		}
 	}
 }
