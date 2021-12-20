@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/19 13:48:50 by david            ###   ########.fr       */
+/*   Updated: 2021/12/20 16:40:56 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,23 @@ int main()
 {
 	char	*prompt;
 	char	*buffer;
+	int		error_num;
 	while (1)
 	{
 		prompt = readline("Minishell> ");
 		add_history(prompt);
 		if (check_error_quotes(prompt) == 1)
 		{
-			buffer = parsing(prompt);
-			printf("%s\n", buffer);
-			free(buffer);
+			buffer = parsing(prompt, &error_num);
+			if (buffer == NULL)
+			{
+				printf("env not found\n");
+			}
+			else
+			{
+				printf("%s\n", buffer);
+				free(buffer);
+			}
 		}
 	}
 }

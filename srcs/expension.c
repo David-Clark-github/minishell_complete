@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2021/12/19 20:08:43 by david            ###   ########.fr       */
+/*   Updated: 2021/12/20 16:36:36 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	*ft_getenv(char *str, int len)
 
 	i = 0;
 	i_str = 0;
-	printf("ft_getenv => str = %s\n", str);
 	dest = malloc(sizeof(char) * len);
 	if (dest == NULL)
 		printf("malloc NULL\n");
@@ -84,7 +83,7 @@ char	*ft_strjoin_env(char *buffer, char *env)
 	return (dest);
 }
 
-char	*expension(char *buffer)
+char	*expension(char *buffer, int *error_num)
 {
 	char	*dest;
 	char	*tmp_env;
@@ -107,11 +106,13 @@ char	*expension(char *buffer)
 		else if (buffer[i] == '$' && q == 0)
 		{
 			env_len = find_space(&buffer[i]);
-			printf("env_len = %d\n", env_len);
 			tmp_env = ft_getenv(&buffer[i], env_len);
-		//	printf("getenv(tmp_env) = %s\n", getenv(tmp_env));
 			env = getenv(tmp_env);
-			//printf("env = %s\n", env);
+			if (env == NULL)
+			{
+				*error_num = 0;
+				return (NULL);
+			}
 			dest = ft_strjoin_env(dest, env);
 			i += env_len;
 			free(tmp_env);

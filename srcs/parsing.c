@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 22:04:59 by david            ###   ########.fr       */
+/*   Updated: 2021/12/20 16:37:35 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-char	*parsing(char *prompt)
+char	*parsing(char *prompt, int *error_num)
 {
 	/*
 	int	i;
@@ -29,6 +29,8 @@ char	*parsing(char *prompt)
 	return (prompt);
 	*/
 	char	*exp;
-	exp = expension(prompt);
+	exp = expension(prompt, error_num);
+	if (exp == NULL)
+		return (NULL);
 	return (exp);
 }
