@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2021/12/19 20:00:46 by david            ###   ########.fr        #
+#    Updated: 2021/12/20 17:52:20 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS	=	srcs/add_lst_bck.c \
 			srcs/expension.c \
 			srcs/ft_strjoin.c \
 			srcs/ft_strlen.c \
+			srcs/ft_echo.c \
 			main.c
 
 HEADER	=includes/
