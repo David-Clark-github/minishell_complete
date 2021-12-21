@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/20 17:51:33 by david            ###   ########.fr       */
+/*   Updated: 2021/12/21 09:59:47 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	print_lst(t_lst **head);
 char	*parsing(char *prompt, int *error_num);
 char	*expension(char *buffer, int *error_num);
 char	*ft_strjoin(char *str_1, char *str_2);
+char	**ft_separ(char *str, char c);
 int		ft_strlen(char *str);
 int		ft_echo(char *str, int argument);
 

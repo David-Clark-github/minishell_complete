@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/20 16:37:35 by david            ###   ########.fr       */
+/*   Updated: 2021/12/21 11:35:50 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ char	*parsing(char *prompt, int *error_num)
 	return (prompt);
 	*/
 	char	*exp;
+	char	**separ;
 	exp = expension(prompt, error_num);
 	if (exp == NULL)
 		return (NULL);
+	separ = ft_separ(exp, ' ');
+	if (separ != NULL)
+		free(separ);
 	return (exp);
 }

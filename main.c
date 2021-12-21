@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/20 16:40:56 by david            ###   ########.fr       */
+/*   Updated: 2021/12/21 09:41:17 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
 	int		error_num;
 	while (1)
 	{
-		prompt = readline("Minishell> ");
+		prompt = readline("Minishell~ ");
 		add_history(prompt);
 		if (check_error_quotes(prompt) == 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2021/12/20 17:58:11 by david            ###   ########.fr       */
+/*   Updated: 2021/12/21 11:34:33 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ char	*expension(char *buffer, int *error_num)
 			q = 1;
 		else if (buffer[i] == '\'' && q == 1)
 			q = 0;
-		else if (buffer[i] && buffer[i] != '$' && q == 0)
-			dest = ft_strjoin(dest, &buffer[i]);
 		else if (buffer[i] == '$' && q == 0)
 		{
 			env_len = find_space(&buffer[i]);
@@ -115,9 +113,11 @@ char	*expension(char *buffer, int *error_num)
 				return (NULL);
 			}
 			dest = ft_strjoin_env(dest, env);
-			i += env_len;
+			i += env_len + 1;
 			free(tmp_env);
 		}
+		//else if (buffer[i]/* && buffer[i] != '$' && q == 0*/)
+		dest = ft_strjoin(dest, &buffer[i]);
 		i++;
 	}
 	return (dest);
