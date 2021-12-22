@@ -6,13 +6,13 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/22 18:21:12 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/22 17:11:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static int	num_of_element(char *str)
+static int	num_of_element(char *str, char c)
 {
 	int	res;
 	int	i;
@@ -21,7 +21,7 @@ static int	num_of_element(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == ' ')
+		if (str[i] == c)
 			i++;
 		else if (str[i] == '\'')
 		{
@@ -80,62 +80,51 @@ static char	*ft_strljoin(char *s1, char *s2, int len_s2)
 	return (dest);
 }
 
-char	**ft_separ(char *str)
+char	**ft_separ(char *str, char c)
 {
+	printf("c = %c\n", c);
 	char	**dest;
+	int		q_1;
+	int		q_2;
 	int		i_dest;
 	int		i_str;
 	int		num_ele;
 	
-	num_ele = num_of_element(str);
+	num_ele = num_of_element(str, ' ');
+	printf("number of element = %d\n", num_ele);
+	dest = (char **)malloc(sizeof(char *) * num_ele + 1);
 	i_dest = 0;
 	i_str = 0;
-	printf("number of element = %d\n", num_ele);
-	dest = (char **)malloc(sizeof(char *) * (num_ele + 1));
-	for (int i = 0; i < num_ele; i++)
-		dest[i] = NULL;
+	q_1 = 0;
+	q_2 = 0;
 	while (str[i_str] == ' ')
 		i_str++;
 	while (str[i_str])
 	{
-		if (str[i_str] == ' ')
-			i_str++;
-		if (str[i_str] == '\'')
+		if (str[i_str] == '\"' && q_1 == 0)
 		{
+			if (q_2 == 0)
+				q_2 = 1;
+			else if(q_2 == 1)
+				q_2 = 0;
 			i_str++;
-			while (str[i_str] && str[i_str] != '\'')
+		}
+		else if (str[i_str] == '\'' && q_2 == 0)
+		{
+			if (q_1 == 0)
+				q_1 = 1;
+			else if (q_1 == 1)
+				q_1 = 0;
+			i_str++;
+		}
+		if (q_1 == 0 && q_2 == 0)
+		{
+			if (str[i_str] != ' ')
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
-				i_str++;
 			}
-			i_dest++;
-			if (str[i_str] == '\'')
-				i_str++;
 		}
-		else if (str[i_str] == '\"')
-		{
-			i_str++;
-			while (str[i_str] && str[i_str] != '\"')
-			{
-				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
-				i_str++;
-			}
-			i_dest++;
-			if (str[i_str] == '\"')
-				i_str++;
-		}
-		else if (isalpha(str[i_str]) != 0)
-		{
-			while (str[i_str] && str[i_str] != ' ' && str[i_str] != '\'' && str[i_str] != '\"')
-			{
-				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
-				i_str++;
-			}
-			i_dest++;
-		}
-		//printf("i_dest = %d\n", i_dest);
-		//printf("str = %s\n", &str[i_str]);
 	}
-	dest[i_dest] = 0;
+	dest[i_dest] = NULL;
 	return (dest);
 }
