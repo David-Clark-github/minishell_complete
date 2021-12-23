@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/22 18:21:12 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/23 15:07:12 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*ft_strljoin(char *s1, char *s2, int len_s2)
 	dest = malloc(sizeof(char) * (ft_strlen(s1) + len_s2 + 1));
 	if (dest == NULL)
 		return (NULL);
-	while (s1[i_s])
+	while (s1 && s1[i_s])
 	{
 		dest[i_d] = s1[i_s];
 		i_s++;
@@ -93,7 +93,7 @@ char	**ft_separ(char *str)
 	printf("number of element = %d\n", num_ele);
 	dest = (char **)malloc(sizeof(char *) * (num_ele + 1));
 	for (int i = 0; i < num_ele; i++)
-		dest[i] = NULL;
+		dest[i] = 0;
 	while (str[i_str] == ' ')
 		i_str++;
 	while (str[i_str])
