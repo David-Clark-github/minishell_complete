@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/23 15:07:12 by david            ###   ########.fr       */
+/*   Updated: 2021/12/23 20:04:46 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**ft_separ(char *str)
 	num_ele = num_of_element(str);
 	i_dest = 0;
 	i_str = 0;
-	printf("number of element = %d\n", num_ele);
+	//printf("number of element = %d\n", num_ele);
 	dest = (char **)malloc(sizeof(char *) * (num_ele + 1));
 	for (int i = 0; i < num_ele; i++)
 		dest[i] = 0;
@@ -133,8 +133,6 @@ char	**ft_separ(char *str)
 			}
 			i_dest++;
 		}
-		//printf("i_dest = %d\n", i_dest);
-		//printf("str = %s\n", &str[i_str]);
 	}
 	dest[i_dest] = 0;
 	return (dest);
