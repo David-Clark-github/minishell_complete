@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/24 21:08:32 by david            ###   ########.fr       */
+/*   Updated: 2021/12/26 12:40:49 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,30 @@
 # include <curses.h>
 # include <term.h>
 
-typedef struct s_lst	t_lst;
-
 //log:
 //	1 = COMMAND
 //	2 = redirection
 //	3 = string
 
 typedef struct s_lst {
-	t_lst	*next;
-	int		log;
-	char	*str;
+	struct s_lst	*next;
+	int				log;
+	char			*str;
 }t_lst;
 
 //	check_error_quotes return 1 on success(did not find an error*) 0 if error
+char	*parsing(char *prompt, int *error_num);
+char	*expension(char *buffer, int *error_num);
 int		check_error_quotes(char *prompt);
 void	add_lst_back(t_lst **head, char *str, int log);
 void	print_lst(t_lst **head);
-char	*parsing(char *prompt, int *error_num);
-char	*expension(char *buffer, int *error_num);
 char	*ft_strjoin(char *str_1, char *str_2);
 char	**ft_separ(char *str);
 int		ft_strlen(char *str);
 int		ft_echo(char *str, int argument);
-t_lst	*tab_to_list(char **tab);
 
+//DO NOT USE [tab] FOR PARAMETER NAME
+//term.h USES IT
+
+t_lst	*tab_to_list(char **tabx);
 #endif

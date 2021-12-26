@@ -6,12 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:59:54 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 13:28:56 by david            ###   ########.fr       */
+/*   Updated: 2021/12/26 12:20:41 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
 void	add_lst_back(t_lst **head_lst, char *str, int log)
 {
 	t_lst	*dest;

@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2021/12/24 21:08:39 by david            ###   ########.fr       */
+/*   Updated: 2021/12/26 13:16:33 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,24 @@ int	diff_cmd(char *str)
 	return (flag);
 }
 
-t_lst	*tab_to_list(char **tab)
+t_lst	*tab_to_list(char **tabx)
 {
 	t_lst	*list;
 	int		i_tab;
 	
 	list = NULL;
 	i_tab = 0;
-	if (diff_cmd(tab[i_tab]) != 1)
+	if (diff_cmd(tabx[i_tab]) != 1)
 	{
-		//error = cmd not found;
 		return (NULL);
 	}
 	else
 	{
-		while (tab[i_tab] != 0)
-			add_lst_back(&list, tab[i_tab], i_tab);
+		while (tabx[i_tab])
+		{
+			add_lst_back(&list, tabx[i_tab], i_tab);
+			i_tab++;
+		}
 	}
 	return (list);
 }

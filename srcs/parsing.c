@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/24 13:16:09 by david            ###   ########.fr       */
+/*   Updated: 2021/12/26 13:14:00 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*parsing(char *prompt, int *error_num)
 {
+	t_lst	*list;
 	/*
 	int	i;
-	t_lst	*list;
 
 	list = NULL;
 	i = 0;
@@ -38,6 +38,8 @@ char	*parsing(char *prompt, int *error_num)
 	for (int i = 0; separ[i] != 0; i++)
 		printf("%s\n", separ[i]);
 	*/
+	list = tab_to_list(separ);
+	print_lst(&list);
 	if (separ != NULL)
 		free(separ);
 	return (exp);
