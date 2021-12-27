@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/23 20:04:46 by david            ###   ########.fr       */
+/*   Updated: 2021/12/27 11:37:36 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	num_of_element(char *str)
 				i++;
 			i++;
 		}
-		else if (isalpha(str[i]))
+		else/* if (isalpha(str[i]))*/
 		{
 			res++;
 			i++;
@@ -124,7 +124,7 @@ char	**ft_separ(char *str)
 			if (str[i_str] == '\"')
 				i_str++;
 		}
-		else if (isalpha(str[i_str]) != 0)
+		else/* if (isalpha(str[i_str]) != 0)*/
 		{
 			while (str[i_str] && str[i_str] != ' ' && str[i_str] != '\'' && str[i_str] != '\"')
 			{
