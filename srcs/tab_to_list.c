@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2021/12/26 13:16:33 by david            ###   ########.fr       */
+/*   Updated: 2021/12/28 12:28:16 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_lst	*tab_to_list(char **tabx)
 	
 	list = NULL;
 	i_tab = 0;
-	if (diff_cmd(tabx[i_tab]) != 1)
+	if (tabx[i_tab] && diff_cmd(tabx[i_tab]) != 1)
 	{
 		return (NULL);
 	}

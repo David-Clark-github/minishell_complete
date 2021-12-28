@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2021/12/28 11:04:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/28 12:21:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_getenv(char *str, int len)
 
 	i = 0;
 	i_str = 0;
-	dest = malloc(sizeof(char) * len);
+	dest = malloc(sizeof(char) * len + 1);
 	if (dest == NULL)
 		printf("malloc NULL\n");
 	if (str[i_str] == '$')
@@ -114,7 +114,9 @@ char	*expension(char *buffer, int *error_num)
 			}
 			*/
 			dest = ft_strjoin_env(dest, env);
-			i += env_len + 1;
+			while (env_len--)
+				i++;
+			i++;
 			free(name_env);
 		}
 		//else if (buffer[i]/* && buffer[i] != '$' && q == 0*/)
