@@ -6,14 +6,14 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2021/12/21 11:34:33 by david            ###   ########.fr       */
+/*   Updated: 2021/12/28 11:04:52 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
 
-//find_space inclut la '\0' pour tmp_env
+//find_space inclut la '\0' pour name_env
 int	find_space(char *str)
 {
 	int	i;
@@ -23,8 +23,7 @@ int	find_space(char *str)
 	res = 0;
 	if (str[i] == '$')
 		i++;
-	while (str[i] != '\0' && 
-		((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
+	while (str[i] && ft_isalpha(str[i]))
 	{
 		res++;
 		i++;
@@ -87,12 +86,12 @@ char	*ft_strjoin_env(char *buffer, char *env)
 char	*expension(char *buffer, int *error_num)
 {
 	char	*dest;
-	char	*tmp_env;
+	char	*name_env;
 	char	*env;
 	int		q;
 	int		i;
 	int		env_len;
-
+	(void)error_num;
 	dest = NULL;
 	i = 0;
 	q = 0;
@@ -105,16 +104,18 @@ char	*expension(char *buffer, int *error_num)
 		else if (buffer[i] == '$' && q == 0)
 		{
 			env_len = find_space(&buffer[i]);
-			tmp_env = ft_getenv(&buffer[i], env_len);
-			env = getenv(tmp_env);
+			name_env = ft_getenv(&buffer[i], env_len);
+			env = getenv(name_env);
+			/*
 			if (env == NULL)
 			{
 				*error_num = 0;
 				return (NULL);
 			}
+			*/
 			dest = ft_strjoin_env(dest, env);
 			i += env_len + 1;
-			free(tmp_env);
+			free(name_env);
 		}
 		//else if (buffer[i]/* && buffer[i] != '$' && q == 0*/)
 		dest = ft_strjoin(dest, &buffer[i]);

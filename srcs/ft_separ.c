@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/27 11:37:36 by david            ###   ########.fr       */
+/*   Updated: 2021/12/28 11:17:01 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	**ft_separ(char *str)
 		i_str++;
 	while (str[i_str])
 	{
-		if (str[i_str] == ' ')
+		while (str[i_str] == ' ')
 			i_str++;
 		if (str[i_str] == '\'')
 		{

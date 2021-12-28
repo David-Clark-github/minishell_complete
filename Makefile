@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2021/12/24 19:02:09 by david            ###   ########.fr        #
+#    Updated: 2021/12/28 10:57:17 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	=	srcs/add_lst_bck.c \
 			srcs/ft_strjoin.c \
 			srcs/ft_separ.c \
 			srcs/ft_strlen.c \
+			srcs/ft_isalpha.c \
 			srcs/ft_echo.c \
 			main.c
 
