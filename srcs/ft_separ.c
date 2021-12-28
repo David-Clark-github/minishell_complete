@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/28 13:42:00 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/28 17:36:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ char	**ft_separ(char *str)
 	int		i_dest;
 	int		i_str;
 	int		num_ele;
-	int	space;
+	int		space;
 	
 	num_ele = num_of_element(str);
 	i_dest = 0;
 	i_str = 0;
-	space = 0;
+	(void)space;
 	printf("number of element = %d\n", num_ele);
-	dest = (char **)malloc(sizeof(char *) * (num_ele + 1));
+	dest = (char **)malloc(sizeof(char *) * (num_ele * 2));
 	for (int i = 0; i < num_ele; i++)
 		dest[i] = 0;
 	while (str[i_str] == ' ')
@@ -105,29 +105,42 @@ char	**ft_separ(char *str)
 		if (str[i_str] == '\'')
 		{
 			i_str++;
-			while (str[i_str] && str[i_str] != '\'')
+			if (str[i_str] == '\'')
+			{
+				dest[i_dest] = "";
+				i_dest++;
+				space = 1;
+			}
+			while (str[i_str] && str[i_str] != '\'' && space == 0)
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			if (str[i_str] == '\'')
+			if (str[i_str] == '\'' && space == 0)
 				i_str++;
-			if (str[i_str])
-				if (str[i_str] == ' ')
-					i_dest++;
+			if (str[i_str] && (str[i_str] != '\'' && str[i_str] != '\"') && space == 0)
+				i_dest++;
+			space = 0;
 		}
 		else if (str[i_str] == '\"')
 		{
 			i_str++;
-			while (str[i_str] && str[i_str] != '\"')
+			if (str[i_str] == '\"')
+			{
+				dest[i_dest] = "";
+				i_dest++;
+				space = 1;
+			}
+			while (str[i_str] && str[i_str] != '\"' && space == 0)
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			if (str[i_str] == '\"')
+			if (str[i_str] == '\"' && space == 0)
 				i_str++;
-			if (str[i_str] && str[i_str] == ' ')
+			if (str[i_str] && (str[i_str] != '\'' && str[i_str] != '\"') && space == 0)
 				i_dest++;
+			space = 0;
 		}
 		else/* if (isalpha(str[i_str]) != 0)*/
 		{
@@ -139,6 +152,7 @@ char	**ft_separ(char *str)
 			i_dest++;
 		}
 	}
+	i_dest++;
 	dest[i_dest] = 0;
 	return (dest);
 }
