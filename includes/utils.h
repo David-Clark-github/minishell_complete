@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/28 11:02:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/30 12:49:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@
 //	2 = redirection
 //	3 = string
 
+typedef struct	s_parsing {
+	char	*exp;
+	char	**token_lst;
+	int		tk_len;
+}				t_pars;
+
 typedef struct s_lst {
 	struct s_lst	*next;
 	int				log;
@@ -68,7 +74,7 @@ int		check_error_quotes(char *prompt);
 void	add_lst_back(t_lst **head, char *str, int log);
 void	print_lst(t_lst **head);
 char	*ft_strjoin(char *str_1, char *str_2);
-char	**ft_separ(char *str);
+char	**ft_separ(char *str, int *tk_len);
 int		ft_strlen(char *str);
 int		ft_isalpha(int c);
 int		ft_echo(char *str, int argument);

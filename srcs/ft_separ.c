@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/28 17:36:22 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/30 13:04:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,33 @@ static char	*ft_strljoin(char *s1, char *s2, int len_s2)
 	return (dest);
 }
 
-char	**ft_separ(char *str)
+static void	init_token(char **token, int len)
+{
+	int	i;
+
+	i = 0;
+	while (len-- > 0)
+	{
+		token[i] = 0;
+		i++;
+	}
+	token[i] = 0;
+}
+
+char	**ft_separ(char *str, int *tk_len)
 {
 	char	**dest;
 	int		i_dest;
 	int		i_str;
-	int		num_ele;
 	int		space;
 	
-	num_ele = num_of_element(str);
+	*tk_len = num_of_element(str);
 	i_dest = 0;
 	i_str = 0;
-	(void)space;
-	printf("number of element = %d\n", num_ele);
-	dest = (char **)malloc(sizeof(char *) * (num_ele * 2));
-	for (int i = 0; i < num_ele; i++)
-		dest[i] = 0;
+	//(void)space;
+	printf("number of element = %d\n", *tk_len);
+	dest = (char **)malloc(sizeof(char *) * (*tk_len + 1));
+	init_token(dest, *tk_len);
 	while (str[i_str] == ' ')
 		i_str++;
 	while (str[i_str])
@@ -149,10 +160,13 @@ char	**ft_separ(char *str)
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			i_dest++;
+			if (str[i_str] == ' ')
+				i_dest++;
 		}
 	}
+	/*
 	i_dest++;
 	dest[i_dest] = 0;
+	*/
 	return (dest);
 }
