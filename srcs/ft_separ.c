@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2021/12/30 13:04:41 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/30 15:31:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int	num_of_element(char *str)
 		{
 			res++;
 			i++;
-			while (str[i] && isalpha(str[i]))
+			while (str[i] && isalnum(str[i]))
 				i++;
 		}
 	}
 	return (res);
 }
-
+/*
 static char	*ft_strljoin(char *s1, char *s2, int len_s2)
 {
 	char	*dest;
@@ -79,7 +79,7 @@ static char	*ft_strljoin(char *s1, char *s2, int len_s2)
 	dest[i_d] = '\0';
 	return (dest);
 }
-
+*/
 static void	init_token(char **token, int len)
 {
 	int	i;
@@ -104,7 +104,7 @@ char	**ft_separ(char *str, int *tk_len)
 	i_dest = 0;
 	i_str = 0;
 	//(void)space;
-	printf("number of element = %d\n", *tk_len);
+	//printf("number of element = %d\n", *tk_len);
 	dest = (char **)malloc(sizeof(char *) * (*tk_len + 1));
 	init_token(dest, *tk_len);
 	while (str[i_str] == ' ')

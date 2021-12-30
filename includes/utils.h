@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/30 12:49:48 by dclark           ###   ########.fr       */
+/*   Updated: 2021/12/30 13:50:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ typedef struct s_lst {
 //	check_error_quotes return 1 on success(did not find an error*) 0 if error
 char	*parsing(char *prompt, int *error_num);
 char	*expension(char *buffer, int *error_num);
+char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt);
 void	add_lst_back(t_lst **head, char *str, int log);
 void	print_lst(t_lst **head);
 char	*ft_strjoin(char *str_1, char *str_2);
+char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_separ(char *str, int *tk_len);
 int		ft_strlen(char *str);
 int		ft_isalpha(int c);
