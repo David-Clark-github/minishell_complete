@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2021/12/28 12:28:16 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/03 16:55:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ int	diff_cmd(char *str)
 	if (ft_strncmp(str, "echo", ft_strlen("echo")) == 0)
 		flag = 1;
 	if (ft_strncmp(str, "cd", ft_strlen("cd")) == 0)
-		flag = 1;
+		flag = 2;
 	if (ft_strncmp(str, "pwd", ft_strlen("pwd")) == 0)
-		flag = 1;
+		flag = 3;
 	if (ft_strncmp(str, "export", ft_strlen("export")) == 0)
-		flag = 1;
+		flag = 4;
 	if (ft_strncmp(str, "unset", ft_strlen("unset")) == 0)
-		flag = 1;
+		flag = 5;
 	if (ft_strncmp(str, "env", ft_strlen("env")) == 0)
-		flag = 1;
+		flag = 6;
 	if (ft_strncmp(str, "exit", ft_strlen("exit")) == 0)
-		flag = 1;
+		flag = 7;
 	return (flag);
 }
 
@@ -55,15 +55,15 @@ t_lst	*tab_to_list(char **tabx)
 	
 	list = NULL;
 	i_tab = 0;
-	if (tabx[i_tab] && diff_cmd(tabx[i_tab]) != 1)
-	{
+	if (tabx[i_tab] && diff_cmd(tabx[i_tab]) == 0)
 		return (NULL);
-	}
 	else
 	{
+		add_lst_back(&list, tabx[i_tab], diff_cmd(tabx[i_tab]));
+		i_tab++;
 		while (tabx[i_tab])
 		{
-			add_lst_back(&list, tabx[i_tab], i_tab);
+			add_lst_back(&list, tabx[i_tab], 0);
 			i_tab++;
 		}
 	}
