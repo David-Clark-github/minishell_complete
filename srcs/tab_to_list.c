@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/01/03 17:25:42 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/03 17:27:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_lst	*tab_to_list(char **tabx)
 		//i_tab++;
 		while (tabx[i_tab])
 		{
-			add_lst_back(&list, tabx[i_tab], diff_cmd_redir(tabx[i_tab]));
+			add_lst_back(&list, tabx[i_tab], diff_cmd_redir(tabx[i_tab]), i_tab);
 			i_tab++;
 		}
 	}

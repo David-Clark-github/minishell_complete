@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/30 13:50:13 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/03 17:28:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ typedef struct	s_parsing {
 
 typedef struct s_lst {
 	struct s_lst	*next;
-	int				log;
 	char			*str;
+	int				log;
+	int				iter;
 }t_lst;
 
 //	check_error_quotes return 1 on success(did not find an error*) 0 if error
@@ -72,7 +73,7 @@ char	*parsing(char *prompt, int *error_num);
 char	*expension(char *buffer, int *error_num);
 char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt);
-void	add_lst_back(t_lst **head, char *str, int log);
+void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	*ft_strjoin(char *str_1, char *str_2);
 char	*ft_strljoin(char *s1, char *s2, int s2_len);

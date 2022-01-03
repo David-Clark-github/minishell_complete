@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/30 12:49:53 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/03 17:32:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ char	*parsing(char *prompt, int *error_num)
 	if (exp == NULL)
 		return (NULL);
 	separ = ft_separ(exp, &parsing.tk_len);
+	/*
 	printf("\ntab:\n");
 	for (int i = 0; separ[i] != 0; i++)
 		printf("%s\n", separ[i]);
 	printf("\n");
+	*/
 	list = tab_to_list(separ);
 	print_lst(&list);
 	if (separ != NULL)
