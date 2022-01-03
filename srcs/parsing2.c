@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/30 14:36:06 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/03 15:42:53 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ char	*parsing(char *prompt, int *error_num)
 
 	pars.exp = expension(prompt, error_num);
 	printf("expension = %s\n", pars.exp);
+	/*
 	pars.exp = quotes_exp(pars.exp);
 	printf("quotes_exp = %s\n", pars.exp);
+	*/
 	if (pars.exp == NULL)
 		return (NULL);
 	pars.token_lst = ft_separ(pars.exp, &pars.tk_len);
