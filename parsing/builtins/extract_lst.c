@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   extract_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/04 18:16:43 by dclark           ###   ########.fr       */
+/*   Created: 2022/01/04 18:10:35 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/04 18:15:03 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int main()
+//log 0 : String
+//log 1<->7 CMD
+//log 8<->12 Redirection
+
+int	extract_lst(t_lst *list)
 {
-	t_lst	*list;
-	char	*prompt;
-	int		error_num;
-	while (1)
+	if (list->log > 0 && list->log < 8)
 	{
-		prompt = readline("Minishell~ ");
-		add_history(prompt);
-		if (check_error_quotes(prompt) == 1 && ft_strlen(prompt) != 0)
-		{
-			list = parsing(prompt, &error_num);
-			print_lst(&list);
-			if (list == NULL)
-			{
-				printf("env not found\n");
-			}
-			else
-			{
-				extract_lst(list);
-			}
-		}
+		return (EXIT_FAILURE);
 	}
+	else
+	{
+		printf("%s commande introuvable\n", list->str);
+		return (EXIT_SUCCESS);
+	}
+
 }

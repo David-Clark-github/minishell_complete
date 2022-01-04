@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/04 14:43:07 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/04 18:14:30 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/ft_isalpha.c \
 			parsing/builtins/ft_echo.c \
 			parsing/builtins/ft_pwd.c \
+			parsing/builtins/extract_lst.c \
 			main.c
 
 HEADER	=includes/
