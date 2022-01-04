@@ -6,23 +6,24 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/03 15:43:08 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/04 14:43:07 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/add_lst_bck2.c \
-			srcs/print_lst.c \
-			srcs/check_error_quotes.c \
-			srcs/parsing2.c \
-			srcs/expension.c \
-			srcs/quotes_exp.c \
-			srcs/tab_to_list.c \
-			srcs/ft_strjoin.c \
-			srcs/ft_strljoin.c \
-			srcs/ft_separ2.c \
-			srcs/ft_strlen.c \
-			srcs/ft_isalpha.c \
-			srcs/ft_echo.c \
+SRCS	=	parsing/add_lst_bck2.c \
+			parsing/print_lst.c \
+			parsing/check_error_quotes.c \
+			parsing/parsing2.c \
+			parsing/expension.c \
+			parsing/quotes_exp.c \
+			parsing/tab_to_list.c \
+			parsing/ft_strjoin.c \
+			parsing/ft_strljoin.c \
+			parsing/ft_separ2.c \
+			parsing/ft_strlen.c \
+			parsing/ft_isalpha.c \
+			parsing/builtins/ft_echo.c \
+			parsing/builtins/ft_pwd.c \
 			main.c
 
 HEADER	=includes/

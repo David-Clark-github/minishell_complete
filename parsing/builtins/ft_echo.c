@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/20 17:45:00 by david             #+#    #+#             */
-/*   Updated: 2021/12/20 17:51:26 by david            ###   ########.fr       */
+/*   Created: 2022/01/04 14:29:02 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/04 14:40:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-//1 = retour de ligne implémenté
-//0 = retour de ligne non implémenter
+/*
+ * if arg == 0
+ * write an '\n' at the end of the string
+ */
 
-//le retour de int est pour le retour d'une commande et si elle a bien
-// été excuter ou si il y a eu une erreur
-// utile pour [echo $?] par exemple
-
-int	ft_echo(char *str, int argument)
+int	ft_echo(char *str, int arg)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	write(1, str, ft_strlen(str));
+	if (arg == 0)
 	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	if (argument)
 		write(1, "\n", 1);
-	return (0);
+	}
+	return (EXIT_SUCCESS);
 }

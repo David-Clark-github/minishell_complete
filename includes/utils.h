@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/03 17:28:30 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/04 18:08:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@
 
 typedef struct	s_parsing {
 	char	*exp;
-	char	**token_lst;
-	int		tk_len;
+	char	**tab_separ;
+	int		tab_len;
 }				t_pars;
 
 typedef struct s_lst {
@@ -69,7 +69,7 @@ typedef struct s_lst {
 }t_lst;
 
 //	check_error_quotes return 1 on success(did not find an error*) 0 if error
-char	*parsing(char *prompt, int *error_num);
+t_lst	*parsing(char *prompt, int *error_num);
 char	*expension(char *buffer, int *error_num);
 char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt);
@@ -80,7 +80,9 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_separ(char *str, int *tk_len);
 int		ft_strlen(char *str);
 int		ft_isalpha(int c);
-int		ft_echo(char *str, int argument);
+int		ft_echo(char *str, int arg);
+int		ft_pwd(void);
+int		extract_lst(t_lst *list);
 
 //DO NOT USE [tab] FOR PARAMETER NAME
 //term.h USES IT
