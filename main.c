@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/04 18:16:43 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/05 12:58:09 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ int main()
 		if (check_error_quotes(prompt) == 1 && ft_strlen(prompt) != 0)
 		{
 			list = parsing(prompt, &error_num);
-			print_lst(&list);
 			if (list == NULL)
-			{
-				printf("env not found\n");
-			}
+				printf("error during parsing\n");
 			else
 			{
+				print_lst(&list);
 				extract_lst(list);
 			}
 		}

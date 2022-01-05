@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/04 18:30:39 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/05 12:58:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ t_lst	*parsing(char *prompt, int *error_num)
 	list = tab_to_list(pars.tab_separ);
 	//printf("\n");
 	//print_lst(&list);
+	/*
 	if (pars.tab_separ != NULL)
 		ft_free_tab(pars.tab_separ, pars.tab_len);
+	*/
+	(void)ft_free_tab(NULL, 0);
 	return (list);
 }
