@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/01/03 17:37:52 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/05 13:21:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_getenv(char *str, int len)
 	return (dest);
 }
 
-char	*ft_strjoin_env(char *buffer, char *env)
+char	*ft_strjoin_env(char *prompt, char *env)
 {
 	char	*dest;
 	int		i_d;
@@ -63,10 +63,10 @@ char	*ft_strjoin_env(char *buffer, char *env)
 
 	i_d = 0;
 	i_be = 0;
-	dest = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(env) + 1));
-	while (buffer != NULL && buffer[i_be])
+	dest = malloc(sizeof(char) * (ft_strlen(prompt) + ft_strlen(env) + 1));
+	while (prompt != NULL && prompt[i_be])
 	{
-		dest[i_d] = buffer[i_be];
+		dest[i_d] = prompt[i_be];
 		i_d++;
 		i_be++;
 	}
@@ -78,12 +78,12 @@ char	*ft_strjoin_env(char *buffer, char *env)
 		i_be++;
 	}
 	dest[i_d] = '\0';
-	if (buffer != NULL)
-		free(buffer);
+	if (prompt != NULL)
+		free(prompt);
 	return (dest);
 }
 
-char	*expension(char *buffer, int *error_num)
+char	*expension(char *prompt, int *error_num)
 {
 	char	*dest;
 	char	*name_env;
@@ -95,32 +95,25 @@ char	*expension(char *buffer, int *error_num)
 	dest = NULL;
 	i = 0;
 	q = 0;
-	while (buffer[i])
+	while (prompt[i])
 	{
-		if (buffer[i] == '\'' && q == 0)
+		if (prompt[i] == '\'' && q == 0)
 			q = 1;
-		else if (buffer[i] == '\'' && q == 1)
+		else if (prompt[i] == '\'' && q == 1)
 			q = 0;
-		else if (buffer[i] == '$' && q == 0)
+		else if (prompt[i] == '$' && q == 0)
 		{
-			env_len = find_space(&buffer[i]);
-			name_env = ft_getenv(&buffer[i], env_len);
+			env_len = find_space(&prompt[i]);
+			name_env = ft_getenv(&prompt[i], env_len);
 			env = getenv(name_env);
-			/*
-			if (env == NULL)
-			{
-				*error_num = 0;
-				return (NULL);
-			}
-			*/
 			dest = ft_strjoin_env(dest, env);
 			while (env_len--)
 				i++;
 			i++;
 			free(name_env);
 		}
-		//else if (buffer[i]/* && buffer[i] != '$' && q == 0*/)
-		dest = ft_strjoin(dest, &buffer[i]);
+		//else if (prompt[i]/* && prompt[i] != '$' && q == 0*/)
+		dest = ft_strjoin(dest, &prompt[i]);
 		i++;
 	}
 	return (dest);
