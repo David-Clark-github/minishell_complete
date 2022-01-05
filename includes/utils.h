@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/04 18:08:31 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/05 13:08:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@
 //	2 = redirection
 //	3 = string
 
-typedef struct	s_parsing {
-	char	*exp;
-	char	**tab_separ;
-	int		tab_len;
-}				t_pars;
 
 typedef struct s_lst {
 	struct s_lst	*next;
@@ -67,6 +62,15 @@ typedef struct s_lst {
 	int				log;
 	int				iter;
 }t_lst;
+
+typedef struct	s_parsing {
+	char	*prompt;
+	char	*exp;
+	char	**tab_separ;
+	int		tab_len;
+	t_lst	*list;
+	int		error_num;
+}				t_pars;
 
 //	check_error_quotes return 1 on success(did not find an error*) 0 if error
 t_lst	*parsing(char *prompt, int *error_num);
