@@ -6,25 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/01/04 16:15:00 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/06 14:03:07 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
-static int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned int	i;
-
-	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
-	{
-		if ((unsigned char)s1[i] != (unsigned char)s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
-}
 
 static int	diff_cmd_redir(char *str)
 {

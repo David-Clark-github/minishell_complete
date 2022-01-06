@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/05 13:45:57 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/06 13:19:18 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,12 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_separ(char *str, int *tk_len);
 int		ft_strlen(char *str);
 int		ft_isalpha(int c);
-int		ft_echo(char *str, int arg);
-int		ft_pwd(void);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		extract_lst(t_lst *list);
+
+//BUILTINS
+int		ft_echo(char *str, int arg);
+int		ft_pwd(int fd);
 
 //DO NOT USE [tab] FOR PARAMETER NAME
 //term.h USES IT

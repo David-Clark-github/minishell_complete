@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/04 14:59:41 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/06 12:01:31 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init(char *buf, size_t size)
 }
 
 
-int	ft_pwd(void)
+int	ft_pwd(int fd)
 {
 	char	*buf;
 	char	*res_getcwd;
@@ -36,7 +36,7 @@ int	ft_pwd(void)
 	res_getcwd = getcwd(buf, size);
 	if (res_getcwd == NULL)
 		return (EXIT_FAILURE);
-	printf("pwd = %s\n", buf);
+	write(fd, buf, ft_strlen(buf));
 	free(buf);
 	return (EXIT_SUCCESS);
 

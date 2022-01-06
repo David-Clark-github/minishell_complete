@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/05 17:46:10 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/06 13:20:04 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ static void	ft_free_tab(char **tab_separ, int tab_len)
 	}
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **tab_env)
 {
+	(void)av;
+	(void)tab_env;
 	t_pars	pars;
 
 	if (ac != 1)
 	{
-		printf("Aucun argument besoin pour minishell\n");
-		return (EXIT_SUCCESS);
+		printf("Aucun argument nécessaire pour minishell.\n");
+		return (EXIT_FAILURE);
 	}
 	while (1)
 	{
