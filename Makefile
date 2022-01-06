@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/06 13:20:36 by david            ###   ########.fr        #
+#    Updated: 2022/01/06 15:01:39 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/tab_to_list.c \
 			parsing/ft_strjoin.c \
 			parsing/ft_strljoin.c \
+			parsing/ft_strdup.c \
 			parsing/ft_separ2.c \
 			parsing/ft_strlen.c \
 			parsing/ft_isalpha.c \
