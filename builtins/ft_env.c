@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:39:38 by david             #+#    #+#             */
-/*   Updated: 2022/01/06 17:51:19 by david            ###   ########.fr       */
+/*   Updated: 2022/01/08 17:26:44 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_env(char **tab_env, int fd)
 	while (tab_env[i])
 	{
 		write(fd, tab_env[i], strlen(tab_env[i]));
+		write(fd, "\n", 1);
 		i++;
 	}
 	return (EXIT_SUCCESS);

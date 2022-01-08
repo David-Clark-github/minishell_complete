@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/06 13:20:04 by david            ###   ########.fr       */
+/*   Updated: 2022/01/08 19:25:41 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ int	main(int ac, char **av, char **tab_env)
 			pars.list = parsing(&pars);
 			if (pars.list == NULL)
 				printf("error during parsing\n");
-			else
-			{
+			else if (extract_lst(pars.list))
 				print_lst(&pars.list);
-				extract_lst(pars.list);
-			}
 			ft_free_tab(pars.tab_separ, pars.tab_len);
+			ft_env(tab_env, 2);
+			ft_export("TUTU", "tata", tab_env);
 		}
 	}
 }

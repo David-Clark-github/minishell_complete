@@ -6,20 +6,20 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/01/06 17:54:55 by david            ###   ########.fr       */
+/*   Updated: 2022/01/08 19:25:23 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static int	tab_len(char **tab)
+static int	tab_len(char **tab_env)
 {
 	int	res;
 
 	res = 0;
-	while (tab[res])
+	while (tab_env[res])
 		res++;
-	return (res)
+	return (res);
 }
 
 //return -1 if not found
@@ -32,11 +32,12 @@ static int	look_name(char *name, char **tab_env)
 	{
 		if (ft_strncmp(name, tab_env[iter], ft_strlen(name)) == 0)
 			return (iter);
+		iter++;
 	}
 	return (-1);
 }
 
-char	**add_env(char **tab_env, char *name, char *data)
+static char	**change_env(char **tab_env, char *name, char *data)
 {
 	char	**dest;
 	int		i;
@@ -52,18 +53,57 @@ char	**add_env(char **tab_env, char *name, char *data)
 	dest[i] = ft_strjoin(dest[i], "=");
 	dest[i] = ft_strjoin(dest[i], data);
 	dest[++i] = 0;
+	i = 0;
+	while (tab_env[i])
+	{
+		free(tab_env[i]);
+		i++;
+	}
+	free(tab_env[i]);
+	return (dest);
+}
+
+static char	**add_env(char *name, char *data, char **tab_env)
+{
+	char	**dest;
+	int		i;
+
+	i = 0;
+	printf("avant malloc");
+	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 2));
+	printf("apres malloc");
+	if (dest == NULL)
+		return (NULL);
+	while (tab_env[i])
+	{
+		dest[i] = tab_env[i];
+		i++;
+	}
+	dest[i] = ft_strdup(name);
+	dest[i] = ft_strljoin(dest[i], "=", 1);
+	dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
+	i++;
+	dest[i] = 0;
+	i = -1;
+	while (tab_env[++i])
+		free(tab_env[i]);
+	free(tab_env);
 	return (dest);
 }
 
 int	ft_export(char *name, char *data, char **tab_env)
 {
+	printf("name = %s\n", name);
+	printf("data = %s\n", data);
 	if (look_name(name, tab_env) == -1)
-		add_env(tab_env, name, data);
+	{	
+		printf("add_env()\n");
+		tab_env = add_env(name, data, tab_env);
+	}
 	else
 	{
-		tab_env[look_name(name, tab_env)] = ft_strdup(data);
-		tab_env[look_name(name, tab_env)] = ft_strjoin(tab_env[look_name(name, tab_env)], "=");
-		tab_env[look_name(name, tab_env)] = ft_strjoin(tab_env[look_name(name, tab_env)], data);
+		printf("change_env()\n");
+		change_env(tab_env, name, data);
 	}
 	return (EXIT_SUCCESS);
 }
