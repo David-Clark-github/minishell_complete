@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 18:10:35 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/08 16:27:34 by david            ###   ########.fr       */
+/*   Updated: 2022/01/09 11:43:26 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 int	extract_lst(t_lst *list)
 {
 	if (list->log > 0 && list->log < 8)
-		return (EXIT_SUCCESS);
+		return (1);
 	else
 	{
 		printf("%s commande introuvable\n", list->str);
-		return (EXIT_FAILURE);
+		return (0);
 	}
 
 }

@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/01/08 19:25:23 by david            ###   ########.fr       */
+/*   Updated: 2022/01/09 13:25:51 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	look_name(char *name, char **tab_env)
 	}
 	return (-1);
 }
-
+/*
 static char	**change_env(char **tab_env, char *name, char *data)
 {
 	char	**dest;
@@ -62,16 +62,16 @@ static char	**change_env(char **tab_env, char *name, char *data)
 	free(tab_env[i]);
 	return (dest);
 }
+*/
 
 static char	**add_env(char *name, char *data, char **tab_env)
 {
 	char	**dest;
 	int		i;
 
-	i = 0;
-	printf("avant malloc");
+	i = tab_len(tab_env);
+	/*
 	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 2));
-	printf("apres malloc");
 	if (dest == NULL)
 		return (NULL);
 	while (tab_env[i])
@@ -79,15 +79,15 @@ static char	**add_env(char *name, char *data, char **tab_env)
 		dest[i] = tab_env[i];
 		i++;
 	}
+	*/
+	dest = ft_copy_env(tab_env, 1);
 	dest[i] = ft_strdup(name);
 	dest[i] = ft_strljoin(dest[i], "=", 1);
 	dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
 	i++;
 	dest[i] = 0;
-	i = -1;
 	while (tab_env[++i])
 		free(tab_env[i]);
-	free(tab_env);
 	return (dest);
 }
 
@@ -103,7 +103,7 @@ int	ft_export(char *name, char *data, char **tab_env)
 	else
 	{
 		printf("change_env()\n");
-		change_env(tab_env, name, data);
+	//	change_env(tab_env, name, data);
 	}
 	return (EXIT_SUCCESS);
 }
