@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:29:34 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 20:16:44 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	main(int ac, char **av, char **tab_env)
 			ft_free_tab(pars.tab_separ, pars.tab_len);
 			if (pars.list->log == 6)
 				ft_env(cp_tab_env, 1);
-			//ft_export("TUTU", "tata", cp_tab_env);
+			if (pars.list->log == 4)
+				ft_export("TUTU", "tata", cp_tab_env);
 		}
 	}
 }

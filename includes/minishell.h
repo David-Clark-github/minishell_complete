@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:59:04 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 19:51:55 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	**ft_separ(char *str, int *tk_len);
 int		extract_lst(t_lst *list);
-char	**ft_copy_env(char **tab_env, int add);
 
 //BUILTINS
 int		ft_echo(char *str, int arg, int fd);
@@ -98,6 +97,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strjoin(char *str_1, char *str_2);
 char	*ft_strljoin(char *s1, char *s2, int s2_len);
+char	**ft_copy_env(char **tab_env, size_t add);
 
 //DO NOT USE [tab] FOR PARAMETER NAME
 //term.h USES IT

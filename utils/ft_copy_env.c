@@ -6,37 +6,27 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 11:27:06 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:12:30 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 19:55:12 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	tab_len(char **tab_env)
+char	**ft_copy_env(char **tab_env, size_t add)
 {
-	int	i;
-
-	i = 0;
-	while (tab_env && tab_env[i])
-		i++;
-	return (i);
-}
-
-char	**ft_copy_env(char **tab_env, int add)
-{
-	int	i;
+	int		i;
 	char	**dest;
 
 	i = 0;
 	if (!tab_env)
 		return (NULL);
-	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 1 + add));
-	while (i < tab_len(tab_env))
+	dest = malloc(sizeof(char *) * (ft_tablen(tab_env) + 1 + add));
+	while (i < ft_tablen(tab_env))
 	{
 		dest[i] = strdup(tab_env[i]);
 		i++;
 	}
-	while (add--)
+	while (add-- > 0)
 	{
 		dest[i] = 0;
 		i++;
