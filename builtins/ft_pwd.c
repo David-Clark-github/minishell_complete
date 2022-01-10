@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/06 14:56:42 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:10:50 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 static void	init(char *buf, size_t size)
 {

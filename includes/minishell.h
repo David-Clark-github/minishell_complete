@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/09 13:23:54 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:59:04 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
 //[readline] [rl_clear_history] [rl_on_new_line] [rl_replace_line]
 //[rl_redisplay] [add_history]
@@ -79,13 +79,7 @@ char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
-char	*ft_strjoin(char *str_1, char *str_2);
-char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_separ(char *str, int *tk_len);
-int		ft_strlen(char *str);
-int		ft_isalpha(int c);
-char	*ft_strdup(char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		extract_lst(t_lst *list);
 char	**ft_copy_env(char **tab_env, int add);
 
@@ -94,6 +88,16 @@ int		ft_echo(char *str, int arg, int fd);
 int		ft_pwd(int fd);
 int		ft_env(char **tab_env, int fd);
 int		ft_export(char *name, char *data, char **tab_env);
+
+//UTILS
+int		ft_strlen(char *str);
+int		ft_tablen(char **tableau);
+int		ft_isalpha(int c);
+char	*ft_strdup(char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strjoin(char *str_1, char *str_2);
+char	*ft_strljoin(char *s1, char *s2, int s2_len);
 
 //DO NOT USE [tab] FOR PARAMETER NAME
 //term.h USES IT

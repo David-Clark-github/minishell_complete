@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 19:59:10 by david             #+#    #+#             */
-/*   Updated: 2021/12/19 20:00:08 by david            ###   ########.fr       */
+/*   Created: 2021/12/28 10:57:57 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/10 15:12:48 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
-int	ft_strlen(char *str)
+int	ft_isalpha(int c)
 {
-	int	res;
-
-	res = 0;
-	if (!str)
-		return (0);
-	while (str[res])
-		res++;
-	return (res);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

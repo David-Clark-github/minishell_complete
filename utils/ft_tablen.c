@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copy_env.c                                      :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 11:27:06 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:12:30 by david            ###   ########.fr       */
+/*   Created: 2022/01/10 15:53:33 by david             #+#    #+#             */
+/*   Updated: 2022/01/10 15:58:51 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	tab_len(char **tab_env)
+// I use [tableau] because the name [tab] canot be used with term.h
+
+int	ft_tablen(char **tableau)
 {
 	int	i;
 
 	i = 0;
-	while (tab_env && tab_env[i])
+	if (!tableau)
+		return (i);
+	while(tableau[i])
 		i++;
 	return (i);
-}
-
-char	**ft_copy_env(char **tab_env, int add)
-{
-	int	i;
-	char	**dest;
-
-	i = 0;
-	if (!tab_env)
-		return (NULL);
-	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 1 + add));
-	while (i < tab_len(tab_env))
-	{
-		dest[i] = strdup(tab_env[i]);
-		i++;
-	}
-	while (add--)
-	{
-		dest[i] = 0;
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
 }

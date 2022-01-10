@@ -6,11 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:59:23 by david             #+#    #+#             */
-/*   Updated: 2022/01/06 15:01:23 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:13:39 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 char	*ft_strdup(char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:39:38 by david             #+#    #+#             */
-/*   Updated: 2022/01/08 17:26:44 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:09:48 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 int	ft_env(char **tab_env, int fd)
 {

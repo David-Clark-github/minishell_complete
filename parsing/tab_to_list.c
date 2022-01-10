@@ -6,40 +6,40 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/01/06 14:03:07 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:51:47 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 static int	diff_cmd_redir(char *str)
 {
 	int	flag;
 
 	flag = 0;
-	if (ft_strncmp(str, "echo", ft_strlen("echo")) == 0)
+	if (ft_strcmp(str, "echo") == 0)
 		flag = 1;
-	else if (ft_strncmp(str, "cd", ft_strlen("cd")) == 0)
+	else if (ft_strcmp(str, "cd") == 0)
 		flag = 2;
-	else if (ft_strncmp(str, "pwd", ft_strlen("pwd")) == 0)
+	else if (ft_strcmp(str, "pwd") == 0)
 		flag = 3;
-	else if (ft_strncmp(str, "export", ft_strlen("export")) == 0)
+	else if (ft_strcmp(str, "export") == 0)
 		flag = 4;
-	else if (ft_strncmp(str, "unset", ft_strlen("unset")) == 0)
+	else if (ft_strcmp(str, "unset") == 0)
 		flag = 5;
-	else if (ft_strncmp(str, "env", ft_strlen("env")) == 0)
+	else if (ft_strcmp(str, "env") == 0)
 		flag = 6;
-	else if (ft_strncmp(str, "exit", ft_strlen("exit")) == 0)
+	else if (ft_strcmp(str, "exit") == 0)
 		flag = 7;
-	else if (ft_strncmp(str, ">", ft_strlen(">")) == 0)
+	else if (ft_strcmp(str, ">>") == 0)
 		flag = 8;
-	else if (ft_strncmp(str, "<", ft_strlen("<")) == 0)
+	else if (ft_strcmp(str, "<<") == 0)
 		flag = 9;
-	else if (ft_strncmp(str, ">>", ft_strlen(">>")) == 0)
+	else if (ft_strcmp(str, ">") == 0)
 		flag = 10;
-	else if (ft_strncmp(str, "<<", ft_strlen("<<")) == 0)
+	else if (ft_strcmp(str, "<") == 0)
 		flag = 11;
-	else if (ft_strncmp(str, "|", ft_strlen("|")) == 0)
+	else if (ft_strcmp(str, "|") == 0)
 		flag = 12;
 	return (flag);
 }

@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 13:33:29 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/03 14:46:39 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/10 15:18:37 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 char	*quotes_exp(char *str)
 {

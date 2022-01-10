@@ -6,11 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/01/05 13:21:26 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/10 15:11:59 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 
 //find_space inclut la '\0' pour name_env

@@ -6,21 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/01/09 13:25:51 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:59:20 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-
-static int	tab_len(char **tab_env)
-{
-	int	res;
-
-	res = 0;
-	while (tab_env[res])
-		res++;
-	return (res);
-}
+#include "minishell.h"
 
 //return -1 if not found
 static int	look_name(char *name, char **tab_env)
@@ -43,7 +33,7 @@ static char	**change_env(char **tab_env, char *name, char *data)
 	int		i;
 
 	i = 0;
-	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 2));
+	dest = malloc(sizeof(char *) * (ft_tablen(tab_env) + 2));
 	while (tab_env[i])
 	{
 		dest[i] = ft_strdup(tab_env[i]);
@@ -69,9 +59,9 @@ static char	**add_env(char *name, char *data, char **tab_env)
 	char	**dest;
 	int		i;
 
-	i = tab_len(tab_env);
+	i = ft_tablen(tab_env);
 	/*
-	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 2));
+	dest = malloc(sizeof(char *) * (ft_tablen(tab_env) + 2));
 	if (dest == NULL)
 		return (NULL);
 	while (tab_env[i])

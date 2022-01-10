@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:23:22 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/03 17:30:43 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/10 15:18:01 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 void	print_lst(t_lst **head)
 {

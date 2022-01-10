@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:20:03 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/18 21:18:30 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:11:45 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 static void	init_value(int *a, int *b, int *c)
 {

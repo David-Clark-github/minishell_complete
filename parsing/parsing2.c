@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/05 13:30:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/10 15:17:44 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 t_lst	*parsing(t_pars *pars)
 {

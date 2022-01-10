@@ -6,11 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/01/06 12:28:04 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:08:54 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 int	ft_cd(char *path)
 {

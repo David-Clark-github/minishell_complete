@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/09 13:27:53 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:29:34 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 static void	ft_free_tab(char **tab_separ, int tab_len)
 {
@@ -31,11 +31,10 @@ static void	ft_free_tab(char **tab_separ, int tab_len)
 int	main(int ac, char **av, char **tab_env)
 {
 	(void)av;
-	(void)tab_env;
 	t_pars	pars;
 
-	//char	**cp_tab_env;
-	//cp_tab_env = ft_copy_env(tab_env, 0);
+	char	**cp_tab_env;
+	cp_tab_env = ft_copy_env(tab_env, 0);
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
@@ -50,12 +49,13 @@ int	main(int ac, char **av, char **tab_env)
 			pars.list = parsing(&pars);
 			if (pars.list == NULL)
 				printf("error during parsing\n");
-			/*
+			///*
 			else if (extract_lst(pars.list))
 				print_lst(&pars.list);
-			*/
+			//*/
 			ft_free_tab(pars.tab_separ, pars.tab_len);
-			//ft_env(cp_tab_env, 2);
+			if (pars.list->log == 6)
+				ft_env(cp_tab_env, 1);
 			//ft_export("TUTU", "tata", cp_tab_env);
 		}
 	}

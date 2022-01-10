@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copy_env.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 11:27:06 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:12:30 by david            ###   ########.fr       */
+/*   Created: 2022/01/06 13:16:57 by david             #+#    #+#             */
+/*   Updated: 2022/01/10 15:17:28 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	tab_len(char **tab_env)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (tab_env && tab_env[i])
-		i++;
-	return (i);
-}
-
-char	**ft_copy_env(char **tab_env, int add)
-{
-	int	i;
-	char	**dest;
-
-	i = 0;
-	if (!tab_env)
-		return (NULL);
-	dest = malloc(sizeof(char *) * (tab_len(tab_env) + 1 + add));
-	while (i < tab_len(tab_env))
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		dest[i] = strdup(tab_env[i]);
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	while (add--)
-	{
-		dest[i] = 0;
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
+	return (0);
 }

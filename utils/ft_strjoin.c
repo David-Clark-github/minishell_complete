@@ -6,11 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 21:42:28 by david             #+#    #+#             */
-/*   Updated: 2021/12/19 20:01:37 by david            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:14:03 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minishell.h"
 
 char	*ft_strjoin(char *str_1, char *str_2)
 {
