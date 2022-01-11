@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:13:05 by david            ###   ########.fr       */
+/*   Updated: 2022/01/11 15:15:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,46 +85,28 @@ char	**ft_separ(char *str, int *tk_len)
 		if (str[i_str] && str[i_str] == '\'')
 		{
 			i_str++;
-			if (str[i_str] == '\'')
+			while (str[i_str] && str[i_str] != '\'')
 			{
-				dest[i_dest] = ft_strljoin(dest[i_dest], NULL, 0);
-				i_dest++;
+				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			else
-			{
-				while (str[i_str] && str[i_str] != '\'')
-				{
-					dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
-					i_str++;
-				}
-				if (str[i_str] == '\'')
-					i_str++;
-				if (str[i_str] != '\"' && str[i_str] != '\'')
-					i_dest++;
-			}
+			if (str[i_str] == '\'')
+				i_str++;
+			if (str[i_str] && str[i_str] == ' ')
+				i_dest++;
 		}
 		else if (str[i_str] && str[i_str] == '\"')
 		{
 			i_str++;
-			if (str[i_str] == '\"')
+			while (str[i_str] && str[i_str] != '\"')
 			{
-				dest[i_dest] = ft_strljoin(dest[i_dest], NULL, 0);
-				i_dest++;
+				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			else
-			{
-				while (str[i_str] && str[i_str] != '\"')
-				{
-					dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
-					i_str++;
-				}
-				if (str[i_str] == '\"')
-					i_str++;
-				if (str[i_str] != '\"' && str[i_str] != '\'')
-					i_dest++;
-			}
+			if (str[i_str] == '\"')
+				i_str++;
+			if (str[i_str] && str[i_str] == ' ')
+				i_dest++;
 		}
 		else
 		{
@@ -133,7 +115,7 @@ char	**ft_separ(char *str, int *tk_len)
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			if (str[i_str] && (str[i_str] != '\'' && str[i_str] != '\"'))
+			if (str[i_str] && str[i_str] == ' ')
 				i_dest++;
 		}
 	}
