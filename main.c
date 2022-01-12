@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 20:16:44 by david            ###   ########.fr       */
+/*   Updated: 2022/01/12 16:44:38 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av, char **tab_env)
 		printf("Aucun argument nécessaire pour minishell.\n");
 		return (EXIT_FAILURE);
 	}
+	take_signal();
 	while (1)
 	{
 		pars.prompt = readline("Minishell~ ");

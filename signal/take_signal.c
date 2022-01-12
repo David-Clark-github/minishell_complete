@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   take_signal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/01/12 15:54:17 by dclark           ###   ########.fr       */
+/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/12 16:58:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_cd(char *path)
+static void	toto(int sig)
 {
-	if (chdir(path) == 0)
-		return (EXIT_SUCCESS);
-	else
-		return (EXIT_FAILURE);
+	if (sig == SIGINT)
+		printf("Minishell CC\n");
+}
+
+void	take_signal(void)
+{
+	signal(SIGINT, toto);
 }

@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/11 15:50:59 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/12 16:07:57 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/quotes_exp.c \
 			parsing/tab_to_list.c \
 			parsing/ft_separ2.c \
+			parsing/extract_lst.c \
 			utils/ft_copy_env.c \
 			utils/ft_strjoin.c \
 			utils/ft_strljoin.c \
@@ -31,7 +32,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			builtins/ft_pwd.c \
 			builtins/ft_env.c \
 			builtins/ft_export.c \
-			parsing/extract_lst.c \
+			signal/take_signal.c \
 			main.c
 
 HEADER	=includes/

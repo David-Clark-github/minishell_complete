@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 19:51:55 by david            ###   ########.fr       */
+/*   Updated: 2022/01/12 16:12:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@
 //	3 = string
 
 
-typedef struct s_lst {
+typedef struct	s_lst {
 	struct s_lst	*next;
 	char			*str;
 	int				log;
 	int				iter;
-}t_lst;
+}				t_lst;
 
 typedef struct	s_parsing {
 	char	*prompt;
@@ -103,4 +103,7 @@ char	**ft_copy_env(char **tab_env, size_t add);
 //term.h USES IT
 
 t_lst	*tab_to_list(char **tabx);
+
+//TEST
+void	take_signal(void);
 #endif
