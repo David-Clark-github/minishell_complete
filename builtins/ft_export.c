@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 20:18:09 by david            ###   ########.fr       */
+/*   Updated: 2022/01/18 12:31:44 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ static char	**add_env(char *name, char *data, char **tab_env)
 	int		i;
 
 	i = ft_tablen(tab_env);
+	printf("i = %d\n", i);
 	//printf("i = %d\n", i);
 	dest = ft_copy_env(tab_env, 1);
 	dest[i] = ft_strljoin(dest[i], name, ft_strlen(name));
 	dest[i] = ft_strljoin(dest[i], "=", 1);
 	dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
+	printf("tablen = %d\n", ft_tablen(dest));
 //	printf("dest[i] = %s\n", dest[i]);
 	return (dest);
 }
