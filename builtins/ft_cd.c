@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/01/12 15:54:17 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/18 17:15:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 int	ft_cd(char *path)
 {
+	printf("\"path\" = %s\n", path);
 	if (chdir(path) == 0)
+	{	
+		printf("OK !");
 		return (EXIT_SUCCESS);
+	}
 	else
+	{
 		return (EXIT_FAILURE);
+		printf("KO !");
+	}
 }

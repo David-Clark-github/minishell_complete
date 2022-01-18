@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:10:50 by david            ###   ########.fr       */
+/*   Updated: 2022/01/18 14:58:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_pwd(int fd)
 	if (res_getcwd == NULL)
 		return (EXIT_FAILURE);
 	write(fd, buf, ft_strlen(buf));
+	write(fd, "\n", 1);
 	free(buf);
 	return (EXIT_SUCCESS);
 }

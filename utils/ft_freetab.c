@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_freetab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 17:39:38 by david             #+#    #+#             */
-/*   Updated: 2022/01/18 14:06:36 by dclark           ###   ########.fr       */
+/*   Created: 2022/01/18 14:18:41 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/18 14:25:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_env(char **tab_env, int fd)
+void	ft_freetab(char **tabx)
 {
+	int	tab_len;
 	int	i;
 
+	tab_len = ft_tablen(tabx);
 	i = 0;
-	for (int y = 0; tab_env[y]; y++)
-		printf("test %s\n", tab_env[y]);
-	while (tab_env[i])
+	while (i <= tab_len)
 	{
-		write(fd, tab_env[i], strlen(tab_env[i]));
-		write(fd, "\n", 1);
+		free(tabx[i]);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	free(tabx);
 }

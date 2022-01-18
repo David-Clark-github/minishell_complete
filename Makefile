@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/12 16:07:57 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/18 17:13:31 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,13 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_isalpha.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
+			utils/ft_freetab.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
+			builtins/ft_cd.c \
 			builtins/ft_env.c \
 			builtins/ft_export.c \
+			builtins/ft_unset.c \
 			signal/take_signal.c \
 			main.c
 

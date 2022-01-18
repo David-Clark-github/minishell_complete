@@ -6,12 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/18 12:34:54 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/18 17:25:01 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
 static void	ft_free_tab(char **tab_separ, int tab_len)
 {
 	int	i;
@@ -27,6 +28,7 @@ static void	ft_free_tab(char **tab_separ, int tab_len)
 		free(tab_separ);
 	}
 }
+*/
 
 int	main(int ac, char **av, char **tab_env)
 {
@@ -54,11 +56,18 @@ int	main(int ac, char **av, char **tab_env)
 			else if (extract_lst(pars.list))
 				print_lst(&pars.list);
 			//*/
-			ft_free_tab(pars.tab_separ, pars.tab_len);
+			//ft_free_tab(pars.tab_separ, pars.tab_len);
+			ft_freetab(pars.tab_separ);
 			if (pars.list->log == 6)
 				ft_env(cp_tab_env, 1);
-			if (pars.list->log == 4)
-				ft_export("TUTU", "tata", cp_tab_env);
+			else if (pars.list->log == 4)
+				ft_export("TUTU", "tata", &cp_tab_env);
+			else if (pars.list->log == 5)
+				ft_unset("TUTU", &cp_tab_env);
+			else if (pars.list->log == 3)
+				ft_pwd(1);
+			else if (pars.list->log == 2)
+				ft_cd("../");
 		}
 	}
 }
