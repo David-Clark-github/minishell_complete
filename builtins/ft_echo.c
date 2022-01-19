@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:29:02 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:09:08 by david            ###   ########.fr       */
+/*   Updated: 2022/01/19 11:15:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_echo(char *str, int arg, int fd)
 {
 	write(fd, str, ft_strlen(str));
 	if (arg == 0)
-	{
 		write(fd, "\n", 1);
-	}
 	return (EXIT_SUCCESS);
 }
