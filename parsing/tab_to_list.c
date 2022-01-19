@@ -6,13 +6,13 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:51:47 by david            ###   ########.fr       */
+/*   Updated: 2022/01/19 16:15:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static int	diff_cmd_redir(char *str)
+/*
+int	diff_cmd(char *str)
 {
 	int	flag;
 
@@ -43,11 +43,12 @@ static int	diff_cmd_redir(char *str)
 		flag = 12;
 	return (flag);
 }
-
+*/
 t_lst	*tab_to_list(char **tabx)
 {
 	t_lst	*list;
 	int		i_tab;
+	//int		lst_log;
 	
 	list = NULL;
 	i_tab = 0;

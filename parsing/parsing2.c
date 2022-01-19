@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:17:44 by david            ###   ########.fr       */
+/*   Updated: 2022/01/19 14:49:09 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ t_lst	*parsing(t_pars *pars)
 	if (pars->exp == NULL)
 		return (NULL);
 	pars->tab_separ = ft_separ(pars->exp, &pars->tab_len);
-	/*
-	printf("\ntab:\n");
-	for (int i = 0; pars->tab_separ[i] != 0; i++)
-		printf("%s\n", pars->tab_separ[i]);
-	printf("\n");
-	*/
+	check_tab(pars->tab_separ);
 	pars->list = tab_to_list(pars->tab_separ);
 	/*
 	if (pars->tab_separ != NULL)

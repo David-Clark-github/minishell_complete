@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/18 17:24:59 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/19 15:30:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct	s_parsing {
 	int		error_num;
 }				t_pars;
 
-//	check_error_quotes return 1 on success(did not find an error*) 0 if error
+//PARSING
 t_lst	*parsing(t_pars *pars);
 char	*expension(char *prompt, int *error_num);
 char	*quotes_exp(char *str);
@@ -81,6 +81,7 @@ void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	**ft_separ(char *str, int *tk_len);
 int		extract_lst(t_lst *list);
+int		check_tab(char **tab_separ);
 
 //BUILTINS
 int		ft_echo(char *str, int arg, int fd);
@@ -101,8 +102,9 @@ char	*ft_strjoin(char *str_1, char *str_2);
 char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_copy_env(char **tab_env, size_t add);
 void	ft_freetab(char **tabx);
+int		diff_cmd_redir(char *str);
 
-//DO NOT USE [tab] FOR PARAMETER NAME
+//DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
 
 t_lst	*tab_to_list(char **tabx);

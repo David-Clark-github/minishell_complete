@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/18 17:13:31 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/19 15:30:42 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/print_lst.c \
 			parsing/check_error_quotes.c \
 			parsing/parsing2.c \
+			parsing/check_tab.c \
 			parsing/expension.c \
 			parsing/quotes_exp.c \
 			parsing/tab_to_list.c \
@@ -29,6 +30,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
 			utils/ft_freetab.c \
+			utils/diff_cmd_redir.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \
