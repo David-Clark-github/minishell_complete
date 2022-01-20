@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:20:03 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 14:33:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/20 16:13:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	check_error_quotes(char *prompt, int *er)
 		*er = 130;
 		return (0);
 	}
+	*er = 0;
 	return (1);
 }

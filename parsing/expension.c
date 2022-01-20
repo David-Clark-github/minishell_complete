@@ -6,15 +6,15 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/01/20 14:46:40 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/20 17:08:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-//find_space inclut la '\0' pour name_env
-static int	find_space(char *str)
+//found_env_len inclut la '\0' pour name_env
+static int	found_env_len(char *str)
 {
 	int	i;
 	int	res;
@@ -32,7 +32,7 @@ static int	find_space(char *str)
 }
 
 
-static char	*ft_getenv(char *str, int len)
+static char	*ft_getname(char *str, int len)
 {
 	char	*dest;
 	int		i;
@@ -83,7 +83,38 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 	return (dest);
 }
 
-char	*expension(char *prompt, int *error_num)
+static char	*ft_getenv(char *name, char **cp_ev)
+{
+	char	*data;
+	int		i_ev;
+	int		i_d;
+	int		iter;
+
+	i_ev = 0;
+	i_d = 0;
+	iter = 0;
+	while (cp_ev[i_ev] && iter == 0)
+	{
+		if (ft_strncmp(name, cp_ev[i_ev], ft_strlen(name)) == 0)
+		{
+			if (cp_ev[i_ev][ft_strlen(name)] == '=')
+				iter = ft_strlen(name) + 1;
+		}
+		if (iter == 0)
+			i_ev++;
+	}
+	data = malloc(sizeof(char) * (ft_strlen(&cp_ev[i_ev][iter]) + 1));
+	while (cp_ev[i_ev][iter])
+	{
+		data[i_d] = cp_ev[i_ev][iter];
+		iter++;
+		i_d++;
+	}
+	data[i_d] = 0;
+	return (data);
+}
+
+char	*expension(char *prompt, int *error_num, char **cp_ev)
 {
 	char	*dest;
 	char	*name_env;
@@ -103,9 +134,9 @@ char	*expension(char *prompt, int *error_num)
 			q = 0;
 		else if (prompt[i] == '$' && q == 0)
 		{
-			env_len = find_space(&prompt[i]);
-			name_env = ft_getenv(&prompt[i], env_len);
-			env = getenv(name_env);
+			env_len = found_env_len(&prompt[i]);
+			name_env = ft_getname(&prompt[i], env_len);
+			env = ft_getenv(name_env, cp_ev);
 			dest = ft_strjoin_env(dest, env);
 			while (env_len--)
 				i++;
