@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 16:21:18 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/20 17:58:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct	s_minishell {
 }				t_mini;
 
 //PARSING
-t_lst	*parsing(t_mini *mini);
+void	parsing(t_mini *mini);
 char	*expension(char *prompt, int *error_num, char **cp_ev);
 char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt, int *er);
