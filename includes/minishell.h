@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/19 15:30:26 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/20 14:49:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@
 # include <curses.h>
 # include <term.h>
 
-//log:
-//	1 = COMMAND
-//	2 = redirection
-//	3 = string
-
-
 typedef struct	s_lst {
 	struct s_lst	*next;
 	char			*str;
@@ -64,6 +58,7 @@ typedef struct	s_lst {
 }				t_lst;
 
 typedef struct	s_parsing {
+	int		er;
 	char	*prompt;
 	char	*exp;
 	char	**tab_separ;
@@ -76,12 +71,13 @@ typedef struct	s_parsing {
 t_lst	*parsing(t_pars *pars);
 char	*expension(char *prompt, int *error_num);
 char	*quotes_exp(char *str);
-int		check_error_quotes(char *prompt);
+int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	**ft_separ(char *str, int *tk_len);
 int		extract_lst(t_lst *list);
 int		check_tab(char **tab_separ);
+int		check_cmd(char **tab_separ);
 
 //BUILTINS
 int		ft_echo(char *str, int arg, int fd);

@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/19 15:30:42 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/20 14:54:22 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/check_error_quotes.c \
 			parsing/parsing2.c \
 			parsing/check_tab.c \
+			parsing/check_cmd.c \
 			parsing/expension.c \
 			parsing/quotes_exp.c \
 			parsing/tab_to_list.c \
@@ -49,9 +50,6 @@ OBJS	= $(SRCS:.c=.o)
 CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) #-ggdb3
 
 CC		= gcc
-
-#%.o: %.c
-#	$(CC) -c $(CFLAGS) -o $@ $< -I $(HEADER)
 
 all:	$(NAME)
 

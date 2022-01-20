@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:11:59 by david            ###   ########.fr       */
+/*   Updated: 2022/01/20 14:46:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 //find_space inclut la '\0' pour name_env
-int	find_space(char *str)
+static int	find_space(char *str)
 {
 	int	i;
 	int	res;
@@ -32,7 +32,7 @@ int	find_space(char *str)
 }
 
 
-char	*ft_getenv(char *str, int len)
+static char	*ft_getenv(char *str, int len)
 {
 	char	*dest;
 	int		i;
@@ -55,7 +55,7 @@ char	*ft_getenv(char *str, int len)
 	return (dest);
 }
 
-char	*ft_strjoin_env(char *prompt, char *env)
+static char	*ft_strjoin_env(char *prompt, char *env)
 {
 	char	*dest;
 	int		i_d;

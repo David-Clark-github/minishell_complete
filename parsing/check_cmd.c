@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   check_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 14:59:12 by dclark           ###   ########.fr       */
+/*   Created: 2022/01/20 12:49:32 by dclark            #+#    #+#             */
+/*   Updated: 2022/01/20 12:52:27 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	toto(int sig)
+int	check_cmd(char **tab_separ)
 {
-	if (sig == SIGINT) {
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-	if (sig == SIGQUIT) {
-		printf("totot est la\n");
-		printf("en cours de développement :)");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		exit(EXIT_SUCCESS);
-	}
-}
+	int	res;
 
-void	take_signal(void)
-{
-	signal(SIGQUIT, toto);
-	signal(SIGINT, toto);
+	res = diff_cmd_redir(tab_separ[0]);
+	if (res < 1 || res > 7)
+		return (-1);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:20:03 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:11:45 by david            ###   ########.fr       */
+/*   Updated: 2022/01/20 14:33:27 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	init_value(int *a, int *b, int *c)
 	*c = -1;
 }
 
-int	check_error_quotes(char *prompt)
+int	check_error_quotes(char *prompt, int *er)
 {
 	int	qt_1;
 	int	qt_2;
@@ -44,6 +44,9 @@ int	check_error_quotes(char *prompt)
 		}
 	}
 	if ((qt_1 != 0) || (qt_2 != 0))
+	{
+		*er = 130;
 		return (0);
+	}
 	return (1);
 }

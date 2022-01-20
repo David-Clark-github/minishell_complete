@@ -6,37 +6,21 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/19 17:55:14 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/20 15:04:03 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
-static void	ft_free_tab(char **tab_separ, int tab_len)
-{
-	int	i;
-
-	i = 0;
-	if (tab_separ)
-	{
-		while (i < tab_len)
-		{
-			free(tab_separ[i]);
-			i++;
-		}
-		free(tab_separ);
-	}
-}
-*/
-
-int	main(int ac, char **av, char **tab_env)
+int	main(int ac, char **av, char **ev)
 {
 	(void)av;
+	int		er;
 	t_pars	pars;
 
-	char	**cp_tab_env;
-	cp_tab_env = ft_copy_env(tab_env, 0);
+	char	**cp_ev;
+	er = 0;
+	cp_ev = ft_copy_env(ev, 0);
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
@@ -46,12 +30,15 @@ int	main(int ac, char **av, char **tab_env)
 	while (1)
 	{
 		pars.prompt = readline("Minishell~ ");
-		add_history(pars.prompt);
-		if (check_error_quotes(pars.prompt) == 1 && ft_strlen(pars.prompt) != 0)
+		if (ft_strlen(pars.prompt) != 0)
+			add_history(pars.prompt);
+		if (ft_strlen(pars.prompt) != 0)
 		{
-			pars.list = parsing(&pars);
+			check_error_quotes(pars.prompt, &er);
+			if (er == 0)
+				pars.list = parsing(&pars);
 			if (pars.list == NULL)
-				printf("error during parsing or syntax error\n");
+				printf("error during parsing\n");
 			///*
 			else if (extract_lst(pars.list))
 				print_lst(&pars.list);
@@ -62,9 +49,9 @@ int	main(int ac, char **av, char **tab_env)
 				if (pars.list->log == 6)
 					ft_env(cp_tab_env, 1);
 				else if (pars.list->log == 4)
-					ft_export("TUTU", "tata", &cp_tab_env);
+					ft_export("TUTU", "tata", &cp_ev);
 				else if (pars.list->log == 5)
-					ft_unset("TUTU", &cp_tab_env);
+					ft_unset("TUTU", &cp_ev);
 				else if (pars.list->log == 3)
 					ft_pwd(1);
 				else if (pars.list->log == 2)
