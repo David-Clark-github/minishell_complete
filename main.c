@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/24 16:43:45 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 18:35:58 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	main(int ac, char **av, char **ev)
 				parsing(&mini);
 			if (mini.list == NULL && mini.er_num == 0)
 				printf("error during parsing\n");
-			check_syntax(&mini);
+			if (check_syntax(&mini) == EXIT_FAILURE)
+				printf("syntax error\n");
 			if (mini.er_num == 0 && extract_lst(mini.list))
 				print_lst(&mini.list);
 			if (mini.er_num == 0 && mini.list->log == 3)

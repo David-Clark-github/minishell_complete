@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:21:10 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/19 17:36:33 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 18:39:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	diff_redir(char *str)
 
 int	diff_cmd_redir(char *str)
 {
+	if (!str)
+		return (0);
 	if (diff_cmd(str) != 0)
 		return (diff_cmd(str));
 	if (diff_redir(str) != 0)
