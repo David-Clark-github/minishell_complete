@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 17:58:04 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 16:28:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ char	**ft_separ(char *str, int *tk_len);
 int		extract_lst(t_lst *list);
 int		check_tab(char **tab_separ);
 int		check_cmd(char **tab_separ);
+int		check_syntax(t_mini *mini);
+int		diff_cmd_redir(char *str);
 
 //BUILTINS
 int		ft_echo(char *str, int arg, int fd);
@@ -107,7 +109,6 @@ char	*ft_strjoin(char *str_1, char *str_2);
 char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_copy_env(char **tab_env, size_t add);
 void	ft_freetab(char **tabx);
-int		diff_cmd_redir(char *str);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT

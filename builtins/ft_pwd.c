@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/18 14:58:48 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 15:41:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ int	ft_pwd(int fd)
 	size = 512;
 	buf = malloc(sizeof(char) * size);
 	if (buf == NULL)
-	{
 		printf("malloc of ft_pwd failed :(\n");
+	if (buf == NULL)
 		return (EXIT_FAILURE);
-	}
 	init(buf, size);
 	res_getcwd = getcwd(buf, size);
 	if (res_getcwd == NULL)

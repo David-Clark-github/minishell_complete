@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 14:59:12 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 11:56:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	toto(int sig)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
+	/*
 	if (sig == SIGQUIT) {
 		printf("totot est la\n");
 		printf("en cours de développement :)");
@@ -28,10 +29,11 @@ static void	toto(int sig)
 		rl_redisplay();
 		exit(EXIT_SUCCESS);
 	}
+	*/
 }
 
 void	take_signal(void)
 {
-	signal(SIGQUIT, toto);
+	//signal(SIGQUIT, toto);
 	signal(SIGINT, toto);
 }

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/20 17:58:56 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/24 16:43:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,17 @@ int	main(int ac, char **av, char **ev)
 				printf("er_num = %d error de quotes\n", mini.er_num);
 			if (mini.er_num == 0)
 				parsing(&mini);
-			if (mini.list == NULL)
+			if (mini.list == NULL && mini.er_num == 0)
 				printf("error during parsing\n");
-			//
-			else if (extract_lst(mini.list))
+			check_syntax(&mini);
+			if (mini.er_num == 0 && extract_lst(mini.list))
 				print_lst(&mini.list);
+			if (mini.er_num == 0 && mini.list->log == 3)
+				ft_pwd(1);
+			if (mini.er_num == 0 && mini.list->log == 6)
+				ft_env(mini.cp_ev, 1);
+			if (mini.er_num != 0)
+				printf("er_num = %d\n", mini.er_num);
 			/*
 			//
 			//ft_free_tab(mini.tab_separ, mini.tab_len);
