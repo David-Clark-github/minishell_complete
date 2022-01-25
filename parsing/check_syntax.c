@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:25:46 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/25 12:22:31 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/25 13:32:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ static int	simple_syntax(char **tab_separ)
 	{
 		if (diff_cmd_redir(tab_separ[i]) > 7 && tab_separ[i + 1] == 0)
 			return (-1);
-		if (diff_cmd_redir(tab_separ[i]) == 12)
-			if (diff_cmd_redir(tab_separ[i + 1]) < 1 || diff_cmd_redir(tab_separ[i + 1]) > 7)
+		if (diff_cmd_redir(tab_separ[i]) == 12\
+			&& (diff_cmd_redir(tab_separ[i + 1]) < 1 ||\
+				diff_cmd_redir(tab_separ[i + 1]) > 7))
+				return (-1);
+		if (diff_cmd_redir(tab_separ[i]) > 7\
+			&& diff_cmd_redir(tab_separ[i + 1]) > 7)
 				return (-1);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/24 18:35:58 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/25 14:55:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av, char **ev)
 		printf("Aucun argument nécessaire pour minishell.\n");
 		return (EXIT_FAILURE);
 	}
-	//take_signal();
+	take_signal();
 	while (1)
 	{
 		mini.prompt = readline("Minishell~ ");
@@ -49,9 +49,8 @@ int	main(int ac, char **av, char **ev)
 				ft_env(mini.cp_ev, 1);
 			if (mini.er_num != 0)
 				printf("er_num = %d\n", mini.er_num);
+			ft_freetab(mini.tab_separ);
 			/*
-			//
-			//ft_free_tab(mini.tab_separ, mini.tab_len);
 			ft_freetab(mini.tab_separ);
 			if (mini.list != NULL) {
 				if (mini.list->log == 6)
