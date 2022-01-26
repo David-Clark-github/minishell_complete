@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetab.c                                       :+:      :+:    :+:   */
+/*   init_mini.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 14:18:41 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/26 12:29:50 by david            ###   ########.fr       */
+/*   Created: 2022/01/26 12:31:21 by david             #+#    #+#             */
+/*   Updated: 2022/01/26 12:33:03 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_freetab(char **tabx)
+void	init_mini(t_mini *mini)
 {
-	int	tab_len;
-	int	i;
-
-	if (!tabx)
-		return;
-	tab_len = ft_tablen(tabx);
-	i = 0;
-	while (i <= tab_len)
-	{
-		free(tabx[i]);
-		i++;
-	}
-	free(tabx);
+	mini->cp_ev = NULL;
+	mini->er_num = 0;
+	mini->prompt = NULL;
+	mini->exp = NULL;
+	mini->tab_separ = NULL;
+	mini->tab_len = 0;
+	mini->list = NULL;
 }

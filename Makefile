@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/24 16:29:24 by dclark           ###   ########.fr        #
+#    Updated: 2022/01/26 12:36:16 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
 			utils/ft_freetab.c \
+			utils/init_mini.c \
+			utils/free_mini.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \
@@ -48,7 +50,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) #-ggdb3
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -fsanitize=address -ggdb3
 
 CC		= gcc
 

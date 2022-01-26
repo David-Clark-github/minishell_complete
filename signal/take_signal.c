@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/25 14:28:51 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/26 11:26:08 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ static void	toto(int sig)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
-	else if (sig == SIGQUIT) {
-		printf("truc est sorti :)\n");
+}
+
+static void	tutu(int sig)
+{
+	if (sig == SIGQUIT)
+	{
+		printf("HELLO !\n");
 		exit(EXIT_SUCCESS);
 	}
 }
 
 void	take_signal(void)
 {
-	signal(SIGQUIT, toto);
+	signal(SIGQUIT, tutu);
 	signal(SIGINT, toto);
 }
