@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:21:10 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/24 18:39:54 by dclark           ###   ########.fr       */
+/*   Updated: 2022/01/27 13:48:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	diff_cmd(char *str)
+int	diff_cmd(char *str)
 {
 	if (ft_strcmp(str, "echo") == 0)
 		return (1);
@@ -31,7 +31,7 @@ static int	diff_cmd(char *str)
 	return (0);
 }
 
-static int	diff_redir(char *str)
+int	diff_redir(char *str)
 {
 	if (ft_strcmp(str, "<") == 0)
 		return (8);
