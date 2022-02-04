@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/26 12:35:57 by david            ###   ########.fr       */
+/*   Updated: 2022/02/04 15:11:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 int	main(int ac, char **av, char **ev)
 {
 	(void)av;
-	t_mini	mini;
+	t_mini	*mini;
 
-	init_mini(&mini);
-	mini.cp_ev = ft_copy_env(ev, 0);
+	mini = get_mini();
+	init_mini(get_mini());
+	mini->cp_ev = ft_copy_env(ev, 0);
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
@@ -27,34 +28,34 @@ int	main(int ac, char **av, char **ev)
 	take_signal();
 	while (1)
 	{
-		mini.prompt = readline("Minishell~ ");
-		if (mini.prompt == NULL)
+		mini->prompt = readline("Minishell~ ");
+		if (mini->prompt == NULL)
 		{
-			free_mini(&mini);
+			free_mini(mini);
 			exit(EXIT_SUCCESS);
 		}
-		if (ft_strlen(mini.prompt) != 0)
-			add_history(mini.prompt);
-		if (ft_strlen(mini.prompt) != 0)
+		if (ft_strlen(mini->prompt) != 0)
+			add_history(mini->prompt);
+		if (ft_strlen(mini->prompt) != 0)
 		{
-			check_error_quotes(mini.prompt, &mini.er_num);
-			if (mini.er_num != 0)
-				printf("er_num = %d error de quotes\n", mini.er_num);
-			if (mini.er_num == 0)
-				parsing(&mini);
-			if (mini.list == NULL && mini.er_num == 0)
+			check_error_quotes(mini->prompt, &mini->er_num);
+			if (mini->er_num != 0)
+				printf("er_num = %d error de quotes\n", mini->er_num);
+			if (mini->er_num == 0)
+				parsing(get_mini());
+			if (mini->list == NULL && mini->er_num == 0)
 				printf("error during parsing\n");
-			if (check_syntax(&mini) == EXIT_FAILURE)
+			if (check_syntax(mini) == EXIT_FAILURE)
 				printf("syntax error\n");
-			if (mini.er_num == 0 && extract_lst(mini.list))
-				print_lst(&mini.list);
-			if (mini.er_num == 0 && mini.list->log == 3)
+			if (mini->er_num == 0 && extract_lst(mini->list))
+				print_lst(&mini->list);
+			if (mini->er_num == 0 && mini->list->log == 3)
 				ft_pwd(1);
-			if (mini.er_num == 0 && mini.list->log == 6)
-				ft_env(mini.cp_ev, 1);
-			if (mini.er_num != 0)
-				printf("er_num = %d\n", mini.er_num);
-			ft_freetab(mini.tab_separ);
+			if (mini->er_num == 0 && mini->list->log == 6)
+				ft_env(mini->cp_ev, 1);
+			if (mini->er_num != 0)
+				printf("er_num = %d\n", mini->er_num);
+			ft_freetab(mini->tab_separ);
 			/*
 			ft_freetab(mini.tab_separ);
 			if (mini.list != NULL) {

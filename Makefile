@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/01/27 13:47:47 by dclark           ###   ########.fr        #
+#    Updated: 2022/02/04 14:55:12 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_freetab.c \
 			utils/init_mini.c \
 			utils/free_mini.c \
+			utils/get_mini.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \

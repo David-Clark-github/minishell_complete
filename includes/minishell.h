@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/27 13:53:25 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/04 15:11:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ char	**ft_copy_env(char **tab_env, size_t add);
 void	ft_freetab(char **tabx);
 void	init_mini(t_mini *mini);
 void	free_mini(t_mini *mini);
+t_mini	*get_mini(void);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
