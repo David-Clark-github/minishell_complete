@@ -6,13 +6,13 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/01/27 13:53:24 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:50:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_lst	*tab_to_list(char **tabx)
+t_lst	*tab_to_list(char **tabx, int tk_len)
 {
 	t_lst	*list;
 	int		i_tab;
@@ -25,7 +25,7 @@ t_lst	*tab_to_list(char **tabx)
 		return (NULL);
 	else
 	{
-		while (tabx[i_tab])
+		while (i_tab < tk_len)
 		{
 			if (cmd_f == 0 && diff_cmd(tabx[i_tab]) != 0)
 			{

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:59:54 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/19 14:21:38 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:33:46 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	add_lst_back(t_lst **head_lst, char *str, int log, int iter)
 	dest = malloc(sizeof(t_lst));
 	if (dest != NULL)
 	{
-		if (!str)
-			dest->str = "null";
+		if (str == 0)
+			dest->str = 0;
 		else
 			dest->str = str;
 		dest->log = log;

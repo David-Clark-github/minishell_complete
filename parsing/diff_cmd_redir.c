@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:21:10 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/27 13:48:40 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/15 16:50:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	diff_cmd(char *str)
 {
+	if (!str)
+		return (0);
 	if (ft_strcmp(str, "echo") == 0)
 		return (1);
 	else if (ft_strcmp(str, "cd") == 0)
@@ -33,6 +35,8 @@ int	diff_cmd(char *str)
 
 int	diff_redir(char *str)
 {
+	if (!str)
+		return (0);
 	if (ft_strcmp(str, "<") == 0)
 		return (8);
 	if (ft_strcmp(str, ">") == 0)
