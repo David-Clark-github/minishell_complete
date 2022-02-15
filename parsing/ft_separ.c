@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/01/03 15:28:31 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/15 15:53:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,37 +49,7 @@ static int	num_of_element(char *str)
 	}
 	return (res);
 }
-/*
-static char	*ft_strljoin(char *s1, char *s2, int len_s2)
-{
-	char	*dest;
-	int		i_s;
-	int		i_d;
 
-	i_s = 0;
-	i_d = 0;
-	if (s1 == NULL && len_s2 == 0)
-		return (NULL);
-	dest = malloc(sizeof(char) * (ft_strlen(s1) + len_s2 + 1));
-	if (dest == NULL)
-		return (NULL);
-	while (s1 && s1[i_s])
-	{
-		dest[i_d] = s1[i_s];
-		i_s++;
-		i_d++;
-	}
-	i_s = 0;
-	while (s2[i_s] && len_s2--)
-	{
-		dest[i_d] = s2[i_s];
-		i_d++;
-		i_s++;
-	}
-	dest[i_d] = '\0';
-	return (dest);
-}
-*/
 static void	init_token(char **token, int len)
 {
 	int	i;
