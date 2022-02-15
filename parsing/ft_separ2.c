@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/02/15 16:50:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/15 18:05:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ static int	num_of_element(char *str)
 			if (str[i] && str[i] == '\"')
 				i++;
 		}
-		else
+		else if (isalnum(str[i]))
 		{
 			res++;
 			//i++;
-			while (str[i] && str[i] != '\'' && str[i] != '\"' && str[i] != ' ')
+			while (str[i] && ft_checkquote(str[i]) == 0 && str[i] != ' '
+					&& ft_checkredir(str[i]) == 0)
 				i++;
+			if
 		}
 	}
 	return (res);
@@ -110,13 +112,24 @@ char	**ft_separ(char *str, int *tk_len)
 		}
 		else
 		{
-			while (str[i_str] && str[i_str] != ' ' && str[i_str] != '\'' && str[i_str] != '\"')
+			while (str[i_str] && str[i_str] != ' ' && ft_checkquote(str[i_str]) == 0 
+					&& ft_checkredir(str[i_str]) == 0)
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
 			if (str[i_str] && str[i_str] == ' ')
 				i_dest++;
+			else if (ft_checkredir(str[i_str]) == 1)
+			{
+				i_dest++;
+				while (str[i_str] && ft_checkredir(str[i_str]) == 1)	
+				{
+					dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
+					i_dest++;
+					i_str++;
+				}
+			}
 		}
 	}
 	return (dest);
