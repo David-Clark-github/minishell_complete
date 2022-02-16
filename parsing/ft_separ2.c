@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/02/16 12:18:37 by david            ###   ########.fr       */
+/*   Updated: 2022/02/16 19:15:40 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,17 @@ static int	num_of_element(char *str)
 			if (str[i] && str[i] == '\"')
 				i++;
 		}
-		else if (ft_checkcara(str[i], " <>\'\"\t") == 0)
+		else if (ft_checkcara(str[i], "<>") == 0)
 		{
 			res++;
-			//i++;
 			while (str[i] && ft_checkcara(str[i], " <>\'\"\t") == 0)
 				i++;
-			//ifI
+		}
+		else if (ft_checkcara(str[i], "<>") == 1)
+		{
+			res++;
+			while (str[i] && ft_checkcara(str[i], "<>") == 1)
+				i++;
 		}
 	}
 	return (res);
@@ -72,6 +76,7 @@ char	**ft_separ(char *str, int *tk_len)
 	int		i_str;
 	
 	*tk_len = num_of_element(str);
+	printf("num_of_element: %d\n", *tk_len);
 	i_dest = 0;
 	i_str = 0;
 	//printf("number of element = %d\n", *tk_len);
