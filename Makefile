@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/02/15 17:56:19 by dclark           ###   ########.fr        #
+#    Updated: 2022/02/16 12:16:47 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/get_mini.c \
 			utils/ft_checkredir.c \
 			utils/ft_checkquote.c \
+			utils/ft_checkcara.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \

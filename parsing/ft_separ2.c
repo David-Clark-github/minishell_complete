@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/02/15 18:05:40 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/16 12:18:37 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ static int	num_of_element(char *str)
 			if (str[i] && str[i] == '\"')
 				i++;
 		}
-		else if (isalnum(str[i]))
+		else if (ft_checkcara(str[i], " <>\'\"\t") == 0)
 		{
 			res++;
 			//i++;
-			while (str[i] && ft_checkquote(str[i]) == 0 && str[i] != ' '
-					&& ft_checkredir(str[i]) == 0)
+			while (str[i] && ft_checkcara(str[i], " <>\'\"\t") == 0)
 				i++;
-			if
+			//ifI
 		}
 	}
 	return (res);
