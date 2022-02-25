@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/02/18 12:42:36 by dclark           ###   ########.fr       */
+/*   Updated: 2022/02/25 12:09:34 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static int	num_of_element(char *str)
 		else if (ft_checkcara(str[i], "<>") == 1)
 		{
 			res++;
-			while (str[i] && ft_checkcara(str[i], "<>") == 1)
+			i++;
+			if (str[i] && str[i] == str[i - 1])
 				i++;
 		}
 	}
@@ -76,7 +77,7 @@ char	**ft_separ(char *str, int *tk_len)
 	int		i_str;
 	
 	*tk_len = num_of_element(str);
-	printf("num_of_element: %d\n", *tk_len);
+//	printf("num_of_element: %d\n", *tk_len);
 	i_dest = 0;
 	i_str = 0;
 	//printf("number of element = %d\n", *tk_len);
@@ -129,14 +130,14 @@ char	**ft_separ(char *str, int *tk_len)
 		}
 		else if (str[i_str] && ft_checkcara(str[i_str], "<>") == 1)
 		{
-			//printf("&str[i] == %s\n", &str[i_str]);
-			while (str[i_str] && ft_checkcara(str[i_str], "<>") == 1)
+			dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
+			i_str++;
+			if (str[i_str] && (str[i_str] == str[i_str - 1]))
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			if (str[i_str] && (str[i_str] == ' ' || ft_checkcara(str[i_str], "<>") == 0))
-				i_dest++;
+			i_dest++;
 		}
 	}
 	return (dest);
