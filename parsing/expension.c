@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/01/20 17:08:40 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:35:59 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 		i_be++;
 	}
 	dest[i_d] = '\0';
-	if (prompt != NULL)
+	if (prompt != NULL) {
 		free(prompt);
+		prompt = NULL;
+	}
 	return (dest);
 }
 
@@ -142,6 +144,7 @@ char	*expension(char *prompt, int *error_num, char **cp_ev)
 				i++;
 			i++;
 			free(name_env);
+			name_env = NULL;
 		}
 		//else if (prompt[i]/* && prompt[i] != '$' && q == 0*/)
 		dest = ft_strjoin(dest, &prompt[i]);

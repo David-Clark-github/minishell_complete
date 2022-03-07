@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 18:02:01 by dclark            #+#    #+#             */
-/*   Updated: 2021/12/06 13:49:35 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/07 16:37:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int main(/*int ac, char **av*/)
 	}
 	rl_clear_history();
 	free(prompt);
+	prompt = NULL;
 }

@@ -44,8 +44,11 @@ int main(int ac, char **av, char **ev)
 	ev_cp = ft_copy_env(ev, 0);
 	for (int i = 0; i < ft_tablen(ev); i++)
 		printf("%s\n", ev[i]);
-	for (int i = 0; i < ft_tablen(ev); i++)
+	for (int i = 0; i < ft_tablen(ev); i++) {
 		free(ev_cp[i]);
+		ev_cp[i] = NULL;
+	}
 	free(ev_cp);
+	ev_cp = NULL;
 	return (0);
 }

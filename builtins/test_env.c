@@ -82,12 +82,15 @@ static char	**change_env(char **tab_env, char *name, char *data)
 	dest[i] = ft_strljoin(dest[i], data, strlen(data));
 	dest[++i] = 0;
 	i = 0;
+	ft_freetab(tab_env);
+	/*
 	while (tab_env[i])
 	{
 		free(tab_env[i]);
 		i++;
 	}
 	free(tab_env[i]);
+	*/
 	return (dest);
 }
 
@@ -113,9 +116,12 @@ static char	**add_env(char *name, char *data, char **tab_env)
 	i++;
 	dest[i] = 0;
 	i = -1;
-	while (tab_env[++i])
+	while (tab_env[++i]) {
 		free(tab_env[i]);
+		tab_env[i] = NULL;
+	}
 	free(tab_env);
+	tab_env = NULL;
 	return (dest);
 }
 

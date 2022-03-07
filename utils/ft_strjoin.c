@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 21:42:28 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:14:03 by david            ###   ########.fr       */
+/*   Updated: 2022/03/07 16:33:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ char	*ft_strjoin(char *str_1, char *str_2)
 		i_dest++;
 	}
 	dest[i_dest] = '\0';
-	if (str_1 != NULL)
+	if (str_1 != NULL) {
 		free(str_1);
+		str_1 = NULL;
+	}
 	return (dest);
 }
