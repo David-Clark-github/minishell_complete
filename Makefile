@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
+#    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/09 16:10:00 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/09 18:37:07 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,24 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_checkredir.c \
 			utils/ft_checkquote.c \
 			utils/ft_checkcara.c \
+			utils/ft_split.c \
+			utils/ft_memset.c \
+			utils/ft_strlcpy.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \
 			builtins/ft_env.c \
 			builtins/ft_export.c \
 			builtins/ft_unset.c \
+			exec/cmd_path.c \
+			exec/pipeline.c \
+			exec/here_doc.c \
+			exec/redir.c \
+			exec/pipe.c \
+			exec/redir_utils.c \
+			exec/pids.c \
+			exec/get_instruct_type.c \
+			exec/exec.c \
 			arg_builtin/arg_export.c \
 			signal/take_signal.c \
 			main.c
@@ -55,7 +67,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)# -fsanitize=address -ggdb3
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g -fsanitize=address
 
 CC		= gcc
 

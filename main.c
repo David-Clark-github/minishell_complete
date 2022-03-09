@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 17:37:20 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 18:31:29 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,20 @@ int	main(int ac, char **av, char **ev)
 			if (check_syntax(mini) == EXIT_FAILURE)
 				printf("syntax error\n");
 			*/
-			if (mini->er_num == 0 && extract_lst(mini->list))
-				print_lst(&mini->list);
-			if (mini->er_num == 0 && mini->list->log == 3)
-				ft_pwd(1);
-			if (mini->er_num == 0 && mini->list->log == 6)
-				ft_env(mini->cp_ev, 1);
-			if (mini->er_num == 0 && mini->list->log == 4)
-				arg_export(mini->tab_separ, mini);
-			if (mini->er_num != 0)
-				printf("er_num = %d\n", mini->er_num);
+			// if (mini->er_num == 0 && extract_lst(mini->list))
+			// 	print_lst(&mini->list);
+			// if (mini->er_num == 0 && mini->list->log == 3)
+			// 	ft_pwd(1);
+			// if (mini->er_num == 0 && mini->list->log == 6)
+			// 	ft_env(mini->cp_ev, 1);
+			// if (mini->er_num == 0 && mini->list->log == 4)
+			// 	arg_export(mini->tab_separ, mini);
+			// if (mini->er_num != 0)
+			// 	printf("er_num = %d\n", mini->er_num);
+			// ft_freetab(mini->tab_separ);
+			exec_instructions(mini);
 			ft_freetab(mini->tab_separ);
 			/*
-			ft_freetab(mini.tab_separ);
 			if (mini.list != NULL) {
 				if (mini.list->log == 6)
 					ft_env(mini.cp_ev, 1);

@@ -1,0 +1,247 @@
+==314479== Memcheck, a memory error detector
+==314479== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==314479== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==314479== Command: /usr/bin/ls
+==314479== Parent PID: 314477
+==314479== 
+--314479-- 
+--314479-- Valgrind options:
+--314479--    --leak-check=full
+--314479--    --show-leak-kinds=all
+--314479--    --show-reachable=yes
+--314479--    --track-origins=yes
+--314479--    --track-fds=yes
+--314479--    --trace-children=yes
+--314479--    --verbose
+--314479--    --log-file=valerr
+--314479--    --suppressions=/mnt/nfs/homes/seciurte/ValgrindFull/.ignore_readline.supp
+--314479-- Contents of /proc/version:
+--314479--   Linux version 5.4.0-100-generic (buildd@lcy02-amd64-002) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) #113-Ubuntu SMP Thu Feb 3 18:43:29 UTC 2022
+--314479-- 
+--314479-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3-ssse3-avx
+--314479-- Page sizes: currently 4096, max supported 4096
+--314479-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--314479-- Reading syms from /usr/bin/ls
+--314479--    object doesn't have a symbol table
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--314479--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--314479--   .. CRC mismatch (computed 0306b78c wanted 8d362b37)
+--314479--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--314479--   .. CRC mismatch (computed 0306b78c wanted 8d362b37)
+--314479--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--314479--   .. CRC is valid
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--314479--    object doesn't have a symbol table
+--314479--    object doesn't have a dynamic symbol table
+--314479-- Scheduler: using generic scheduler lock implementation.
+--314479-- Reading suppressions file: /mnt/nfs/homes/seciurte/ValgrindFull/.ignore_readline.supp
+--314479-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==314479== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-314479-by-seciurte-on-???
+==314479== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-314479-by-seciurte-on-???
+==314479== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-314479-by-seciurte-on-???
+==314479== 
+==314479== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==314479== don't want to do, unless you know exactly what you're doing,
+==314479== or are doing some strange experiment):
+==314479==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=314479 ...command...
+==314479== 
+==314479== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==314479==   /path/to/gdb /usr/bin/ls
+==314479== and then give GDB the following command
+==314479==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=314479
+==314479== --pid is optional if only one valgrind process is running
+==314479== 
+--314479-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--314479-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--314479--    object doesn't have a symbol table
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--314479--    object doesn't have a symbol table
+==314479== WARNING: new redirection conflicts with existing -- ignoring it
+--314479--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--314479--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--314479-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--314479-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/libselinux.so.1
+--314479--    object doesn't have a symbol table
+--314479-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--314479--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--314479--   .. CRC mismatch (computed ef41b1a0 wanted f854b801)
+--314479--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--314479--   .. CRC misma--314478--   .. CRC is valid
+--314478-- REDIR: 0x49044b0 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x49037b0 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x49047e0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x49030d0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4903810 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4905c80 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4920d10 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4920850 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4904610 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314478-- REDIR: 0x4904440 (libc.so.6:b--314479-- REDIR: 0x492f4b0 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e7b0 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f7e0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e0d0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e810 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x4930c80 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494bd10 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494b850 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f610 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f440 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e740 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e180 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f570 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494b810 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e6a0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e260 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f830 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e200 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f980 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494cf80 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494b890 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e850 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e130 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492e660 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x4937bd0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f880 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f400 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x494b960 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492eb10 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f780 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f720 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x4930cc0 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x492f8d0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x49bc880 (libc.so.6:__memcpy_chk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--314479-- REDIR: 0x49408e0 (libc.so.6:__strrchr_sse2) redirected to 0x483ea70 (__strrchr_sse2)
+--314479-- REDIR: 0x4929110 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--314479-- REDIR: 0x492efd0 (libc.so.6:__GI_strstr) redirecte--314478-- REDIR: 0x48feeb0 (li--314479-- REDIR: 0x493aee0 (libc.so.6:__memchr_sse--314478-- REDIR: 0x49e8fc4 (libc.so.6:__strcasecmp_l_avx) redirected to 0x483fab0 (strcasecmp_l)
+==314478== 
+==314478== FILE DESCRIPTORS: 2 open at exit.
+==314478== Open file descriptor 4: /mnt/nfs/homes/seciurte/Projects/minishell/exec/valerr
+==314478==    <inherited from parent>
+==314478== 
+==314478== Open file descriptor 3: /mnt/nfs/homes/seciurte/Projects/minishell/exec/valerr
+==314478==    <inherited from parent>
+==314478== 
+==314478== 
+==314478== HEAP SUMMARY:
+==314478==     in use at exit: 0 bytes in 0 blocks
+==314478==   total heap usage: 147 allocs, 147 frees, 154,907 bytes allocated
+==314478== 
+==314478== All heap blocks were freed -- no leaks are possible
+==314478== 
+==314478== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+ 0x483eb90 (__strchr_sse2)
+--314479-- REDIR: 0x49406d0 (libc.so.6:__strchrnul_sse2) redirected to 0x4843540 (strchrnul)
+--314479-- REDIR: 0x494aad0 (libc.so.6:__mempcpy_sse2_unaligned) redirected to 0x4843660 (mempcpy)
+--314479-- REDIR: 0x4929eb0 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+==314479== 
+==314479== FILE DESCRIPTORS: 3 open at exit.
+==314479== Open file descriptor 4: /mnt/nfs/homes/seciurte/Projects/minishell/exec/valerr
+==314479==    <inherited from parent>
+==314479== 
+==314479== Open file descriptor 3: /mnt/nfs/homes/seciurte/Projects/minishell/exec/valerr
+==314479==    <inherited from parent>
+==314479== 
+==314479== Open file descriptor 0:
+==314479==    <inherited from parent>
+==314479== 
+==314479== 
+==314479== HEAP SUMMARY:
+==314479==     in use at exit: 26,290 bytes in 24 blocks
+==314479==   total heap usage: 61 allocs, 37 frees, 65,845 bytes allocated
+==314479== 
+==314479== Searching for pointers to 24 not-freed blocks
+==314479== Checked 125,184 bytes
+==314479== 
+==314479== 56 bytes in 1 blocks are still reachable in loss record 1 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x11DAF8: ??? (in /usr/bin/ls)
+==314479==    by 0x11C890: ??? (in /usr/bin/ls)
+==314479==    by 0x10D8F6: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 56 bytes in 1 blocks are still reachable in loss record 2 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x11DAF8: ??? (in /usr/bin/ls)
+==314479==    by 0x11C890: ??? (in /usr/bin/ls)
+==314479==    by 0x10D955: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 66 bytes in 17 blocks are still reachable in loss record 3 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x11DAF8: ??? (in /usr/bin/ls)
+==314479==    by 0x112BE7: ??? (in /usr/bin/ls)
+==314479==    by 0x113E1E: ??? (in /usr/bin/ls)
+==314479==    by 0x10DB5C: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 128 bytes in 1 blocks are still reachable in loss record 4 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11EDC9: ??? (in /usr/bin/ls)
+==314479==    by 0x10DA7E: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 408 bytes in 1 blocks are still reachable in loss record 5 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x10F2CA: ??? (in /usr/bin/ls)
+==314479==    by 0x113C88: ??? (in /usr/bin/ls)
+==314479==    by 0x10DB5C: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 816 bytes in 1 blocks are still reachable in loss record 6 of 8
+==314479==    at 0x483B723: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x483E017: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D939: ??? (in /usr/bin/ls)
+==314479==    by 0x111FC4: ??? (in /usr/bin/ls)
+==314479==    by 0x1123B2: ??? (in /usr/bin/ls)
+==314479==    by 0x113D95: ??? (in /usr/bin/ls)
+==314479==    by 0x10DB5C: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 4,760 bytes in 1 blocks are still reachable in loss record 7 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x111DE5: ??? (in /usr/bin/ls)
+==314479==    by 0x1123B2: ??? (in /usr/bin/ls)
+==314479==    by 0x113D95: ??? (in /usr/bin/ls)
+==314479==    by 0x10DB5C: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== 20,000 bytes in 1 blocks are still reachable in loss record 8 of 8
+==314479==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314479==    by 0x11D8CC: ??? (in /usr/bin/ls)
+==314479==    by 0x10DAEF: ??? (in /usr/bin/ls)
+==314479==    by 0x48B30B2: (below main) (libc-start.c:308)
+==314479== 
+==314479== LEAK SUMMARY:
+==314479==    definitely lost: 0 bytes in 0 blocks
+==314479==    indirectly lost: 0 bytes in 0 blocks
+==314479==      possibly lost: 0 bytes in 0 blocks
+==314479==    still reachable: 26,290 bytes in 24 blocks
+==314479==         suppressed: 0 bytes in 0 blocks
+==314479== 
+==314479== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+ 0x402FD3: set_all (ft_split.c:66)
+==314477==    by 0x402E2E: ft_split (ft_split.c:83)
+==314477==    by 0x401431: get_path (exec.c:54)
+==314477==    by 0x4026B5: main (exec.c:510)
+==314477== 
+==314477== 946 bytes in 10 blocks are definitely lost in loss record 10 of 10
+==314477==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==314477==    by 0x402EC9: ft_split (ft_split.c:92)
+==314477==    by 0x401431: get_path (exec.c:54)
+==314477==    by 0x4026B5: main (exec.c:510)
+==314477== 
+==314477== LEAK SUMMARY:
+==314477==    definitely lost: 1,148 bytes in 17 blocks
+==314477==    indirectly lost: 353 bytes in 15 blocks
+==314477==      possibly lost: 0 bytes in 0 blocks
+==314477==    still reachable: 0 bytes in 0 blocks
+==314477==         suppressed: 0 bytes in 0 blocks
+==314477== 
+==314477== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)

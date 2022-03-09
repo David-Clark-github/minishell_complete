@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 15:20:02 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 18:18:51 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 //[malloc] [free] [getenv]
 # include <stdlib.h>
 
-//[ioctl] 
+//[ioctl]
 # include <sys/ioctl.h>
 
 //[write] [access] [read] [close] [exit] [getcwd] [chdir] [unlink] [execve]
@@ -45,10 +45,24 @@
 # include <sys/time.h>
 # include <sys/resource.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 //[tgetent] [tgetflag] [tgetnum] [tgetstr] [tgoto] [tputs]
 # include <curses.h>
 # include <term.h>
+
+# define BECHO 1
+# define CD 2
+# define PWD 3
+# define EXPOR 4
+# define UNSET 5
+# define ENV 6
+# define EXIT 7
+# define INPUT 8
+# define TRUNC 9
+# define HEREDOC 10
+# define APPEND 11
+# define PIPE 12
 
 typedef struct	s_lst {
 	struct s_lst	*next;
@@ -66,6 +80,12 @@ typedef struct	s_parsing {
 	int		error_num;
 }				t_pars;
 
+typedef struct s_pids
+{
+	pid_t				pid;
+	struct s_pids		*next;
+}				t_pids;
+
 typedef struct	s_minishell {
 	char	**cp_ev;
 	int		er_num;
@@ -73,6 +93,11 @@ typedef struct	s_minishell {
 	char	*exp;
 	char	**tab_separ;
 	int		tab_len;
+	int		io_fds_redir[2];
+	int		unused_fds[2];
+	t_pids	*pids;
+	char	**path;
+	char	*buffer;
 	t_lst	*list;
 }				t_mini;
 
@@ -121,6 +146,56 @@ int		ft_checkredir(char c);
 int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
 t_mini	*get_mini(void);
+char	**ft_split(char *s, char c);
+size_t	ft_strlcpy(char *dst, char *src, size_t size);
+void	*ft_memset(void *s, int c, size_t n);
+
+//INSTRUCTION TYPES
+int		is_redir_stdin(int log);
+int		is_redir_stdout(int log);
+int		is_cmd(int log);
+int		is_redir(int log);
+
+//GET PATH AND CMDS PATH
+char	**get_path(char **env);
+char	*get_cmd_path(char **path, char *cmd);
+void	free_path(char **path);
+
+//PIPELINE
+void	free_pipeline(int **pipeline);
+int		get_nb_of_pipes(t_lst *lst);
+int		**create_pipeline(t_lst *lst);
+
+//HEREDOC
+void	heredoc(t_mini *mini, t_lst *lst);
+
+//REDIRECTIONS
+void	redirect_heredoc(t_mini *mini, t_lst *lst);
+void	redirect_input(t_mini *mini, t_lst *lst);
+void	redirect_stdout(t_mini *mini, t_lst *lst);
+
+//PIPES
+void	redirect_pipe_stdin(t_mini *mini, int **pipeline, int *pipe_index);
+void	redirect_pipe_stdout(t_mini *mini, int **pipeline, int *pipe_index);
+
+//REDIRECTION UTILS
+t_lst	*skip_redir(t_lst *lst);
+void	redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_index);
+
+//PIDS
+t_pids	*create_pid(void);
+void	add_pid_to_pids(t_mini *mini, t_pids *pid);
+void	wait_for_forks(t_mini *mini);
+void	free_pids(t_pids **pids);
+
+//TMP FUNCTIONS
+void	exit_error(int line);
+
+//ERRORS IN EXEC
+void	internal_error(t_mini *mini);
+
+//EXEC
+void	exec_instructions(t_mini *mini);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
