@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 18:35:44 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:37:37 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	exit_error(int line)
 ************************************************************************************************************************************************************************************************************************************************
 ************************************************************************************************************************************************************************************************************************************************
 */
+
+int	is_builtin(int log)
+{
+	return (log >= BECHO && log <= EXIT);
+}
 
 void	free_cmd(char **cmd)
 {
@@ -98,6 +103,18 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 	}
 }
 
+void	exec_echo(t_mini *mini, t_lst *lst)
+{
+	if (mini->io_fds_redir[1] != -42)
+		mini->er_num = ft_echo();
+}
+
+void	exec_builtin(t_mini *mini, t_lst *lst)
+{
+	if (lst->log == BECHO)
+		exec_echo(mini, lst);
+}
+
 void	exec(t_mini *mini, t_lst *lst)
 {
 	t_pids		*pid;
@@ -107,6 +124,10 @@ void	exec(t_mini *mini, t_lst *lst)
 		pid = create_pid();
 		exec_bin(mini, lst, &(pid->pid));
 		add_pid_to_pids(mini, pid);
+	}
+	else if (is_builtin(lst->log))
+	{
+		exec_builtin(mini, lst);
 	}
 }
 
@@ -131,10 +152,8 @@ void	exec_instructions(t_mini *mini)
 	lst = mini->list;
 	pipeline = create_pipeline(lst);
 	pipe_index = 0;
-	while(lst)
+	while(lst && lst->str)
 	{
-		// print_lst(&lst);
-		printf("lst = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
@@ -149,28 +168,3 @@ void	exec_instructions(t_mini *mini)
 	free_pipeline(pipeline);
 	free_pids(&(mini->pids));
 }
-
-
-// int main(int ac, char **av, char **ev)
-// {
-// 	// For test purpose //
-// 	t_mini		mini;
-
-// 	mini.list = NULL;
-// 	mini.buffer = NULL;
-// 	mini.io_fds_redir[0] = -42;
-// 	mini.io_fds_redir[1] = -42;
-// 	mini.unused_fds[0] = -42;
-// 	mini.unused_fds[1] = -42;
-// 	mini.pids = NULL;
-// 	for (int i = 1; i < ac; i++)
-// 		add_lst_back(&mini.list, av[i], diff_cmd_redir(av[i]), 0);
-// 	mini.cp_ev = ev;
-// 	mini.path = get_path(mini.cp_ev);
-// 	exec_instructions(&mini);
-// 	free_path(mini.path);
-// 	// mini.path = get_path(mini.cp_ev);
-// 	// // For test purpose //
-// 	// exec_instructions(&mini);
-// 	// printf("%d | %d\n", mini.io_fds_redir[0], mini.io_fds_redir[1]);
-// }

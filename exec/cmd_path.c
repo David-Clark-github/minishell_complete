@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 16:38:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:47:51 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*get_cmd_path(char **path, char *cmd)
 	char	*tmp;
 
 	i = 0;
+	printf("cmd = %s\n", cmd);
 	while (path && path[i])
 	{
 		tmp = ft_strljoin(path[i], cmd, ft_strlen(path[i]) + ft_strlen(cmd));
