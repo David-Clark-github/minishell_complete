@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/03/09 15:37:03 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 17:27:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_separ(char *str, int *tk_len)
 	int		i_str;
 	
 	*tk_len = num_of_element(str);
-//	printf("num_of_element: %d\n", *tk_len);
+	//printf("\nnum_of_element: %d\n\n", *tk_len);
 	i_dest = 0;
 	i_str = 0;
 	//printf("number of element = %d\n", *tk_len);
@@ -105,7 +105,7 @@ char	**ft_separ(char *str, int *tk_len)
 			}
 			if (str[i_str] == '\'')
 				i_str++;
-			if (str[i_str] && str[i_str] == ' ')
+			if (str[i_str] && ft_checkcara(str[i_str], "\"\'") == 0)
 				i_dest++;
 		}
 		else if (str[i_str] && str[i_str] == '\"')
@@ -119,18 +119,17 @@ char	**ft_separ(char *str, int *tk_len)
 			}
 			if (str[i_str] == '\"')
 				i_str++;
-			if (str[i_str] && str[i_str] == ' ')
+			if (str[i_str] && ft_checkcara(str[i_str], "\"\'") == 0)
 				i_dest++;
 		}
 		else if (str[i_str] && ft_checkcara(str[i_str], "<>|\'\"") == 0)
 		{
-			//printf("&str[i] == %s\n", &str[i_str]);
 			while (str[i_str] && ft_checkcara(str[i_str], " <>|\'\"") == 0)
 			{
 				dest[i_dest] = ft_strljoin(dest[i_dest], &str[i_str], 1);
 				i_str++;
 			}
-			if (str[i_str] && (str[i_str] == ' ' || ft_checkcara(str[i_str], "<>\'\"") == 1))
+			if (str[i_str] && ft_checkcara(str[i_str], " <>|\'\"") == 1)
 				i_dest++;
 		}
 		else if (str[i_str] && ft_checkcara(str[i_str], "<>") == 1)

@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/09 15:20:34 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/09 16:10:00 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -fsanitize=address -ggdb3
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)# -fsanitize=address -ggdb3
 
 CC		= gcc
 

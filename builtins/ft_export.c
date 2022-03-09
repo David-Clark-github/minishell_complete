@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/03/09 14:23:48 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 17:31:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ int	ft_export(char *name, char *data, char ***tab_env)
 	//printf("data = %s\n", data);
 	if (look_name(name, *tab_env) == -1)
 	{	
-		printf("add_env()\n");
+//		printf("add_env()\n");
 		*tab_env = add_env(name, data, *tab_env);
 	}
 	else
 	{
-		printf("change_env()\n");
+//		printf("change_env()\n");
 		*tab_env = change_env(name, data, *tab_env);
 	}
 	return (EXIT_SUCCESS);

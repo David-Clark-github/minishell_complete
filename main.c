@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 15:35:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 17:37:20 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av, char **ev)
 	t_mini	*mini;
 
 	mini = get_mini();
-	init_mini(get_mini());
+	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
 	if (ac != 1)
 	{
@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **ev)
 			if (mini->er_num != 0)
 				printf("er_num = %d error de quotes\n", mini->er_num);
 			if (mini->er_num == 0)
-				parsing(get_mini());
+				parsing(mini);
 			if (mini->list == NULL && mini->er_num == 0)
 				printf("error during parsing\n");
 				/*
