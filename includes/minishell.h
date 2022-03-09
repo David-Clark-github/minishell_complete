@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 14:44:00 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 15:20:02 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int		ft_cd(char *path);
 
 //ARG_BUILTIN
 void	arg_export(char **tabx, t_mini *mini);
-void	arg_echo(char **tabx, t_mini *mini);
 void	arg_unset(char **tabx, t_mini *mini);
 
 //UTILS
