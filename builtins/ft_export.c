@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/01/18 15:20:46 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 14:23:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static char	**add_env(char *name, char *data, char **tab_env)
 	ft_freetab(tab_env);
 	dest[i] = ft_strljoin(dest[i], name, ft_strlen(name));
 	dest[i] = ft_strljoin(dest[i], "=", 1);
-	dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
+	if (ft_strlen(data) != 0)
+		dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
 	return (dest);
 }
 
@@ -46,7 +47,7 @@ static char	**change_env(char *name, char *data, char **tab_env)
 	char	**dest;
 	int	i;
 
-	dest = malloc(sizeof(char *) * ft_tablen(tab_env) + 1);
+	dest = malloc(sizeof(char *) * (ft_tablen(tab_env) + 1));
 	i = 0;
 	while (i <= ft_tablen(tab_env)) {
 		dest[i] = 0;
@@ -59,7 +60,8 @@ static char	**change_env(char *name, char *data, char **tab_env)
 		{
 			dest[i] = ft_strljoin(dest[i], name, ft_strlen(name));
 			dest[i] = ft_strljoin(dest[i], "=", 1);
-			dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
+			if (ft_strlen(data) != 0)
+				dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
 		}
 		else {
 			dest[i] = strdup(tab_env[i]);
