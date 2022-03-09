@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/07 16:35:59 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 19:35:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	found_env_len(char *str)
 	res = 0;
 	if (str[i] == '$')
 		i++;
-	while (str[i] && ft_isalpha(str[i]))
+	while ((str[i] && ft_isalpha(str[i])) || (str[i] == '?'))
 	{
 		res++;
 		i++;
@@ -116,7 +116,7 @@ static char	*ft_getenv(char *name, char **cp_ev)
 	return (data);
 }
 
-char	*expension(char *prompt, int *error_num, char **cp_ev)
+char	*expension(t_mini* mini, int *error_num)
 {
 	char	*dest;
 	char	*name_env;
@@ -128,17 +128,17 @@ char	*expension(char *prompt, int *error_num, char **cp_ev)
 	dest = NULL;
 	i = 0;
 	q = 0;
-	while (prompt[i])
+	while (mini->prompt[i])
 	{
-		if (prompt[i] == '\'' && q == 0)
+		if (mini->prompt[i] == '\'' && q == 0)
 			q = 1;
-		else if (prompt[i] == '\'' && q == 1)
+		else if (mini->prompt[i] == '\'' && q == 1)
 			q = 0;
-		else if (prompt[i] == '$' && q == 0)
+		else if (mini->prompt[i] == '$' && q == 0)
 		{
-			env_len = found_env_len(&prompt[i]);
-			name_env = ft_getname(&prompt[i], env_len);
-			env = ft_getenv(name_env, cp_ev);
+			env_len = found_env_len(&mini->prompt[i]);
+			name_env = ft_getname(&mini->prompt[i], env_len);
+			env = ft_getenv(name_env, mini->cp_ev);
 			dest = ft_strjoin_env(dest, env);
 			while (env_len--)
 				i++;
@@ -146,8 +146,7 @@ char	*expension(char *prompt, int *error_num, char **cp_ev)
 			free(name_env);
 			name_env = NULL;
 		}
-		//else if (prompt[i]/* && prompt[i] != '$' && q == 0*/)
-		dest = ft_strjoin(dest, &prompt[i]);
+		dest = ft_strjoin(dest, &mini->prompt[i]);
 		i++;
 	}
 	return (dest);
