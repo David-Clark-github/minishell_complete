@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/09 19:35:57 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 13:29:02 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ static int	found_env_len(char *str)
 	res = 0;
 	if (str[i] == '$')
 		i++;
-	while ((str[i] && ft_isalpha(str[i])) || (str[i] == '?'))
+	if (str[i] == '?')
+	{
+		res++;
+		return(res);
+	}
+	while (str[i] && ft_isalpha(str[i]))
 	{
 		res++;
 		i++;
@@ -84,7 +89,7 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 	}
 	return (dest);
 }
-
+/*
 static char	*ft_getenv(char *name, char **cp_ev)
 {
 	char	*data;
@@ -115,6 +120,7 @@ static char	*ft_getenv(char *name, char **cp_ev)
 	data[i_d] = 0;
 	return (data);
 }
+*/
 
 char	*expension(t_mini* mini, int *error_num)
 {
@@ -144,10 +150,13 @@ char	*expension(t_mini* mini, int *error_num)
 				i++;
 			i++;
 			free(name_env);
+			free(env);
+			env = NULL;
 			name_env = NULL;
-		}
+		} else {
 		dest = ft_strjoin(dest, &mini->prompt[i]);
 		i++;
+		}
 	}
 	return (dest);
 }

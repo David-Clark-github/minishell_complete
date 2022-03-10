@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 14:40:24 by dclark            #+#    #+#             */
-/*   Updated: 2022/02/04 14:55:42 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 11:39:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 t_mini	*get_mini(void)
 {
 	static t_mini	mini;
+
 	return (&mini);
 }

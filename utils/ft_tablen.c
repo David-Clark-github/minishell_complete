@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:53:33 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:58:51 by david            ###   ########.fr       */
+/*   Updated: 2022/03/10 11:40:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_tablen(char **tableau)
 	i = 0;
 	if (!tableau)
 		return (i);
-	while(tableau[i])
+	while (tableau[i])
 		i++;
 	return (i);
 }

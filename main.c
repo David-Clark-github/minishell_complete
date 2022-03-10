@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 18:31:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:59:14 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,22 @@ int	main(int ac, char **av, char **ev)
 		if (ft_strlen(mini->prompt) != 0)
 		{
 			check_error_quotes(mini->prompt, &mini->er_num);
+			/*
 			if (mini->er_num != 0)
 				printf("er_num = %d error de quotes\n", mini->er_num);
-			if (mini->er_num == 0)
+			*/
+			if (mini->er_num != -1)
 				parsing(mini);
 			if (mini->list == NULL && mini->er_num == 0)
 				printf("error during parsing\n");
-				/*
 			if (check_syntax(mini) == EXIT_FAILURE)
 				printf("syntax error\n");
-			*/
-			// if (mini->er_num == 0 && extract_lst(mini->list))
-			// 	print_lst(&mini->list);
+			if (mini->er_num != -1 && extract_lst(mini->list))
+			 	print_lst(&mini->list);
+			if (mini->list->log == 4)
+				ft_export("TUTU", "tata", &mini->cp_ev);
+			if (mini->er_num != -1 && mini->list->log == 6)
+				ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 3)
 			// 	ft_pwd(1);
 			// if (mini->er_num == 0 && mini->list->log == 6)
@@ -60,8 +64,10 @@ int	main(int ac, char **av, char **ev)
 			// if (mini->er_num != 0)
 			// 	printf("er_num = %d\n", mini->er_num);
 			// ft_freetab(mini->tab_separ);
-			exec_instructions(mini);
+			//exec_instructions(mini);
 			ft_freetab(mini->tab_separ);
+			free(mini->exp);
+			//ft_freelst(&mini->lst);
 			/*
 			if (mini.list != NULL) {
 				if (mini.list->log == 6)

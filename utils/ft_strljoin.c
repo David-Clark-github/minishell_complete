@@ -6,20 +6,12 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 13:38:28 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:14:21 by david            ###   ########.fr       */
+/*   Updated: 2022/03/10 15:02:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*zero_len(void)
-{
-	char	*dest;
-
-	dest = malloc(sizeof(char *));
-	dest[0] = '\0';
-	return (dest);
-}
 
 char	*ft_strljoin(char *s1, char *s2, int s2_len)
 {
@@ -27,17 +19,16 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len)
 	int		i_s;
 	int		i_d;
 
-	i_s = 0;
-	i_d = 0;
 	if (s2_len == 0)
-		return (zero_len());
+		return (NULL);
 	dest = malloc(sizeof(char) * (ft_strlen(s1) + s2_len + 1));
 	if (dest == NULL)
 		return (NULL);
-	while (s1 && s1[i_s])
+	i_s = -1;
+	i_d = 0;
+	while (s1 && s1[++i_s])
 	{
 		dest[i_d] = s1[i_s];
-		i_s++;
 		i_d++;
 	}
 	i_s = 0;
@@ -48,5 +39,7 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len)
 		i_s++;
 	}
 	dest[i_d] = '\0';
+	if (s1 != NULL)
+		free(s1);
 	return (dest);
 }

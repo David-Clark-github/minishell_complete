@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 17:20:03 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/27 15:05:59 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:59:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_error_quotes(char *prompt, int *er)
 			else if (qt_1 == 0)
 				qt_1 = 1;
 		}
-		else if (prompt[index] == '"' && qt_1 == 0)
+		else if (prompt[index] == '\"' && qt_1 == 0)
 		{
 			if (qt_2 == 1)
 				qt_2 = 0;
@@ -48,6 +48,6 @@ int	check_error_quotes(char *prompt, int *er)
 		*er = 130;
 		return (0);
 	}
-	*er = 0;
+	//*er = 0;
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/09 18:51:50 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/10 13:54:24 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/tab_to_list.c \
 			parsing/ft_separ2.c \
 			parsing/extract_lst.c \
+			parsing/ft_getenv.c \
 			utils/ft_copy_env.c \
 			utils/ft_strjoin.c \
 			utils/ft_strljoin.c \
@@ -30,6 +31,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strlen.c \
 			utils/ft_tablen.c \
 			utils/ft_isalpha.c \
+			utils/ft_itoa.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
 			utils/ft_freetab.c \
