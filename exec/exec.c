@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/10 15:23:57 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/10 17:55:08 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 {
 	char		**cmd;
 
+	take_signal();
 	cmd = ft_split(lst->str, ' ');
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
 	*pid = fork();
@@ -110,8 +111,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 
 void	exec_cd(t_mini *mini, t_lst *lst)
 {
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_cd(lst->str);
+	mini->er_num = ft_cd(lst->str);
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
@@ -128,15 +128,12 @@ void	exec_env(t_mini *mini)
 		mini->er_num = ft_env(mini->cp_ev, mini->io_fds_redir[1]);
 	else
 		mini->er_num = ft_env(mini->cp_ev, STDOUT_FILENO);
-	dprintf(2, "env here\n");
 }
 
 void	exec_export(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_export("toto", "tata", &(mini->cp_ev));
-	dprintf(2, "export here\n");
+	mini->er_num = ft_export("toto", "tata", &mini->cp_ev);
 }
 
 void	exec_pwd(t_mini *mini)
@@ -150,8 +147,7 @@ void	exec_pwd(t_mini *mini)
 void	exec_unset(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_unset("toto", &(mini->cp_ev));
+	mini->er_num = ft_unset("toto", &mini->cp_ev);
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)

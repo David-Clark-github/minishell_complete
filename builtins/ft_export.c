@@ -6,11 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/10 15:09:35 by seciurte         ###   ########.fr       */
-=======
-/*   Updated: 2022/03/10 15:24:03 by dclark           ###   ########.fr       */
->>>>>>> 5c445894ead4bd174bee42fe28f01cf7cc794bcf
+/*   Updated: 2022/03/10 15:41:47 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +77,13 @@ int	ft_export(char *name, char *data, char ***tab_env)
 	printf("name = %s\n", name);
 	printf("data = %s\n", data);
 	if (look_name(name, *tab_env) == -1)
-	{	
-		printf("add_env()\n");
+	{
+		dprintf(2, "add_env()\n");
 		*tab_env = add_env(name, data, *tab_env);
 	}
 	else
 	{
-		printf("change_env()\n");
+		dprintf(2, "change_env()\n");
 		*tab_env = change_env(name, data, *tab_env);
 	}
 	return (EXIT_SUCCESS);
