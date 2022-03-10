@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/03/09 17:31:54 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:24:03 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ static char	**add_env(char *name, char *data, char **tab_env)
 static char	**change_env(char *name, char *data, char **tab_env)
 {
 	char	**dest;
-	int	i;
+	int		i;
 
 	dest = malloc(sizeof(char *) * (ft_tablen(tab_env) + 1));
 	i = 0;
-	while (i <= ft_tablen(tab_env)) {
+	while (i <= ft_tablen(tab_env))
+	{
 		dest[i] = 0;
 		i++;
 	}
@@ -63,9 +64,8 @@ static char	**change_env(char *name, char *data, char **tab_env)
 			if (ft_strlen(data) != 0)
 				dest[i] = ft_strljoin(dest[i], data, ft_strlen(data));
 		}
-		else {
+		else
 			dest[i] = strdup(tab_env[i]);
-		}
 		i++;
 	}
 	ft_freetab(tab_env);
@@ -74,16 +74,16 @@ static char	**change_env(char *name, char *data, char **tab_env)
 
 int	ft_export(char *name, char *data, char ***tab_env)
 {
-	//printf("name = %s\n", name);
-	//printf("data = %s\n", data);
+	printf("name = %s\n", name);
+	printf("data = %s\n", data);
 	if (look_name(name, *tab_env) == -1)
 	{	
-//		printf("add_env()\n");
+		printf("add_env()\n");
 		*tab_env = add_env(name, data, *tab_env);
 	}
 	else
 	{
-//		printf("change_env()\n");
+		printf("change_env()\n");
 		*tab_env = change_env(name, data, *tab_env);
 	}
 	return (EXIT_SUCCESS);
