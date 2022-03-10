@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:35:40 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 14:18:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:28:43 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	do_redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_
 			lst = lst->next->next;
 	}
 }
+
+static void	do_redirections
 
 void	redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_index)
 {

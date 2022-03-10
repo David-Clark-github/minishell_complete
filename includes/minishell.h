@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 19:20:50 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 13:35:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 # define BECHO 1
 # define CD 2
 # define PWD 3
-# define EXPOR 4
+# define EXPORT 4
 # define UNSET 5
 # define ENV 6
 # define EXIT 7
