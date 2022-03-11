@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/11 13:25:45 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 15:37:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,15 @@ char	*expension(t_mini* mini, int *error_num)
 	int		q;
 	int		i;
 	int		env_len;
+	int		flag;
 	(void)error_num;
 	dest = NULL;
 	i = 0;
 	q = 0;
+	flag = 0;
 	while (mini->prompt[i])
 	{
+		flag = 0;
 		if (mini->prompt[i] == '\'' && q == 0)
 			q = 1;
 		else if (mini->prompt[i] == '\'' && q == 1)
@@ -146,17 +149,19 @@ char	*expension(t_mini* mini, int *error_num)
 			name_env = ft_getname(&mini->prompt[i], env_len);
 			env = ft_getenv(name_env, mini->cp_ev);
 			dest = ft_strjoin_env(dest, env);
-			while (env_len--)
+			while (env_len-- > 0)
 				i++;
 			i++;
 			free(name_env);
 			free(env);
 			env = NULL;
 			name_env = NULL;
-		} else {
-		dest = ft_strjoin(dest, &mini->prompt[i]);
-		i++;
+			flag = 1;
 		}
+		if (flag == 0)
+			dest = ft_strjoin(dest, &mini->prompt[i]);
+		if (mini->prompt[i] && flag == 0)
+			i++;
 	}
 	return (dest);
 }
