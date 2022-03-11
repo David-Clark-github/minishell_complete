@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/10 13:29:02 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 13:25:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	found_env_len(char *str)
 	res = 0;
 	if (str[i] == '$')
 		i++;
-	if (str[i] == '?')
+	if (str[i] && str[i] == '?')
 	{
 		res++;
 		return(res);

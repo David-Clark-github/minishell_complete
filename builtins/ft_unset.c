@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/18 16:30:07 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 13:27:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	look_name(char *name, char **tab_env)
 
 static char	**unset(int i, char **tab_env)
 {
-	char **dest;
-	int	y;
+	char	**dest;
+	int		y;
 
 	dest = malloc(sizeof(char *) * ft_tablen(tab_env));
 	if (dest == NULL)

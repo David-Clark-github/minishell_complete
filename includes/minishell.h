@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/10 17:13:22 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 13:29:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@
 # define APPEND 11
 # define PIPE 12
 
-typedef struct	s_lst {
+typedef struct s_lst {
 	struct s_lst	*next;
 	char			*str;
 	int				log;
 	int				iter;
 }				t_lst;
 
-typedef struct	s_parsing {
+typedef struct s_parsing {
 	char	*prompt;
 	char	*exp;
 	char	**tab_separ;
@@ -86,7 +86,7 @@ typedef struct s_pids
 	struct s_pids		*next;
 }				t_pids;
 
-typedef struct	s_minishell {
+typedef struct s_minishell {
 	char	**cp_ev;
 	int		er_num;
 	char	*prompt;
@@ -103,7 +103,7 @@ typedef struct	s_minishell {
 
 //PARSING
 void	parsing(t_mini *mini);
-char	*expension(t_mini* mini, int *error_num);
+char	*expension(t_mini *mini, int *error_num);
 char	*ft_getenv(char *name, char **cp_ev);
 char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt, int *er);

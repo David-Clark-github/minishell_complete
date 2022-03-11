@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/10 17:59:14 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 13:10:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	main(int ac, char **av, char **ev)
 				printf("syntax error\n");
 			if (mini->er_num != -1 && extract_lst(mini->list))
 			 	print_lst(&mini->list);
-			if (mini->list->log == 4)
+			if (mini->list && mini->list->log == 4)
 				ft_export("TUTU", "tata", &mini->cp_ev);
-			if (mini->er_num != -1 && mini->list->log == 6)
+			if (mini->list && mini->er_num != -1 && mini->list->log == 6)
 				ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 3)
 			// 	ft_pwd(1);
