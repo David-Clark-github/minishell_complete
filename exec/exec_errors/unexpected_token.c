@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors1.c                                          :+:      :+:    :+:   */
+/*   unexpected_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:34:49 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/10 17:54:25 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/11 01:39:26 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	error_unexpected_token(t_mini *mini, t_lst *lst)
+void	error_unexpected_token(t_mini *mini, char *token)
 {
-	
+	char 	*tmp;
+	char	*msg;
+
+	tmp = ft_strljoin(UNEXPECTED_TOKEN, token,
+			ft_strlen(UNEXPECTED_TOKEN) + ft_strlen(token));
+	if (tmp == NULL)
+		exit_error(__LINE__);
+	msg = ft_strljoin(tmp, "'\n", ft_strlen(tmp) + 2);
+	free(tmp);
+	if (msg == NULL)
+		exit_error(__LINE__);
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	free(msg);
+	mini->er_num = 2;
 }

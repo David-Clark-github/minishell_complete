@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/10 13:35:18 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:46:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # include <curses.h>
 # include <term.h>
 
+//RESERVED TOKENS
 # define BECHO 1
 # define CD 2
 # define PWD 3
@@ -63,6 +64,9 @@
 # define HEREDOC 10
 # define APPEND 11
 # define PIPE 12
+
+//BASH PARSING ERRORS
+# define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
 
 typedef struct	s_lst {
 	struct s_lst	*next;
@@ -196,6 +200,10 @@ void	internal_error(t_mini *mini);
 
 //EXEC
 void	exec_instructions(t_mini *mini);
+
+//EXEC ERRORS
+void	error_unexpected_token(t_mini *mini, char *token);
+int		check_errors_before_exec(t_mini *mini);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
