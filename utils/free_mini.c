@@ -6,11 +6,23 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:36:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/10 15:00:32 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 18:08:25 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	ft_freelst(t_lst **list)
+{
+	t_lst	*tmp;
+
+	while (*list)
+	{
+		tmp = (*list)->next;
+		free(*list);
+		*list = tmp;
+	}
+}
 
 void	free_mini(t_mini *mini)
 {
@@ -22,5 +34,5 @@ void	free_mini(t_mini *mini)
 		mini->prompt = NULL;
 	}
 	if (mini->list != NULL)
-		return ;
+		ft_freelst(&mini->list);
 }

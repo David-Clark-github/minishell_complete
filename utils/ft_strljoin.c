@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 13:38:28 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/11 12:34:46 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 18:04:37 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len)
 	{
 		dest[i_d] = s2[i_s];
 		i_d++;
-		//i_s++;
 	}
 	dest[i_d] = '\0';
 	if (s1 != NULL)
