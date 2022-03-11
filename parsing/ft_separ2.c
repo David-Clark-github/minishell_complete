@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/03/11 18:00:03 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 18:14:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ char	**ft_separ(char *str, int *tk_len)
 			}
 			if (str[i_str] == '\'')
 				i_str++;
-			printf("&str[i] = %s\n", &str[i_str]);
 			if (str[i_str] && ft_checkcara(str[i_str], " <>|") == 1)
 				i_dest++;
 		}
@@ -120,7 +119,6 @@ char	**ft_separ(char *str, int *tk_len)
 			}
 			if (str[i_str] == '\"')
 				i_str++;
-			printf("&str[i] = %s\n", &str[i_str]);
 			if (str[i_str] && ft_checkcara(str[i_str], " <>|") == 1)
 				i_dest++;
 		}
