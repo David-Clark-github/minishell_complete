@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/10 23:51:10 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/12 10:25:31 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 void	exec_cd(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
-	mini->er_num = ft_cd("/homes/seciurte");
+	mini->er_num = ft_cd("../");
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
