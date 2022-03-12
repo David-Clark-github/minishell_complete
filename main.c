@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/11 18:33:58 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/12 20:34:43 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av, char **ev)
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
 		{
-			ft_free_mini(mini);
+			ft_free_mini(mini, 0);
 			exit(EXIT_SUCCESS);
 		}
 		if (ft_strlen(mini->prompt) != 0)
@@ -69,7 +69,7 @@ int	main(int ac, char **av, char **ev)
 			ft_freetab(mini->tab_separ);
 			free(mini->exp);
 			*/
-			ft_free_mini(mini);
+			ft_free_mini(mini, 1);
 			//ft_freelst(&mini->lst);
 			/*
 			if (mini.list != NULL) {

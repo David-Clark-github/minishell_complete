@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:36:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/11 18:33:57 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/12 20:38:15 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ static void	ft_freelst(t_lst **list)
 	}
 }
 
-void	ft_free_mini(t_mini *mini)
+void	ft_free_mini(t_mini *mini, int i)
 {
-	if (mini->cp_ev != NULL)
+	if (i == 0)
 	{
-		ft_freetab(mini->cp_ev);
-		mini->cp_ev = NULL;
+		if (mini->cp_ev != NULL)
+		{
+			ft_freetab(mini->cp_ev);
+			mini->cp_ev = NULL;
+		}
 	}
 	if (mini->prompt != NULL)
 	{
