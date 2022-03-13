@@ -49,9 +49,9 @@ int	ft_cd(char *path)
 		return (EXIT_FAILURE);
 	}
 	//pas besoin de check is tab_separ[1] existe puisque je le fais precedement
-	if (strcmp(get_mini()->tab_separ[1], "~") == 0)
+	if (get_mini()->tab_separ[1] && ft_strcmp(get_mini()->tab_separ[1], "~") == 0)
 		return (only_home());
-	if (strncmp(get_mini()->tab_separ[1], "~", 1) == 0 && ft_strlen(get_mini()->tab_separ[1]) > 1)
+	if (get_mini()->tab_separ[1] && strncmp(get_mini()->tab_separ[1], "~", 1) == 0 && ft_strlen(get_mini()->tab_separ[1]) > 1)
 		tmp = ft_strljoin(ft_getenv("HOME", get_mini()->cp_ev), &tmp[1], ft_strlen(&tmp[1]));
 	printf("tmp = %s\n", tmp);
 	if (chdir(tmp) == 0)

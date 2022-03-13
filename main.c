@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/13 14:11:28 by david            ###   ########.fr       */
+/*   Updated: 2022/03/13 16:26:34 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av, char **ev)
 			// if (mini->er_num != 0)
 			// 	printf("er_num = %d\n", mini->er_num);
 			// ft_freetab(mini->tab_separ);
-			//exec_instructions(mini);
+			exec_instructions(mini);
 			/*
 			ft_freetab(mini->tab_separ);
 			free(mini->exp);
