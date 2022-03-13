@@ -6,28 +6,49 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:36:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/08 12:04:43 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 18:33:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_mini(t_mini *mini)
+static void	ft_freelst(t_lst **list)
+{
+	t_lst	*tmp;
+
+	while (*list)
+	{
+		tmp = (*list)->next;
+		free(*list);
+		*list = tmp;
+	}
+}
+
+void	ft_free_mini(t_mini *mini)
 {
 	if (mini->cp_ev != NULL)
+	{
 		ft_freetab(mini->cp_ev);
-	if (mini->prompt != NULL) {
+		mini->cp_ev = NULL;
+	}
+	if (mini->prompt != NULL)
+	{
 		free(mini->prompt);
 		mini->prompt = NULL;
 	}
-	if (mini->exp != NULL) {
+	if (mini->exp != NULL)
+	{
 		free(mini->exp);
 		mini->exp = NULL;
 	}
-	/*
-	if (mini->tab_separ != NULL)
-		ft_freetab(mini->tab_separ);
-	*/
 	if (mini->list != NULL)
-		return ;
+	{
+		ft_freelst(&mini->list);
+		mini->list = NULL;
+	}
+	if (mini->tab_separ != NULL)
+	{
+		ft_freetab(mini->tab_separ);
+		mini->tab_separ = NULL;
+	}
 }

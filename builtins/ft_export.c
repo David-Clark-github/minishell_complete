@@ -6,7 +6,11 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/10 15:41:47 by seciurte         ###   ########.fr       */
+=======
+/*   Updated: 2022/03/11 13:28:28 by dclark           ###   ########.fr       */
+>>>>>>> err_num
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +72,7 @@ static char	**change_env(char *name, char *data, char **tab_env)
 			dest[i] = strdup(tab_env[i]);
 		i++;
 	}
-	ft_freetab(tab_env);
-	return (dest);
+	return (ft_freetab(tab_env), dest);
 }
 
 int	ft_export(char *name, char *data, char ***tab_env)

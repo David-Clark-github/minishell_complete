@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/10 23:46:12 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/12 10:36:04 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct	s_lst {
 	int				iter;
 }				t_lst;
 
-typedef struct	s_parsing {
+typedef struct s_parsing {
 	char	*prompt;
 	char	*exp;
 	char	**tab_separ;
@@ -90,7 +90,7 @@ typedef struct s_pids
 	struct s_pids		*next;
 }				t_pids;
 
-typedef struct	s_minishell {
+typedef struct s_minishell {
 	char	**cp_ev;
 	int		er_num;
 	char	*prompt;
@@ -107,7 +107,8 @@ typedef struct	s_minishell {
 
 //PARSING
 void	parsing(t_mini *mini);
-char	*expension(t_mini* mini, int *error_num);
+char	*expension(t_mini *mini, int *error_num);
+char	*ft_getenv(char *name, char **cp_ev);
 char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
@@ -138,6 +139,7 @@ int		ft_strlen(char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
 char	*ft_strdup(char *s);
+char	*ft_itoa(int n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strjoin(char *str_1, char *str_2);
@@ -145,7 +147,7 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len);
 char	**ft_copy_env(char **tab_env, size_t add);
 void	ft_freetab(char **tabx);
 void	init_mini(t_mini *mini);
-void	free_mini(t_mini *mini);
+void	ft_free_mini(t_mini *mini);
 int		ft_checkredir(char c);
 int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);

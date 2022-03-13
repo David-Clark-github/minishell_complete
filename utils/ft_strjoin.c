@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 21:42:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/07 16:33:30 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 12:55:53 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ char	*ft_strjoin(char *str_1, char *str_2)
 		i_dest++;
 	}
 	i_str = 0;
-	if (str_2[i_str] != '\0')
+	if (str_2[i_str] && str_2[i_str] != '\0')
 	{
 		dest[i_dest] = str_2[i_str];
 		i_dest++;
 	}
 	dest[i_dest] = '\0';
-	if (str_1 != NULL) {
+	if (str_1 != NULL)
+	{
 		free(str_1);
 		str_1 = NULL;
 	}

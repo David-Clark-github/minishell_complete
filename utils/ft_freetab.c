@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 14:18:41 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/07 16:38:54 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/10 14:59:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_freetab(char **tabx)
 	int	i;
 
 	if (!tabx)
-		return;
+		return ;
 	tab_len = ft_tablen(tabx);
 	i = 0;
 	while (i <= tab_len)

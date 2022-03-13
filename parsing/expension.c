@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/09 19:35:57 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/11 15:37:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ static int	found_env_len(char *str)
 	res = 0;
 	if (str[i] == '$')
 		i++;
-	while ((str[i] && ft_isalpha(str[i])) || (str[i] == '?'))
+	if (str[i] && str[i] == '?')
+	{
+		res++;
+		return(res);
+	}
+	while (str[i] && ft_isalpha(str[i]))
 	{
 		res++;
 		i++;
@@ -84,7 +89,7 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 	}
 	return (dest);
 }
-
+/*
 static char	*ft_getenv(char *name, char **cp_ev)
 {
 	char	*data;
@@ -115,6 +120,7 @@ static char	*ft_getenv(char *name, char **cp_ev)
 	data[i_d] = 0;
 	return (data);
 }
+*/
 
 char	*expension(t_mini* mini, int *error_num)
 {
@@ -124,12 +130,15 @@ char	*expension(t_mini* mini, int *error_num)
 	int		q;
 	int		i;
 	int		env_len;
+	int		flag;
 	(void)error_num;
 	dest = NULL;
 	i = 0;
 	q = 0;
+	flag = 0;
 	while (mini->prompt[i])
 	{
+		flag = 0;
 		if (mini->prompt[i] == '\'' && q == 0)
 			q = 1;
 		else if (mini->prompt[i] == '\'' && q == 1)
@@ -140,14 +149,19 @@ char	*expension(t_mini* mini, int *error_num)
 			name_env = ft_getname(&mini->prompt[i], env_len);
 			env = ft_getenv(name_env, mini->cp_ev);
 			dest = ft_strjoin_env(dest, env);
-			while (env_len--)
+			while (env_len-- > 0)
 				i++;
 			i++;
 			free(name_env);
+			free(env);
+			env = NULL;
 			name_env = NULL;
+			flag = 1;
 		}
-		dest = ft_strjoin(dest, &mini->prompt[i]);
-		i++;
+		if (flag == 0)
+			dest = ft_strjoin(dest, &mini->prompt[i]);
+		if (mini->prompt[i] && flag == 0)
+			i++;
 	}
 	return (dest);
 }
