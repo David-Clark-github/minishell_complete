@@ -6,25 +6,67 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/12 22:51:35 by david            ###   ########.fr       */
+/*   Updated: 2022/03/13 20:45:31 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_cd(char *path)
+static int	only_home(void)
 {
-	if (ft_tablen(get_mini->tab_separ) > 2)
+	char	*tmp;
+
+	tmp = ft_getenv("HOME", get_mini()->cp_ev);
+	if (ft_tablen(get_mini()->cp_ev) == 0 || tmp == NULL)
 	{
-		printf("Too much argument for cd\n");
-		get_mini()->err_num = 1;
+		free(tmp);
+		printf("HOME not set\n");
 		return (EXIT_FAILURE);
 	}
-	if (chdir(path) == 0)
+	if (chdir(tmp) == 0)
+	{
+		free(tmp);
 		return (EXIT_SUCCESS);
+	}
 	else
 	{
-		printf("cd: no such file or directory: %s\n", path);
+		free(tmp);
+		printf("cd: no such file or directory: %s\n", tmp);
+		return (EXIT_FAILURE);
+	}
+
+}
+
+int	ft_cd(char *path)
+{
+	char	*tmp;
+	tmp = NULL;
+	if (path == NULL || !path)
+	{
+		if (tmp != NULL)
+			free(tmp);
+		return (only_home());
+	}
+	tmp = ft_strdup(path);
+	if (tmp && ft_strcmp(tmp, "~") == 0)
+	{
+		if (tmp != NULL)
+			free(tmp);
+		return (only_home());
+	}
+	if (tmp && ft_strncmp(tmp, "~", 1) == 0 && ft_strlen(tmp) > 1)
+		tmp = ft_strljoin(ft_getenv("HOME", get_mini()->cp_ev), &tmp[1], ft_strlen(&tmp[1]));
+	printf("tmp = %s\n", tmp);
+	if (chdir(tmp) == 0)
+	{
+		printf("chdir successfull !\n");
+		free(tmp);
+		return (EXIT_SUCCESS);
+	}
+	else
+	{
+		printf("cd: no such file or directory: %s\n", tmp);
+		free(tmp);
 		return (EXIT_FAILURE);
 	}
 }

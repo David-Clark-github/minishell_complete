@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 12:41:22 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 13:35:47 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,36 @@ int	get_nb_of_args(t_lst *lst)
 		if (lst->log == 0)
 			nb_args++;
 		if (is_redir(lst->log))
+			lst = lst->next->next;
+		else
+			lst = lst->next;
 	}
+	return (nb_args);
+}
+
+char	*get_args(t_lst *lst)
+{
+	char	**cmd;
+	int		i;
+	int		nb_args;
+
+	i = 0;
+	nb_args = get_nb_of_args(lst);
+	cmd = malloc(sizeof(char *) * (nb_args + 1));
+	if (cmd == NULL)
+		return (NULL);
+	while (lst && lst->log != PIPE)
+	{
+		if (lst->log == 0)
+		{
+			cmd[i] = lst->str;
+			i++;
+			lst = lst->next;
+		}
+		else
+			lst = lst->next->next;
+	}
+	return (cmd);
 }
 
 void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
@@ -103,7 +132,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 	char		**cmd;
 
 	take_signal();
-	cmd = ft_split(lst->str, ' ');
+	cmd = get_args(lst);
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
 	*pid = fork();
 	if (*pid < 0)
