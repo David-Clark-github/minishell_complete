@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/13 06:03:48 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 07:25:23 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*my_strjoin(char *s1, char *s2);
 
 //INSTRUCTION TYPES
 int		is_redir_stdin(int log);

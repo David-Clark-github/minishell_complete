@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:35:40 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/10 17:54:31 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 08:13:16 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void	do_redirections(t_mini *mini, t_lst *lst)
 // 		// dprintf(2, "stdin %d | stdout %d | %s\n", mini->io_fds_redir[0], mini->io_fds_redir[1], lst->next->str);
 // 		if (is_redir(lst->log))
 // 			lst = lst->next->next;
+// 		else
+// 			lst = lst->next;
 // 	}
 // }
 
