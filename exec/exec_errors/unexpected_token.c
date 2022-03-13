@@ -6,11 +6,16 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:34:49 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/11 01:39:26 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 05:58:57 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*msg_join(char *s1, char *s2, int size)
+{
+	
+}
 
 void	error_unexpected_token(t_mini *mini, char *token)
 {
