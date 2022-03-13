@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_lst_bck_back_up.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:59:54 by dclark            #+#    #+#             */
-/*   Updated: 2022/01/10 15:11:28 by david            ###   ########.fr       */
+/*   Updated: 2022/03/10 21:42:31 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	add_lst_back(t_lst **head_lst, char *str, int log)
 	{
 		*head_lst = dest;
 		return;
-		
 	}
 	while (pointeur->next)
 		pointeur = pointeur->next;

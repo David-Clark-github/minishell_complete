@@ -51,10 +51,11 @@
 # include <curses.h>
 # include <term.h>
 
+//RESERVED TOKENS
 # define BECHO 1
 # define CD 2
 # define PWD 3
-# define EXPOR 4
+# define EXPORT 4
 # define UNSET 5
 # define ENV 6
 # define EXIT 7
@@ -64,7 +65,10 @@
 # define APPEND 11
 # define PIPE 12
 
-typedef struct s_lst {
+//BASH PARSING ERRORS
+# define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
+
+typedef struct	s_lst {
 	struct s_lst	*next;
 	char			*str;
 	int				log;
@@ -198,6 +202,10 @@ void	internal_error(t_mini *mini);
 
 //EXEC
 void	exec_instructions(t_mini *mini);
+
+//EXEC ERRORS
+void	error_unexpected_token(t_mini *mini, char *token);
+int		check_errors_before_exec(t_mini *mini);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT

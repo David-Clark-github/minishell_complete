@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   unexpected_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/11 11:07:48 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/10 17:34:49 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/11 01:39:26 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
-static void	toto(int sig)
+void	error_unexpected_token(t_mini *mini, char *token)
 {
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		get_mini()->er_num = 130;
-	}
-}
+	char 	*tmp;
+	char	*msg;
 
-void	take_signal(void)
-{
-	signal(SIGINT, toto);
-	signal(SIGQUIT, SIG_IGN);
+	tmp = ft_strljoin(UNEXPECTED_TOKEN, token,
+			ft_strlen(UNEXPECTED_TOKEN) + ft_strlen(token));
+	if (tmp == NULL)
+		exit_error(__LINE__);
+	msg = ft_strljoin(tmp, "'\n", ft_strlen(tmp) + 2);
+	free(tmp);
+	if (msg == NULL)
+		exit_error(__LINE__);
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	free(msg);
+	mini->er_num = 2;
 }
