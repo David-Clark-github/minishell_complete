@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/12 22:51:35 by david            ###   ########.fr       */
+/*   Updated: 2022/03/13 10:20:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_cd(char *path)
 {
-	if (ft_tablen(get_mini->tab_separ) > 2)
+	if (/*ft_tablen(get_mini->tab_separ) > 2*/ /*Regarder si il y a plus de 2 arguments apres cd*/)
 	{
 		printf("Too much argument for cd\n");
 		get_mini()->err_num = 1;
