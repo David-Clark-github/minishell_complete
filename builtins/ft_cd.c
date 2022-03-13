@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/13 17:54:52 by david            ###   ########.fr       */
+/*   Updated: 2022/03/13 20:45:31 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	only_home(void)
 	if (ft_tablen(get_mini()->cp_ev) == 0 || tmp == NULL)
 	{
 		free(tmp);
-		printf("HOME not found");
+		printf("HOME not set\n");
 		return (EXIT_FAILURE);
 	}
 	if (chdir(tmp) == 0)
