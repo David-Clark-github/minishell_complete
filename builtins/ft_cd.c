@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/13 16:12:46 by david            ###   ########.fr       */
+/*   Updated: 2022/03/13 17:54:52 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,33 @@ static int	only_home(void)
 int	ft_cd(char *path)
 {
 	char	*tmp;
-
-	tmp = ft_strdup(path);
-	if (0/*Regarder si il y a plus de 2 arguments apres cd*/)
+	tmp = NULL;
+	if (path == NULL || !path)
 	{
-		printf("Too much argument for cd\n");
-		get_mini()->er_num = 1;
-		return (EXIT_FAILURE);
-	}
-	//pas besoin de check is tab_separ[1] existe puisque je le fais precedement
-	if (get_mini()->tab_separ[1] && ft_strcmp(get_mini()->tab_separ[1], "~") == 0)
+		if (tmp != NULL)
+			free(tmp);
 		return (only_home());
-	if (get_mini()->tab_separ[1] && strncmp(get_mini()->tab_separ[1], "~", 1) == 0 && ft_strlen(get_mini()->tab_separ[1]) > 1)
+	}
+	tmp = ft_strdup(path);
+	if (tmp && ft_strcmp(tmp, "~") == 0)
+	{
+		if (tmp != NULL)
+			free(tmp);
+		return (only_home());
+	}
+	if (tmp && ft_strncmp(tmp, "~", 1) == 0 && ft_strlen(tmp) > 1)
 		tmp = ft_strljoin(ft_getenv("HOME", get_mini()->cp_ev), &tmp[1], ft_strlen(&tmp[1]));
 	printf("tmp = %s\n", tmp);
 	if (chdir(tmp) == 0)
 	{
+		printf("chdir successfull !\n");
 		free(tmp);
 		return (EXIT_SUCCESS);
 	}
 	else
 	{
-		printf("cd: no such file or directory: %s\n", path);
+		printf("cd: no such file or directory: %s\n", tmp);
+		free(tmp);
 		return (EXIT_FAILURE);
 	}
 }
