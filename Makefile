@@ -44,6 +44,8 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_split.c \
 			utils/ft_memset.c \
 			utils/ft_strlcpy.c \
+			utils/ft_memcpy.c \
+			utils/my_strjoin.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \
@@ -71,7 +73,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g -fsanitize=address
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g #-fsanitize=address
 
 CC		= gcc
 

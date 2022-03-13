@@ -155,6 +155,8 @@ t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*my_strjoin(char *s1, char *s2);
 
 //INSTRUCTION TYPES
 int		is_redir_stdin(int log);

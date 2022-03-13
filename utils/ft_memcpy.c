@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unexpected_token.c                                 :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 17:34:49 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 07:25:34 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/13 05:59:06 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/13 05:59:46 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	error_unexpected_token(t_mini *mini, char *token)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char 	*tmp;
-	char	*msg;
+	const unsigned char	*s;
+	unsigned char		*d;
 
-	tmp = my_strjoin(UNEXPECTED_TOKEN, token);
-	if (tmp == NULL)
-		exit_error(__LINE__);
-	msg = my_strjoin(tmp, "'\n");
-	free(tmp);
-	if (msg == NULL)
-		exit_error(__LINE__);
-	write(STDERR_FILENO, msg, ft_strlen(msg));
-	free(msg);
-	mini->er_num = 2;
+	if (!dest && !src)
+		return (NULL);
+	s = src;
+	d = dest;
+	while (n--)
+	{
+		*d = *s;
+		d++;
+		s++;
+	}
+	return (dest);
 }
