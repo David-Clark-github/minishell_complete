@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/13 07:25:23 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 09:17:19 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void	redirect_pipe_stdout(t_mini *mini, int **pipeline, int *pipe_index);
 
 //REDIRECTION UTILS
 t_lst	*skip_redir(t_lst *lst);
+t_lst	*skip_redir_and_args(t_lst *lst);
 void	redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_index);
 
 //PIDS

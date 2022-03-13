@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 08:13:59 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/13 12:41:22 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,19 @@ void	close_out_fork(t_mini *mini)
 		mini->unused_fds[0] = -42;
 	if (mini->unused_fds[1] != -42)
 		mini->unused_fds[1] = -42;
+}
+
+int	get_nb_of_args(t_lst *lst)
+{
+	int		nb_args;
+
+	nb_args = 0;
+	while (lst && lst->log != PIPE)
+	{
+		if (lst->log == 0)
+			nb_args++;
+		if (is_redir(lst->log))
+	}
 }
 
 void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
@@ -205,16 +218,18 @@ void	exec_instructions(t_mini *mini)
 	lst = mini->list;
 	pipeline = create_pipeline(lst);
 	pipe_index = 0;
-	while(lst && lst->str)
+	while(lst)
 	{
+		dprintf(2, "lst->str = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
+	dprintf(2, "debug\n");
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
-		if (lst && is_redir(lst->log))
+		if (is_redir(lst->log))
 			lst = skip_redir(lst);
-		else if (lst && lst->next && is_redir(lst->next->log))
+		else if (lst->next && is_redir(lst->next->log))
 			lst = skip_redir(lst->next);
-		else if (lst)
+		else
 			lst = lst->next;
 	}
 	wait_for_forks(mini);
