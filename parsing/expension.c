@@ -6,12 +6,11 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/11 15:37:05 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:32:23 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 //found_env_len inclut la '\0' pour name_env
 static int	found_env_len(char *str)
@@ -26,16 +25,15 @@ static int	found_env_len(char *str)
 	if (str[i] && str[i] == '?')
 	{
 		res++;
-		return(res);
+		return (res);
 	}
 	while (str[i] && ft_isalpha(str[i]))
 	{
 		res++;
 		i++;
 	}
-	return (res);	
+	return (res);
 }
-
 
 static char	*ft_getname(char *str, int len)
 {
@@ -83,46 +81,12 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 		i_be++;
 	}
 	dest[i_d] = '\0';
-	if (prompt != NULL) {
+	if (prompt != NULL)
 		free(prompt);
-		prompt = NULL;
-	}
 	return (dest);
 }
-/*
-static char	*ft_getenv(char *name, char **cp_ev)
-{
-	char	*data;
-	int		i_ev;
-	int		i_d;
-	int		iter;
 
-	i_ev = 0;
-	i_d = 0;
-	iter = 0;
-	while (cp_ev[i_ev] && iter == 0)
-	{
-		if (ft_strncmp(name, cp_ev[i_ev], ft_strlen(name)) == 0)
-		{
-			if (cp_ev[i_ev][ft_strlen(name)] == '=')
-				iter = ft_strlen(name) + 1;
-		}
-		if (iter == 0)
-			i_ev++;
-	}
-	data = malloc(sizeof(char) * (ft_strlen(&cp_ev[i_ev][iter]) + 1));
-	while (cp_ev[i_ev][iter])
-	{
-		data[i_d] = cp_ev[i_ev][iter];
-		iter++;
-		i_d++;
-	}
-	data[i_d] = 0;
-	return (data);
-}
-*/
-
-char	*expension(t_mini* mini, int *error_num)
+char	*expension(t_mini *mini)
 {
 	char	*dest;
 	char	*name_env;
@@ -131,7 +95,7 @@ char	*expension(t_mini* mini, int *error_num)
 	int		i;
 	int		env_len;
 	int		flag;
-	(void)error_num;
+
 	dest = NULL;
 	i = 0;
 	q = 0;
@@ -154,8 +118,6 @@ char	*expension(t_mini* mini, int *error_num)
 			i++;
 			free(name_env);
 			free(env);
-			env = NULL;
-			name_env = NULL;
 			flag = 1;
 		}
 		if (flag == 0)

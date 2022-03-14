@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/10 13:24:06 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:28:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //EXPENSION: si variable d'environement, elle l'etend
 void	parsing(t_mini *mini)
 {
-	mini->exp = expension(mini, &mini->er_num);
+	mini->exp = expension(mini);
 	if (mini->exp == NULL)
 		return;
 	mini->tab_separ = ft_separ(mini->exp, &mini->tab_len);
