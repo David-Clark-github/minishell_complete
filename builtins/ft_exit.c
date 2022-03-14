@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_syntax.c                                     :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 18:25:46 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 13:28:37 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/14 11:27:43 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/14 13:07:50 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	simple_syntax(char **tab_separ)
+int	ft_exit(int num)
 {
-	int	i;
-
-	i = -1;
-	while (tab_separ[++i])
-	{
-		if (tab_separ[i + 1])
-		{
-			if (diff_redir(tab_separ[i]) != 0)
-				if (diff_redir(tab_separ[i + 1]) != 0)
-					return 1;
-		}
-	}
-	return (0);
-}
-
-int	check_syntax(t_mini *mini)
-{
-	if (simple_syntax(mini->tab_separ) != 0) {
-		//mini->er_num = simple_syntax(mini->tab_separ);
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+	get_mini()->er_num = num;
+	ft_free_mini(get_mini(), 0);
+	exit(get_mini()->er_num);
 }

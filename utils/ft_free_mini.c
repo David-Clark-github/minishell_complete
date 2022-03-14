@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_mini.c                                        :+:      :+:    :+:   */
+/*   ft_free_mini.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:36:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/12 20:38:15 by david            ###   ########.fr       */
+/*   Updated: 2022/03/14 13:52:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,8 @@ static void	ft_freelst(t_lst **list)
 	}
 }
 
-void	ft_free_mini(t_mini *mini, int i)
+static void	rest(t_mini *mini)
 {
-	if (i == 0)
-	{
-		if (mini->cp_ev != NULL)
-		{
-			ft_freetab(mini->cp_ev);
-			mini->cp_ev = NULL;
-		}
-	}
 	if (mini->prompt != NULL)
 	{
 		free(mini->prompt);
@@ -54,4 +46,17 @@ void	ft_free_mini(t_mini *mini, int i)
 		ft_freetab(mini->tab_separ);
 		mini->tab_separ = NULL;
 	}
+}
+
+void	ft_free_mini(t_mini *mini, int i)
+{
+	if (i == 0)
+	{
+		if (mini->cp_ev != NULL)
+		{
+			ft_freetab(mini->cp_ev);
+			mini->cp_ev = NULL;
+		}
+	}
+	rest(mini);
 }

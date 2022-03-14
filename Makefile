@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/13 18:03:14 by david            ###   ########.fr        #
+#    Updated: 2022/03/14 14:00:04 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strcmp.c \
 			utils/ft_freetab.c \
 			utils/init_mini.c \
-			utils/free_mini.c \
+			utils/ft_free_mini.c \
 			utils/get_mini.c \
 			utils/ft_checkredir.c \
 			utils/ft_checkquote.c \
@@ -52,6 +52,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			builtins/ft_env.c \
 			builtins/ft_export.c \
 			builtins/ft_unset.c \
+			builtins/ft_exit.c \
 			exec/cmd_path.c \
 			exec/pipeline.c \
 			exec/here_doc.c \

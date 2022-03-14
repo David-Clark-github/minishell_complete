@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/13 20:45:31 by david            ###   ########.fr       */
+/*   Updated: 2022/03/14 12:48:37 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,47 @@ static int	only_home(void)
 	{
 		free(tmp);
 		printf("HOME not set\n");
+		get_mini()->er_num = 1;
 		return (EXIT_FAILURE);
 	}
 	if (chdir(tmp) == 0)
 	{
 		free(tmp);
+		get_mini()->er_num = 0;
 		return (EXIT_SUCCESS);
 	}
 	else
 	{
 		free(tmp);
 		printf("cd: no such file or directory: %s\n", tmp);
+		get_mini()->er_num = 1;
 		return (EXIT_FAILURE);
 	}
+}
 
+static int	ft_chdir(char *path)
+{
+	if (chdir(path) == 0)
+	{
+		get_mini()->er_num = 0;
+		if (path != NULL)
+			free(path);
+		return (EXIT_SUCCESS);
+	}
+	else
+	{
+		printf("cd: no such file or directory: %s\n", path);
+		get_mini()->er_num = 1;
+		if (path != NULL)
+			free(path);
+		return (EXIT_FAILURE);
+	}
 }
 
 int	ft_cd(char *path)
 {
 	char	*tmp;
+
 	tmp = NULL;
 	if (path == NULL || !path)
 	{
@@ -55,18 +77,7 @@ int	ft_cd(char *path)
 		return (only_home());
 	}
 	if (tmp && ft_strncmp(tmp, "~", 1) == 0 && ft_strlen(tmp) > 1)
-		tmp = ft_strljoin(ft_getenv("HOME", get_mini()->cp_ev), &tmp[1], ft_strlen(&tmp[1]));
-	printf("tmp = %s\n", tmp);
-	if (chdir(tmp) == 0)
-	{
-		printf("chdir successfull !\n");
-		free(tmp);
-		return (EXIT_SUCCESS);
-	}
-	else
-	{
-		printf("cd: no such file or directory: %s\n", tmp);
-		free(tmp);
-		return (EXIT_FAILURE);
-	}
+		tmp = ft_strljoin(ft_getenv("HOME", get_mini()->cp_ev), \
+		&tmp[1], ft_strlen(&tmp[1]));
+	return (ft_chdir(tmp));
 }
