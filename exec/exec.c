@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 13:35:47 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:33:27 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ int	is_builtin(int log)
 int	is_arg_and_redir(int log)
 {
 	return (log == 0 || is_redir(log));
-}
-
-void	free_cmd(char **cmd)
-{
-	int		i;
-
-	i = 0;
-	while (cmd[i])
-	{
-		free(cmd[i]);
-		i++;
-	}
-	free(cmd);
 }
 
 void	dup_and_close_in_fork(t_mini *mini)
@@ -102,7 +89,7 @@ int	get_nb_of_args(t_lst *lst)
 	return (nb_args);
 }
 
-char	*get_args(t_lst *lst)
+char	**get_args(t_lst *lst)
 {
 	char	**cmd;
 	int		i;
@@ -124,6 +111,7 @@ char	*get_args(t_lst *lst)
 		else
 			lst = lst->next->next;
 	}
+	cmd[i] = NULL;
 	return (cmd);
 }
 
@@ -146,7 +134,8 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 	}
 	else
 	{
-		free_cmd(cmd);
+		// free(cmd[0]);
+		// free(cmd);
 		close_out_fork(mini);
 	}
 }
@@ -251,13 +240,12 @@ void	exec_instructions(t_mini *mini)
 	{
 		dprintf(2, "lst->str = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
-	dprintf(2, "debug\n");
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
 		if (is_redir(lst->log))
 			lst = skip_redir(lst);
-		else if (lst->next && is_redir(lst->next->log))
-			lst = skip_redir(lst->next);
+		else if (lst->log == 0/* || (lst->next && is_redir(lst->next->log))*/)
+			lst = skip_redir_and_args(lst);
 		else
 			lst = lst->next;
 	}
