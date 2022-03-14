@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 15:59:34 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:57:06 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	get_nb_of_args(t_lst *lst)
 	nb_args = 0;
 	while (lst && lst->log != PIPE)
 	{
-		if (lst->log == 0)
+		if (lst->log == 0 || is_builtin(lst->log))
 			nb_args++;
 		if (is_redir(lst->log))
 			lst = lst->next->next;
@@ -102,7 +102,7 @@ char	**get_args(t_lst *lst)
 		return (NULL);
 	while (lst && lst->log != PIPE)
 	{
-		if (lst->log == 0)
+		if (lst->log == 0 || is_builtin(lst->log))
 		{
 			cmd[i] = lst->str;
 			i++;
@@ -142,16 +142,41 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 
 void	exec_cd(t_mini *mini, t_lst *lst)
 {
-	(void) lst;
-	mini->er_num = ft_cd("../");
+	char	**cmd;
+
+	cmd = get_args(lst);
+	if (cmd == NULL)
+		exit_error(__LINE__);
+	if (cmd[0] == NULL)
+		mini->er_num = ft_cd(NULL);
+	else
+	{
+		// printf("%s\n", cmd[1]);
+		mini->er_num = ft_cd(cmd[1]);
+	}
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_echo(lst->str, 0, mini->io_fds_redir[1]);
+	char	**cmd;
+
+	cmd = get_args(lst);
+	if (cmd == NULL)
+		exit_error(__LINE__);
+	if (cmd[0] == NULL)
+	{
+		if (mini->io_fds_redir[1] != -42)
+			mini->er_num = ft_echo(cmd, 0, mini->io_fds_redir[1]);
+		else
+			mini->er_num = ft_echo(cmd, 0, STDOUT_FILENO);
+	}
 	else
-		mini->er_num = ft_echo(lst->str, 0, STDOUT_FILENO);
+	{
+		if (mini->io_fds_redir[1] != -42)
+			mini->er_num = ft_echo(&cmd[1], 0, mini->io_fds_redir[1]);
+		else
+			mini->er_num = ft_echo(&cmd[1], 0, STDOUT_FILENO);
+	}
 }
 
 void	exec_env(t_mini *mini)
@@ -184,6 +209,7 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 
 void	exec_builtin(t_mini *mini, t_lst *lst)
 {
+	printf("lst->log = %d\n", lst->log);
 	if (lst->log == CD)
 		exec_cd(mini, lst);
 	else if (lst->log == BECHO)
@@ -244,7 +270,7 @@ void	exec_instructions(t_mini *mini)
 			exec(mini, lst);
 		if (is_redir(lst->log))
 			lst = skip_redir(lst);
-		else if (lst->log == 0/* || (lst->next && is_redir(lst->next->log))*/)
+		else if (lst->log == 0 || is_builtin(lst->log))
 			lst = skip_redir_and_args(lst);
 		else
 			lst = lst->next;
