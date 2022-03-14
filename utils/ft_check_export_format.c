@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_check_export_format.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 10:57:57 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 17:09:47 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/14 16:58:26 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/14 17:09:16 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	ft_isalpha(int c)
+int	ft_check_export_format(char *str)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 0;
+	if (str == NULL)
+		return (0);
+	while (str[++i] && flag == 0)
+		if (str[i] == '=')
+			flag = 1;
+	if (flag == 0)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		if (ft_isalpha(str[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }
