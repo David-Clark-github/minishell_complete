@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/13 12:49:21 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:03:29 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,13 @@ int		diff_cmd(char *str);
 int		diff_redir(char *str);
 
 //BUILTINS
-int		ft_echo(char *str, int arg, int fd);
+int		ft_echo(char **str, int arg, int fd);
 int		ft_pwd(int fd);
 int		ft_env(char **tab_env, int fd);
 int		ft_export(char *name, char *data, char ***tab_env);
 int		ft_unset(char *name, char ***tab_env);
 int		ft_cd(char *path);
+int		ft_exit(int	num);
 
 //ARG_BUILTIN
 void	arg_export(char **tabx, t_mini *mini);
