@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 08:13:59 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:34:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ void	exec_cd(t_mini *mini, t_lst *lst)
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
 	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_echo(lst->str, 0, mini->io_fds_redir[1]);
+		mini->er_num = ft_echo(&lst->str, 0, mini->io_fds_redir[1]);
 	else
-		mini->er_num = ft_echo(lst->str, 0, STDOUT_FILENO);
+		mini->er_num = ft_echo(&lst->str, 0, STDOUT_FILENO);
 }
 
 void	exec_env(t_mini *mini)

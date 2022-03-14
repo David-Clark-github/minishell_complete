@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/14 14:00:04 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/14 16:20:34 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/diff_cmd_redir.c \
 			parsing/check_syntax.c \
 			parsing/expension.c \
-			parsing/quotes_exp.c \
 			parsing/tab_to_list.c \
 			parsing/ft_separ2.c \
 			parsing/extract_lst.c \
