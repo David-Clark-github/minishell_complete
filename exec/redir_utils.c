@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:35:40 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 14:08:55 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:44:30 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	do_redirections(t_mini *mini, t_lst *lst)
 			redirect_heredoc(mini, lst);
 		else if (is_redir_stdout(lst->log))
 			redirect_stdout(mini, lst);
-		dprintf(2, "stdin %d | stdout %d | %s\n", mini->io_fds_redir[0], mini->io_fds_redir[1], lst->next->str);
+		// dprintf(2, "stdin %d | stdout %d | %s\n", mini->io_fds_redir[0], mini->io_fds_redir[1], lst->next->str);
 		if (is_redir(lst->log))
 			lst = lst->next->next;
 	}
@@ -62,7 +62,7 @@ static void	do_redirections_and_args(t_mini *mini, t_lst *lst)
 			redirect_heredoc(mini, lst);
 		else if (is_redir_stdout(lst->log))
 			redirect_stdout(mini, lst);
-		dprintf(2, "stdin %d | stdout %d | %s\n", mini->io_fds_redir[0], mini->io_fds_redir[1], lst->str);
+		// dprintf(2, "stdin %d | stdout %d | %s\n", mini->io_fds_redir[0], mini->io_fds_redir[1], lst->str);
 		if (is_redir(lst->log))
 			lst = lst->next->next;
 		else
@@ -75,7 +75,8 @@ void	redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_index)
 	(void) pipeline;
 	(void) pipe_index;
 	do_redirections(mini, lst);
-	redirect_pipe_stdin(mini, pipeline, pipe_index);
+	if (lst->log == PIPE)
+		redirect_pipe_stdin(mini, pipeline, pipe_index);
 	if (lst && lst->log == 0)
 	{
 		do_redirections_and_args(mini, lst);

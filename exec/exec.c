@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 13:33:27 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:59:34 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ void	exec_instructions(t_mini *mini)
 	pipe_index = 0;
 	while(lst)
 	{
-		dprintf(2, "lst->str = %s\n", lst->str);
+		// dprintf(2, "lst->str = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
