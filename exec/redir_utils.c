@@ -77,7 +77,7 @@ void	redirections(t_mini *mini, t_lst *lst, int **pipeline, int *pipe_index)
 	do_redirections(mini, lst);
 	if (lst->log == PIPE)
 		redirect_pipe_stdin(mini, pipeline, pipe_index);
-	if (lst && lst->log == 0)
+	if (lst && is_cmd(lst->log))
 	{
 		do_redirections_and_args(mini, lst);
 		redirect_pipe_stdout(mini, pipeline, pipe_index);

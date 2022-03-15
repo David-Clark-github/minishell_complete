@@ -26,9 +26,10 @@ int	check_errors_before_exec(t_mini *mini)
 		if (is_redir(tmp->log) && !tmp->next)
 			return (error_unexpected_token(mini, "newline"), 2);
 		else if (is_redir(tmp->log) && (!tmp->next
-			|| (tmp->next->log <= 12 && tmp->next->log > 0)))
+				|| (tmp->next->log <= 12 && tmp->next->log > 0)))
 			return (error_unexpected_token(mini, "newline"), 2);
-		else if (tmp->log == PIPE && (!tmp->next || tmp->next->log == PIPE || prev == NULL))
+		else if (tmp->log == PIPE && (!tmp->next || tmp->next->log == PIPE
+				|| prev == NULL))
 			return (error_unexpected_token(mini, "|"), 2);
 		prev = tmp;
 		tmp = tmp->next;

@@ -24,7 +24,7 @@ int	is_redir_stdout(int log)
 
 int	is_cmd(int log)
 {
-	return ((log <= 7 || log == 13));
+	return ((log <= 7));
 }
 
 int	is_redir(int log)

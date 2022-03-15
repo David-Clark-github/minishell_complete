@@ -127,15 +127,12 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 		exit_error(__LINE__);
 	if (*pid == 0)
 	{
-		// dprintf(2, "cmd = %s | pid = %d\n", cmd[0], getpid());
 		dup_and_close_in_fork(mini);
 		execve(cmd[0], cmd, mini->cp_ev);
 		exit_error(__LINE__);
 	}
 	else
 	{
-		// free(cmd[0]);
-		// free(cmd);
 		close_out_fork(mini);
 	}
 }
@@ -209,7 +206,7 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 
 void	exec_builtin(t_mini *mini, t_lst *lst)
 {
-	printf("lst->log = %d\n", lst->log);
+	// printf("lst->log = %d\n", lst->log);
 	if (lst->log == CD)
 		exec_cd(mini, lst);
 	else if (lst->log == BECHO)
