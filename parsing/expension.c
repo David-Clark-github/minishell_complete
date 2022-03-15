@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/14 18:32:23 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 13:33:07 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 	return (dest);
 }
 
-char	*expension(t_mini *mini)
+void	expension(t_mini *mini)
 {
-	char	*dest;
 	char	*name_env;
 	char	*env;
 	int		q;
@@ -96,7 +95,6 @@ char	*expension(t_mini *mini)
 	int		env_len;
 	int		flag;
 
-	dest = NULL;
 	i = 0;
 	q = 0;
 	flag = 0;
@@ -112,7 +110,7 @@ char	*expension(t_mini *mini)
 			env_len = found_env_len(&mini->prompt[i]);
 			name_env = ft_getname(&mini->prompt[i], env_len);
 			env = ft_getenv(name_env, mini->cp_ev);
-			dest = ft_strjoin_env(dest, env);
+			mini->exp = ft_strjoin_env(mini->exp, env);
 			while (env_len-- > 0)
 				i++;
 			i++;
@@ -121,9 +119,8 @@ char	*expension(t_mini *mini)
 			flag = 1;
 		}
 		if (flag == 0)
-			dest = ft_strjoin(dest, &mini->prompt[i]);
+			mini->exp = ft_strjoin(mini->exp, &mini->prompt[i]);
 		if (mini->prompt[i] && flag == 0)
 			i++;
 	}
-	return (dest);
 }
