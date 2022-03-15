@@ -6,11 +6,34 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 10:45:48 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 18:10:34 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 11:48:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static char	*algo1(char *data, int *i_ev, int *i_d, int *iter)
+{		
+	data = malloc(sizeof(char) * \
+		(ft_strlen(&get_mini()->cp_ev[*i_ev][*iter]) + 1));
+	while (get_mini()->cp_ev[*i_ev][*iter])
+	{
+		data[*i_d] = get_mini()->cp_ev[*i_ev][*iter];
+		*iter = *iter + 1;
+		*i_d = *i_d + 1;
+	}
+	data[*i_d] = 0;
+	return (data);
+}
+
+static void	loop(char *name, int *i_ev, int *iter)
+{
+	if (ft_strncmp(name, get_mini()->cp_ev[*i_ev], ft_strlen(name)) == 0)
+		if (get_mini()->cp_ev[*i_ev][ft_strlen(name)] == '=')
+			*iter = ft_strlen(name) + 1;
+	if (*iter == 0)
+		*i_ev = *i_ev + 1;
+}
 
 static char	*env_var(char *name, char **cp_ev)
 {
@@ -22,26 +45,11 @@ static char	*env_var(char *name, char **cp_ev)
 	i_ev = 0;
 	i_d = 0;
 	iter = 0;
+	data = NULL;
 	while (cp_ev[i_ev] && iter == 0)
-	{
-		if (ft_strncmp(name, cp_ev[i_ev], ft_strlen(name)) == 0)
-			if (cp_ev[i_ev][ft_strlen(name)] == '=')
-				iter = ft_strlen(name) + 1;
-		if (iter == 0)
-			i_ev++;
-	}
+		loop(name, &i_ev, &iter);
 	if (iter != 0)
-	{
-		data = malloc(sizeof(char) * (ft_strlen(&cp_ev[i_ev][iter]) + 1));
-		while (cp_ev[i_ev][iter])
-		{
-			data[i_d] = cp_ev[i_ev][iter];
-			iter++;
-			i_d++;
-		}
-		data[i_d] = 0;
-		return (data);
-	}
+		return (algo1(data, &i_ev, &i_d, &iter));
 	else if (iter == 0)
 	{
 		data = malloc(sizeof(char));
@@ -60,7 +68,7 @@ static char	*zero_name(void)
 		return (free(dest), NULL);
 	dest[0] = '$';
 	dest[1] = 0;
-	return dest;
+	return (dest);
 }
 
 char	*ft_getenv(char *name, char **cp_ev)
