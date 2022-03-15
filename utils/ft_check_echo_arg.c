@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:43:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 18:21:13 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 11:16:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_echo_arg(char **cmd)
 
 	res = 0;
 	i = 2;
-	if (cmd && cmd[0])
+	if (cmd && cmd[0] && cmd[1])
 	{
 		if (ft_strncmp("-n", cmd[1], 2) == 0)
 		{

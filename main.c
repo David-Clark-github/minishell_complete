@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 14:17:04 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 11:26:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int	main(int ac, char **av, char **ev)
 			 	ft_pwd(1);
 			if (mini->er_num == 0 && mini->list->log == 2)
 				ft_cd(mini->tab_separ[1]);
+			if (mini->list->log == 4)
+				ft_export("toto", "tutu", &mini->cp_ev);
+			if (mini->list->log == 5)
+				ft_unset("toto", &mini->cp_ev);
 			// if (mini->er_num == 0 && mini->list->log == 6)
 			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 4)
