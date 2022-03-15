@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 16:57:06 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:17:15 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,10 @@ void	exec_env(t_mini *mini)
 void	exec_export(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
-	mini->er_num = ft_export("toto", "tata", &mini->cp_ev);
+	char	**name = (char **)"toto";
+	char	**data = (char **)"data";
+
+	mini->er_num = ft_export(name, data, 1, &mini->cp_ev);
 }
 
 void	exec_pwd(t_mini *mini)
@@ -201,7 +204,8 @@ void	exec_pwd(t_mini *mini)
 void	exec_unset(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
-	mini->er_num = ft_unset("toto", &mini->cp_ev);
+	char	**name = (char **)"toto";
+	mini->er_num = ft_unset(name);
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)

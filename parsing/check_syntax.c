@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:25:46 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 13:28:37 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 12:45:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	simple_syntax(char **tab_separ)
 		{
 			if (diff_redir(tab_separ[i]) != 0)
 				if (diff_redir(tab_separ[i + 1]) != 0)
-					return 1;
+					return (1);
 		}
 	}
 	return (0);
@@ -31,9 +31,7 @@ static int	simple_syntax(char **tab_separ)
 
 int	check_syntax(t_mini *mini)
 {
-	if (simple_syntax(mini->tab_separ) != 0) {
-		//mini->er_num = simple_syntax(mini->tab_separ);
+	if (simple_syntax(mini->tab_separ) != 0)
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }

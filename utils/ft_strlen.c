@@ -6,13 +6,13 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 19:59:10 by david             #+#    #+#             */
-/*   Updated: 2022/01/10 15:17:07 by david            ###   ########.fr       */
+/*   Updated: 2022/03/15 16:31:34 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	res;
 

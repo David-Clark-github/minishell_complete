@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 16:03:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:16:54 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,8 @@ typedef struct s_minishell {
 
 //PARSING
 void	parsing(t_mini *mini);
-char	*expension(t_mini *mini, int *error_num);
+void	expension(t_mini *mini);
 char	*ft_getenv(char *name, char **cp_ev);
-char	*quotes_exp(char *str);
 int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
@@ -126,8 +125,8 @@ int		diff_redir(char *str);
 int		ft_echo(char **str, int arg, int fd);
 int		ft_pwd(int fd);
 int		ft_env(char **tab_env, int fd);
-int		ft_export(char *name, char *data, char ***tab_env);
-int		ft_unset(char *name, char ***tab_env);
+int		ft_export(char **name, char **data, int len_data, char ***tab_env);
+int		ft_unset(char **name);
 int		ft_cd(char *path);
 int		ft_exit(int	num);
 
@@ -136,7 +135,7 @@ void	arg_export(char **tabx, t_mini *mini);
 void	arg_unset(char **tabx, t_mini *mini);
 
 //UTILS
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
 char	*ft_strdup(char *s);
@@ -152,6 +151,8 @@ void	ft_free_mini(t_mini *mini, int i);
 int		ft_checkredir(char c);
 int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
+int		ft_check_echo_arg(char **cmd);
+int		ft_check_export_format(char *str);
 t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);

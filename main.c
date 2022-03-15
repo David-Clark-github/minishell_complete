@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/14 16:46:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:16:48 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ int	main(int ac, char **av, char **ev)
 	mini = get_mini();
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
+	char	**name = NULL;
+	name = malloc(sizeof(char*) * 3);
+	char	**data = NULL;
+	data = malloc(sizeof(char*) * 3);
+	name[0] = strdup("toto");
+	name[1] = strdup("tutu");
+	name[2] = '\0';
+	data[0] = '\0';
+	data[1] = strdup("data");
+	data[2] = '\0';
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
@@ -32,14 +42,16 @@ int	main(int ac, char **av, char **ev)
 		if (mini->prompt == NULL)
 			ft_exit(mini->er_num);
 		if (ft_strlen(mini->prompt) != 0)
-			add_history(mini->prompt);
-		if (ft_strlen(mini->prompt) != 0)
 		{
-			check_error_quotes(mini->prompt, &mini->er_num);
-			/*
+			add_history(mini->prompt);
+			mini->er_num = check_error_quotes(mini->prompt, &mini->er_num);
+		}
+		if (mini->er_num != 0)
+			printf("er_num = %d error de quotes\n", mini->er_num);
+		if (ft_strlen(mini->prompt) != 0 && mini->er_num == 0)
+		{
 			if (mini->er_num != 0)
 				printf("er_num = %d error de quotes\n", mini->er_num);
-			*/
 			if (mini->er_num != -1)
 				parsing(mini);
 			// if (mini->list == NULL && mini->er_num == 0)
@@ -65,6 +77,8 @@ int	main(int ac, char **av, char **ev)
 			// ft_freetab(mini->tab_separ);
 			exec_instructions(mini);
 		}
+		if (check_error_quotes(mini->prompt, &mini->er_num) != 0)
+			mini->er_num = 0;
 		ft_free_mini(mini, 1);
 	}
 }
