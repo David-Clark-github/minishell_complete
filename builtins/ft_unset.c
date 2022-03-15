@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/11 13:27:22 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 18:15:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_unset(char *name, char ***tab_env)
 
 	i = look_name(name, *tab_env);
 	if (i != -1)
-	{	
+	{
 		*tab_env = unset(i, *tab_env);
 		if (tab_env == NULL)
 			return (EXIT_FAILURE);
