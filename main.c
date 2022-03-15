@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 17:13:38 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:57:59 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	main(int ac, char **av, char **ev)
 			if (mini->list && mini->list->log == 4)
 				ft_export(name, data, 2, &mini->cp_ev);
 			if (mini->list && mini->list->log == 5) {
-				printf("get_mini() = %p\n", get_mini()->cp_ev);
 				ft_unset(name);
 			}
 			// if (mini->er_num == 0 && mini->list->log == 6)

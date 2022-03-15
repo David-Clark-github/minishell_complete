@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 17:13:23 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 18:01:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int	look_name(char *name)
 	i = 0;
 	while (get_mini()->cp_ev[i])
 	{
-		//if (ft_strlen(get_mini()->cp_ev[i]) <= ft_strlen(name))
-			if (ft_strncmp(name, get_mini()->cp_ev[i], ft_strlen(name)) == 0)
-				return (i);
+		if (ft_strncmp(name, get_mini()->cp_ev[i], ft_strlen(name)) == 0)
+			return (i);
 		i++;
 	}
 	return (-1);
@@ -58,7 +57,6 @@ int	ft_unset(char **name)
 	int	loop;
 
 	loop = 0;
-	printf("get_mini() = %p\n", get_mini()->cp_ev);
 	while (name[loop])
 	{
 		i = look_name(name[loop]);
