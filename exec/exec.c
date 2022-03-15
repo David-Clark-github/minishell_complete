@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/15 15:57:34 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 18:48:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,8 @@ void	exec_export(t_mini *mini, t_lst *lst)
 {
 	(void) lst;
 	char	**name = (char **)"toto";
-	char	**data = (char **)"data";
 
-	mini->er_num = ft_export(name, data, 1, &mini->cp_ev);
+	mini->er_num = ft_export(name, &mini->cp_ev);
 }
 
 void	exec_pwd(t_mini *mini)

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 17:57:59 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 19:31:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int ac, char **av, char **ev)
 	name = malloc(sizeof(char*) * 3);
 	char	**data = NULL;
 	data = malloc(sizeof(char*) * 3);
-	name[0] = strdup("toto");
-	name[1] = strdup("tutu");
+	name[0] = strdup("toto=tutu");
+	name[1] = strdup("tutu=");
 	name[2] = '\0';
 	data[0] = '\0';
 	data[1] = strdup("data");
@@ -69,10 +69,9 @@ int	main(int ac, char **av, char **ev)
 			if (mini->er_num == 0 && mini->list && mini->list->log == 2)
 				ft_cd(mini->tab_separ[1]);
 			if (mini->list && mini->list->log == 4)
-				ft_export(name, data, 2, &mini->cp_ev);
-			if (mini->list && mini->list->log == 5) {
+				ft_export(name, &mini->cp_ev);
+			if (mini->list && mini->list->log == 5)
 				ft_unset(name);
-			}
 			// if (mini->er_num == 0 && mini->list->log == 6)
 			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 4)
