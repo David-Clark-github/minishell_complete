@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 13:18:06 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:08:57 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,17 @@ static void	write_with_expansion(t_mini *mini, int fd, char *buffer)
 void	heredoc(t_mini *mini, t_lst *lst)
 {
 	char	*limiter;
-	int		heredocfd;
+	int		hd_fd[2];
 	int		flag;
 
 	limiter = lst->next->str;
-	heredocfd = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-	if (heredocfd < 0)
+	if (pipe(hd_fd) < 0)
 		return ;
 	flag = 1;
 	while (flag)
 	{
 		mini->buffer = readline("> ");
-		printf("heredoc = %s\n", mini->buffer);
+		// printf("heredoc = %s\n", mini->buffer);
 		if (check_heredoc_end(mini->buffer, limiter))
 		{
 			free(mini->buffer);
@@ -91,7 +90,8 @@ void	heredoc(t_mini *mini, t_lst *lst)
 			flag = 0;
 		}
 		else
-			write_with_expansion(mini, heredocfd, mini->buffer);
+			write_with_expansion(mini, hd_fd[1], mini->buffer);
 	}
-	close(heredocfd);
+	close(hd_fd[1]);
+	mini->io_fds_redir[0] = hd_fd[0];
 }
