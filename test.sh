@@ -19,6 +19,10 @@ echo "456""789"
 echo 45"     "50
 echo ""456""
 echo 456""789
+echo abc"
+echo "abc
+echo abc'
+echo 'abc
 
 end
 #cat minish

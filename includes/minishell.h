@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 14:03:48 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 16:31:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		ft_echo(char **str, int arg, int fd);
 int		ft_pwd(int fd);
 int		ft_env(char **tab_env, int fd);
 int		ft_export(char **name, char **data, int len_data, char ***tab_env);
-int		ft_unset(char **name, char ***tab_env);
+int		ft_unset(char **name);
 int		ft_cd(char *path);
 int		ft_exit(int	num);
 
@@ -135,7 +135,7 @@ void	arg_export(char **tabx, t_mini *mini);
 void	arg_unset(char **tabx, t_mini *mini);
 
 //UTILS
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
 char	*ft_strdup(char *s);

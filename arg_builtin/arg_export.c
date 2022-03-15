@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:12:07 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 17:31:37 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 14:49:20 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	arg_export(char **tabx, t_mini *mini)
 				break;
 			if (after_equal(tabx[it]) != -1)
 				data = ft_strljoin(data, &tabx[it][is + 1], after_equal(&tabx[it][is]));
-			ft_export(name, data, &mini->cp_ev);
+			ft_export(&name, &data, 1, &mini->cp_ev);
 			//printf("name = %s\ndata = %s\n", name, data);
 		}
 		it++;

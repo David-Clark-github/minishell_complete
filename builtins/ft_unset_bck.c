@@ -6,22 +6,21 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 17:13:23 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 15:24:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	look_name(char *name)
+static int	look_name(char *name, char **tab_env)
 {
 	int	i;
 
 	i = 0;
-	while (get_mini()->cp_ev[i])
+	while (tab_env[i] && tab_env[i] != NULL)
 	{
-		//if (ft_strlen(get_mini()->cp_ev[i]) <= ft_strlen(name))
-			if (ft_strncmp(name, get_mini()->cp_ev[i], ft_strlen(name)) == 0)
-				return (i);
+		if (ft_strncmp(name, tab_env[i], ft_strlen(name)) == 0)
+			return (i);
 		i++;
 	}
 	return (-1);
@@ -31,37 +30,32 @@ static char	**unset(int i, char **tab_env)
 {
 	char	**dest;
 	int		y;
-	int		t;
 
 	dest = malloc(sizeof(char *) * ft_tablen(tab_env));
 	if (dest == NULL)
 		return (NULL);
 	y = 0;
-	t = 0;
-	while (t < (ft_tablen(tab_env)))
+	while (y < (ft_tablen(tab_env) - 1))
 	{
-		if (y != i)
-		{
-			dest[y] = strdup(tab_env[t]);
-			y++;
-		}
-		t++;
+		if (i != y)
+			dest[y] = strdup(tab_env[y]);
+		y++;
 	}
 	dest[y] = 0;
 	ft_freetab(tab_env);
 	return (dest);
 }
 
-int	ft_unset(char **name)
+int	ft_unset(char **name, char ***tab_env)
 {
 	int	i;
 	int	loop;
+	(void)tab_env;
 
 	loop = 0;
-	printf("get_mini() = %p\n", get_mini()->cp_ev);
 	while (name[loop])
 	{
-		i = look_name(name[loop]);
+		i = look_name(name[loop], get_mini()->cp_ev);
 		if (i != -1)
 		{	
 			get_mini()->cp_ev = unset(i, get_mini()->cp_ev);
