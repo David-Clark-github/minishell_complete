@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/15 18:17:15 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:31:13 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,40 +139,40 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 
 void	exec_cd(t_mini *mini, t_lst *lst)
 {
-	char	**cmd;
+	char	**args;
 
-	cmd = get_args(lst);
-	if (cmd == NULL)
+	args = get_args(lst);
+	if (args == NULL)
 		exit_error(__LINE__);
-	if (cmd[0] == NULL)
+	if (args[0] == NULL)
 		mini->er_num = ft_cd(NULL);
 	else
 	{
 		// printf("%s\n", cmd[1]);
-		mini->er_num = ft_cd(cmd[1]);
+		mini->er_num = ft_cd(args[1]);
 	}
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
-	char	**cmd;
+	char	**args;
 
-	cmd = get_args(lst);
-	if (cmd == NULL)
+	args = get_args(lst);
+	if (args == NULL)
 		exit_error(__LINE__);
-	if (cmd[0] == NULL)
+	if (args[0] == NULL)
 	{
 		if (mini->io_fds_redir[1] != -42)
-			mini->er_num = ft_echo(cmd, 0, mini->io_fds_redir[1]);
+			mini->er_num = ft_echo(args, 0, mini->io_fds_redir[1]);
 		else
-			mini->er_num = ft_echo(cmd, 0, STDOUT_FILENO);
+			mini->er_num = ft_echo(args, 0, STDOUT_FILENO);
 	}
 	else
 	{
 		if (mini->io_fds_redir[1] != -42)
-			mini->er_num = ft_echo(&cmd[1], 0, mini->io_fds_redir[1]);
+			mini->er_num = ft_echo(&args[1], 0, mini->io_fds_redir[1]);
 		else
-			mini->er_num = ft_echo(&cmd[1], 0, STDOUT_FILENO);
+			mini->er_num = ft_echo(&args[1], 0, STDOUT_FILENO);
 	}
 }
 
@@ -186,11 +186,8 @@ void	exec_env(t_mini *mini)
 
 void	exec_export(t_mini *mini, t_lst *lst)
 {
-	(void) lst;
-	char	**name = (char **)"toto";
-	char	**data = (char **)"data";
-
-	mini->er_num = ft_export(name, data, 1, &mini->cp_ev);
+	(void)mini;
+	(void)lst;
 }
 
 void	exec_pwd(t_mini *mini)
@@ -203,9 +200,15 @@ void	exec_pwd(t_mini *mini)
 
 void	exec_unset(t_mini *mini, t_lst *lst)
 {
-	(void) lst;
-	char	**name = (char **)"toto";
-	mini->er_num = ft_unset(name);
+	char	**args;
+
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	if (args[0] == NULL)
+		mini->er_num = ft_unset(&args[0]);
+	else
+		mini->er_num = ft_unset(&args[1]);
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)

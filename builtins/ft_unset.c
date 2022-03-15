@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:17:24 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:19:11 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_unset(char **name)
 	{
 		i = look_name(name[loop]);
 		if (i != -1)
-		{	
+		{
 			get_mini()->cp_ev = unset(i, get_mini()->cp_ev);
 			if (get_mini()->cp_ev == NULL)
 				return (EXIT_FAILURE);
