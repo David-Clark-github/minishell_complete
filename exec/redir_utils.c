@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:35:40 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 15:44:30 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:14:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	do_redirections(t_mini *mini, t_lst *lst)
 
 static void	do_redirections_and_args(t_mini *mini, t_lst *lst)
 {
-	while (lst && (is_redir(lst->log) || lst->log == 0))
+	while (lst && (is_redir(lst->log) || is_cmd(lst->log)))
 	{
 		if (lst->log == INPUT)
 			redirect_input(mini, lst);
