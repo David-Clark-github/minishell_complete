@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 13:11:54 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:27:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,19 @@ void	exec_export(t_mini *mini, t_lst *lst)
 {
 	(void)mini;
 	(void)lst;
+	// char	**args;
+
+	// args = get_args(lst);
+	// if (args == NULL)
+	// 	exit_error(__LINE__);
+	// if (ft_check_export_format(args[0]))
+	// 	exit_error(__LINE__);
+	// if (args[0] == NULL)
+	// 	mini->er_num = ft_cd(NULL);
+	// if (ft_tablen(args) > 2)
+	// 	exit_error(__LINE__);
+	// else
+	// 	mini->er_num = ft_cd(args[1]);
 }
 
 void	exec_pwd(t_mini *mini)
@@ -271,7 +284,7 @@ void	exec_instructions(t_mini *mini)
 	pipe_index = 0;
 	while(lst)
 	{
-		// dprintf(2, "lst->str = %s\n", lst->str);
+		dprintf(2, "lst->str = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
