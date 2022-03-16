@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/15 17:13:45 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/16 13:02:34 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,6 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/exec.c \
 			exec/check_errors_before_exec.c \
 			exec/exec_errors/unexpected_token.c \
-			arg_builtin/arg_export.c \
 			signal/take_signal.c \
 			main.c
 

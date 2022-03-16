@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/09 18:31:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:09:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av, char **ev)
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
 		{
-			free_mini(mini);
+			ft_free_mini(mini, 0);
 			exit(EXIT_SUCCESS);
 		}
 		if (ft_strlen(mini->prompt) != 0)
@@ -61,7 +61,7 @@ int	main(int ac, char **av, char **ev)
 			// 	printf("er_num = %d\n", mini->er_num);
 			// ft_freetab(mini->tab_separ);
 			exec_instructions(mini);
-			ft_freetab(mini->tab_separ);
+			ft_free_mini(mini, 1);
 			/*
 			if (mini.list != NULL) {
 				if (mini.list->log == 6)
