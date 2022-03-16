@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/15 18:16:46 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/16 14:43:11 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,12 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/pipe.c \
 			exec/redir_utils.c \
 			exec/pids.c \
-			exec/get_instruct_type.c \
+			exec/get_instruct_type1.c \
+			exec/get_instruct_type2.c \
+			exec/exec_utils.c \
+			exec/exec_builtin1.c \
+			exec/exec_builtin2.c \
+			exec/exec_bin.c \
 			exec/exec.c \
 			exec/check_errors_before_exec.c \
 			exec/exec_errors/unexpected_token.c \

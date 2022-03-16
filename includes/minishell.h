@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:16:54 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:04:29 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,8 @@ int		is_redir_stdin(int log);
 int		is_redir_stdout(int log);
 int		is_cmd(int log);
 int		is_redir(int log);
+int		is_builtin(int log);
+int		is_arg_and_redir(int log);
 
 //GET PATH AND CMDS PATH
 char	**get_path(char **env);
@@ -206,7 +208,19 @@ void	exit_error(int line);
 void	internal_error(t_mini *mini);
 
 //EXEC
+int		get_nb_of_args(t_lst *lst);
+char	**get_args(t_lst *lst);
+void	exec_cd(t_mini *mini, t_lst *lst);
+void	exec_echo(t_mini *mini, t_lst *lst);
+void	exec_env(t_mini *mini);
+void	exec_export(t_mini *mini, t_lst *lst);
+void	exec_pwd(t_mini *mini);
+void	exec_unset(t_mini *mini, t_lst *lst);
+void	exec_builtin(t_mini *mini, t_lst *lst);
 void	exec_instructions(t_mini *mini);
+void	dup_and_close_in_fork(t_mini *mini);
+void	close_out_fork(t_mini *mini);
+void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid);
 
 //EXEC ERRORS
 void	error_unexpected_token(t_mini *mini, char *token);
@@ -217,6 +231,7 @@ int		check_errors_before_exec(t_mini *mini);
 
 t_lst	*tab_to_list(char **tabx, int tk_len);
 
-//TEST
-void	take_signal(void);
+//SIGNAL
+void	default_sig(void);
+void	custom_sig(void);
 #endif

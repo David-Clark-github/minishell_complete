@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   get_instruct_type.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 16:06:54 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/09 13:08:01 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/16 14:39:42 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
-void	default_sig(void)
+int	is_redir_stdin(int log)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	return (log == INPUT || log == HEREDOC);
 }
 
-static void	custom_sigint(int sig)
+int	is_redir_stdout(int log)
 {
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		get_mini()->er_num = 130;
-	}
+	return (log == TRUNC || log == APPEND);
 }
 
-void	custom_sig(void)
+int	is_cmd(int log)
 {
-	signal(SIGINT, custom_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	return ((log <= 7));
+}
+
+int	is_redir(int log)
+{
+	return (log >= 8 && log <= 11);
+}
+
+int	is_builtin(int log)
+{
+	return (log >= BECHO && log <= EXIT);
 }

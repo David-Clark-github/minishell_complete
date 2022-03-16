@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:16:48 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:05:00 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av, char **ev)
 		printf("Aucun argument nécessaire pour minishell.\n");
 		return (EXIT_FAILURE);
 	}
-	take_signal();
+	custom_sig();
 	while (1)
 	{
 		mini->prompt = readline("Minishell~ ");
