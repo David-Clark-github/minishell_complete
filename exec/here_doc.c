@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 13:18:06 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 12:37:54 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	heredoc(t_mini *mini, t_lst *lst)
 	int		flag;
 
 	limiter = lst->next->str;
-	heredocfd = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+	heredocfd = open(NULL, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (heredocfd < 0)
 		return ;
 	flag = 1;
