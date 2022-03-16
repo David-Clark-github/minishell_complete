@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 15:04:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:57:44 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@
 
 //BASH PARSING ERRORS
 # define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
+
+extern int	g_err_num;
 
 typedef struct	s_lst {
 	struct s_lst	*next;

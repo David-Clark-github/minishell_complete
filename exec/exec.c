@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 15:00:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 16:46:30 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	exec_instructions(t_mini *mini)
 	int		**pipeline;
 	int		pipe_index;
 
-	if (check_errors_before_exec(mini))
+	g_err_num = check_errors_before_exec(mini);
+	if (g_err_num != 0)
 		return ;
 	init_exec_utils(mini);
 	lst = mini->list;
