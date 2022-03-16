@@ -6,13 +6,11 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 17:35:49 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:04:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	g_err_num;
 
 int	main(int ac, char **av, char **ev)
 {
@@ -26,8 +24,8 @@ int	main(int ac, char **av, char **ev)
 	name = malloc(sizeof(char*) * 3);
 	char	**data = NULL;
 	data = malloc(sizeof(char*) * 3);
-	name[0] = strdup("toto");
-	name[1] = strdup("tutu");
+	name[0] = strdup("toto=tutu");
+	name[1] = strdup("tutu=");
 	name[2] = '\0';
 	data[0] = '\0';
 	data[1] = strdup("data");
@@ -37,7 +35,7 @@ int	main(int ac, char **av, char **ev)
 		printf("Aucun argument nécessaire pour minishell.\n");
 		return (EXIT_FAILURE);
 	}
-	custom_sig();
+	take_signal();
 	while (1)
 	{
 		mini->prompt = readline("Minishell~ ");
@@ -56,20 +54,24 @@ int	main(int ac, char **av, char **ev)
 				printf("er_num = %d error de quotes\n", mini->er_num);
 			if (mini->er_num != -1)
 				parsing(mini);
-			// if (mini->list == NULL && mini->er_num == 0)
-			// 	printf("error during parsing\n");
-			// if (check_syntax(mini) == EXIT_FAILURE)
-			// 	printf("syntax error\n");
-			// if (mini->er_num != -1 && extract_lst(mini->list))
-
-			// //if (mini->list && mini->list->log == 4)
-			// //	ft_export("TUTU", "tata", &mini->cp_ev);
-			// if (mini->list && mini->er_num != -1 && mini->list->log == 6)
-			// 	ft_env(mini->cp_ev, 1);
-			// if (mini->er_num == 0 && mini->list->log == 3)
-			//  	ft_pwd(1);
-			// if (mini->er_num == 0 && mini->list->log == 2)
-			// 	ft_cd(mini->tab_separ[1]);
+			if (mini->list == NULL && mini->er_num == 0)
+				printf("error during parsing\n");
+			if (check_syntax(mini) == EXIT_FAILURE)
+				printf("syntax error\n");
+			if (mini->er_num != -1 && extract_lst(mini->list))
+			 	print_lst(&mini->list);
+			//if (mini->list && mini->list->log == 4)
+			//	ft_export("TUTU", "tata", &mini->cp_ev);
+			if (mini->list && mini->er_num != -1 && mini->list->log == 6)
+				ft_env(mini->cp_ev, 1);
+			if (mini->er_num == 0 && mini->list && mini->list->log == 3)
+			 	ft_pwd(1);
+			if (mini->er_num == 0 && mini->list && mini->list->log == 2)
+				ft_cd(mini->tab_separ[1]);
+			if (mini->list && mini->list->log == 4)
+				ft_export(name, &mini->cp_ev);
+			if (mini->list && mini->list->log == 5)
+				ft_unset(name);
 			// if (mini->er_num == 0 && mini->list->log == 6)
 			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 4)
@@ -77,8 +79,7 @@ int	main(int ac, char **av, char **ev)
 			// if (mini->er_num != 0)
 			// 	printf("er_num = %d\n", mini->er_num);
 			// ft_freetab(mini->tab_separ);
-			print_lst(&mini->list);
-			exec_instructions(mini);
+		//	exec_instructions(mini);
 		}
 		if (check_error_quotes(mini->prompt, &mini->er_num) != 0)
 			mini->er_num = 0;
