@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/15 13:33:07 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/16 18:23:59 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,30 @@ static char	*ft_strjoin_env(char *prompt, char *env)
 	return (dest);
 }
 
-void	expension(t_mini *mini)
+static void	algo(t_mini *mini, int *i, int *flag)
 {
+	int		env_len;
 	char	*name_env;
 	char	*env;
+
+	name_env = NULL;
+	env = NULL;
+	env_len = found_env_len(&mini->prompt[*i]);
+	name_env = ft_getname(&mini->prompt[*i], env_len);
+	env = ft_getenv(name_env, mini->cp_ev);
+	mini->exp = ft_strjoin_env(mini->exp, env);
+	while (env_len-- > 0)
+		*i = *i + 1;
+	*i = *i + 1;
+	*flag = 1;
+	free(name_env);
+	free(env);
+}
+
+void	expension(t_mini *mini)
+{
 	int		q;
 	int		i;
-	int		env_len;
 	int		flag;
 
 	i = 0;
@@ -106,18 +123,7 @@ void	expension(t_mini *mini)
 		else if (mini->prompt[i] == '\'' && q == 1)
 			q = 0;
 		else if (mini->prompt[i] == '$' && q == 0)
-		{
-			env_len = found_env_len(&mini->prompt[i]);
-			name_env = ft_getname(&mini->prompt[i], env_len);
-			env = ft_getenv(name_env, mini->cp_ev);
-			mini->exp = ft_strjoin_env(mini->exp, env);
-			while (env_len-- > 0)
-				i++;
-			i++;
-			free(name_env);
-			free(env);
-			flag = 1;
-		}
+			algo(mini, &i, &flag);
 		if (flag == 0)
 			mini->exp = ft_strjoin(mini->exp, &mini->prompt[i]);
 		if (mini->prompt[i] && flag == 0)

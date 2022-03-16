@@ -6,12 +6,12 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/03/11 18:14:56 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/16 18:58:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+/*
 static int	num_of_element(char *str)
 {
 	int	res;
@@ -62,7 +62,7 @@ static int	num_of_element(char *str)
 	}
 	return (res);
 }
-
+*/
 static void	init_token(char **token, int len)
 {
 	int	i;

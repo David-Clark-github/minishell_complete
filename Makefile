@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/16 14:43:11 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/16 18:45:04 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/expension.c \
 			parsing/tab_to_list.c \
 			parsing/ft_separ2.c \
+			parsing/num_of_element.c \
 			parsing/extract_lst.c \
 			parsing/ft_getenv.c \
 			utils/ft_copy_env.c \
