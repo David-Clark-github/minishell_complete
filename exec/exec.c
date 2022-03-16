@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/15 19:31:13 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 13:11:54 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,16 +146,16 @@ void	exec_cd(t_mini *mini, t_lst *lst)
 		exit_error(__LINE__);
 	if (args[0] == NULL)
 		mini->er_num = ft_cd(NULL);
+	if (ft_tablen(args) > 2)
+		exit_error(__LINE__);
 	else
-	{
-		// printf("%s\n", cmd[1]);
 		mini->er_num = ft_cd(args[1]);
-	}
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
 	char	**args;
+	int		opt;
 
 	args = get_args(lst);
 	if (args == NULL)
@@ -169,10 +169,13 @@ void	exec_echo(t_mini *mini, t_lst *lst)
 	}
 	else
 	{
+		opt = 0;
+		if (ft_check_echo_arg(args))
+			opt = 1;
 		if (mini->io_fds_redir[1] != -42)
-			mini->er_num = ft_echo(&args[1], 0, mini->io_fds_redir[1]);
+			mini->er_num = ft_echo(&args[2], opt, mini->io_fds_redir[1]);
 		else
-			mini->er_num = ft_echo(&args[1], 0, STDOUT_FILENO);
+			mini->er_num = ft_echo(&args[2], opt, STDOUT_FILENO);
 	}
 }
 
