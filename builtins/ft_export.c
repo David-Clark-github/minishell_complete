@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/03/15 14:04:08 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/15 19:17:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,54 @@ static char	**change_env(char *name, char *data, char **tab_env)
 	return (ft_freetab(tab_env), dest);
 }
 
-int	ft_export(char **name, char **data, int len_data, char ***tab_env)
+static void	split_data(char **name, char **data, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-//	printf("name = %s\n", name);
-//	printf("data = %s\n", data);
-	while (i < len_data)
+	while (str[i] && str[i] != '=')
 	{
-		if (look_name(name[i], *tab_env) == -1)
+		*name = ft_strljoin(*name, &str[i], 1);
+		i++;
+	}
+	if (str[i] && str[i] == '=')
+		i++;
+	while (str[i])
+	{
+		*data = ft_strljoin(*data, &str[i], 1);
+		i++;
+	}
+}
+
+int	ft_export(char **str, char ***tab_env)
+{
+	int		i;
+	char	*name;
+	char	*data;
+
+	i = 0;
+	name = NULL;
+	data = NULL;
+	while (str[i])
+	{
+		printf("str[i] = %s\n", str[i]);
+		split_data(&name, &data, str[i]);
+		printf("name = %s\n", name);
+		printf("data = %s\n", data);
+		if (look_name(name, *tab_env) == -1)
 		{
 			dprintf(2, "add_env()\n");
-			*tab_env = add_env(name[i], data[i], *tab_env);
+			*tab_env = add_env(name, data, *tab_env);
 		}
 		else
 		{
 			dprintf(2, "change_env()\n");
-			*tab_env = change_env(name[i], data[i], *tab_env);
+			*tab_env = change_env(name, data, *tab_env);
 		}
+		free(name);
+		free(data);
+		name = NULL;
+		data = NULL;
 		i++;
 	}
 	return (EXIT_SUCCESS);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:19:11 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:39:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	look_name(char *name)
+static int	look_name(char *name)
 {
 	int	i;
 
@@ -26,28 +26,28 @@ int	look_name(char *name)
 	return (-1);
 }
 
-static char	**unset(int i, char **tab_env)
+static char	**unset(int i)
 {
 	char	**dest;
 	int		y;
 	int		t;
 
-	dest = malloc(sizeof(char *) * ft_tablen(tab_env));
+	dest = malloc(sizeof(char *) * ft_tablen(get_mini()->cp_ev));
 	if (dest == NULL)
 		return (NULL);
 	y = 0;
 	t = 0;
-	while (t < (ft_tablen(tab_env)))
+	while (t < (ft_tablen(get_mini()->cp_ev)))
 	{
 		if (y != i)
 		{
-			dest[y] = strdup(tab_env[t]);
+			dest[y] = strdup(get_mini()->cp_ev[t]);
 			y++;
 		}
 		t++;
 	}
 	dest[y] = 0;
-	ft_freetab(tab_env);
+	ft_freetab(get_mini()->cp_ev);
 	return (dest);
 }
 
@@ -62,7 +62,7 @@ int	ft_unset(char **name)
 		i = look_name(name[loop]);
 		if (i != -1)
 		{
-			get_mini()->cp_ev = unset(i, get_mini()->cp_ev);
+			get_mini()->cp_ev = unset(i);
 			if (get_mini()->cp_ev == NULL)
 				return (EXIT_FAILURE);
 		}
