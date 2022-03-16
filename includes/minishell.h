@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:16:54 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:40:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_minishell {
 	char	*prompt;
 	char	*exp;
 	char	**tab_separ;
+	int		*int_separ;
 	int		tab_len;
 	int		io_fds_redir[2];
 	int		unused_fds[2];
@@ -107,7 +108,7 @@ typedef struct s_minishell {
 
 //PARSING
 void	parsing(t_mini *mini);
-void	expension(t_mini *mini);
+char	*expension(char *str);
 char	*ft_getenv(char *name, char **cp_ev);
 int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);

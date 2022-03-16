@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 18:16:48 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/16 14:07:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int	main(int ac, char **av, char **ev)
 			// 	printf("error during parsing\n");
 			// if (check_syntax(mini) == EXIT_FAILURE)
 			// 	printf("syntax error\n");
-			// if (mini->er_num != -1 && extract_lst(mini->list))
-			//  	print_lst(&mini->list);
+			 if (mini->er_num != -1 && extract_lst(mini->list))
+			  	print_lst(&mini->list);
 			// //if (mini->list && mini->list->log == 4)
 			// //	ft_export("TUTU", "tata", &mini->cp_ev);
 			// if (mini->list && mini->er_num != -1 && mini->list->log == 6)
