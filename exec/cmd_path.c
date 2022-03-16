@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/13 07:50:04 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:47:51 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**get_path(char **env)
 	i = 0;
 	while (env[i] != NULL && ft_strncmp("PATH", env[i], 4) != 0)
 		i++;
-	if (env[i] == NULL)
+	if (ft_strncmp("PATH", env[i], 4) != 0)
 		return (NULL);
 	path = ft_split(&env[i][5], ':');
 	if (path == NULL)
@@ -42,9 +42,12 @@ char	**get_path(char **env)
 	i = 0;
 	while (path[i])
 	{
-		tmp = my_strjoin(path[i], "/");
+		tmp = ft_strljoin(path[i], "/", ft_strlen(path[i]) + 1);
 		if (tmp == NULL)
-			return (free_path(path), NULL);
+		{
+			free_path(path);
+			exit_error(__LINE__);
+		}
 		free(path[i]);
 		path[i] = tmp;
 		i++;
@@ -61,7 +64,7 @@ char	*get_cmd_path(char **path, char *cmd)
 	printf("cmd = %s\n", cmd);
 	while (path && path[i])
 	{
-		tmp = my_strjoin(path[i], cmd);
+		tmp = ft_strljoin(path[i], cmd, ft_strlen(path[i]) + ft_strlen(cmd));
 		if (tmp == NULL)
 			exit_error(__LINE__);
 		if (access(tmp, X_OK) == 0)

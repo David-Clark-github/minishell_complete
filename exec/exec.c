@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/15 18:48:43 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/09 19:37:37 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void	exit_error(int line)
 int	is_builtin(int log)
 {
 	return (log >= BECHO && log <= EXIT);
-}
-
-int	is_arg_and_redir(int log)
-{
-	return (log == 0 || is_redir(log));
 }
 
 void	free_cmd(char **cmd)
@@ -89,7 +84,6 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 {
 	char		**cmd;
 
-	take_signal();
 	cmd = ft_split(lst->str, ' ');
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
 	*pid = fork();
@@ -109,66 +103,16 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 	}
 }
 
-void	exec_cd(t_mini *mini, t_lst *lst)
-{
-	(void) lst;
-	mini->er_num = ft_cd("../");
-}
-
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
 	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_echo(&lst->str, 0, mini->io_fds_redir[1]);
-	else
-		mini->er_num = ft_echo(&lst->str, 0, STDOUT_FILENO);
-}
-
-void	exec_env(t_mini *mini)
-{
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_env(mini->cp_ev, mini->io_fds_redir[1]);
-	else
-		mini->er_num = ft_env(mini->cp_ev, STDOUT_FILENO);
-}
-
-void	exec_export(t_mini *mini, t_lst *lst)
-{
-	(void) lst;
-	char	**name = (char **)"toto";
-
-	mini->er_num = ft_export(name, &mini->cp_ev);
-}
-
-void	exec_pwd(t_mini *mini)
-{
-	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_pwd(mini->io_fds_redir[1]);
-	else
-		mini->er_num = ft_pwd(STDOUT_FILENO);
-}
-
-void	exec_unset(t_mini *mini, t_lst *lst)
-{
-	(void) lst;
-	char	**name = (char **)"toto";
-	mini->er_num = ft_unset(name);
+		mini->er_num = ft_echo();
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)
 {
-	if (lst->log == CD)
-		exec_cd(mini, lst);
-	else if (lst->log == BECHO)
+	if (lst->log == BECHO)
 		exec_echo(mini, lst);
-	else if (lst->log == ENV)
-		exec_env(mini);
-	else if (lst->log == EXPORT)
-		exec_export(mini, lst);
-	else if (lst->log == PWD)
-		exec_pwd(mini);
-	else if (lst->log == UNSET)
-		exec_unset(mini, lst);
-	close_out_fork(mini);
 }
 
 void	exec(t_mini *mini, t_lst *lst)
@@ -182,7 +126,9 @@ void	exec(t_mini *mini, t_lst *lst)
 		add_pid_to_pids(mini, pid);
 	}
 	else if (is_builtin(lst->log))
+	{
 		exec_builtin(mini, lst);
+	}
 }
 
 static void	init_exec_utils(t_mini *mini)
@@ -202,8 +148,6 @@ void	exec_instructions(t_mini *mini)
 	int		**pipeline;
 	int		pipe_index;
 
-	if (check_errors_before_exec(mini))
-		return ;
 	init_exec_utils(mini);
 	lst = mini->list;
 	pipeline = create_pipeline(lst);
