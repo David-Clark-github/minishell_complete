@@ -6,7 +6,11 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/09 18:47:51 by seciurte         ###   ########.fr       */
+=======
+/*   Updated: 2022/03/14 12:39:59 by seciurte         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +65,13 @@ char	*get_cmd_path(char **path, char *cmd)
 	char	*tmp;
 
 	i = 0;
-	printf("cmd = %s\n", cmd);
 	while (path && path[i])
 	{
 		tmp = ft_strljoin(path[i], cmd, ft_strlen(path[i]) + ft_strlen(cmd));
 		if (tmp == NULL)
 			exit_error(__LINE__);
 		if (access(tmp, X_OK) == 0)
-		{
-			free(cmd);
 			return (tmp);
-		}
 		free(tmp);
 		i++;
 	}

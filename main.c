@@ -43,16 +43,20 @@ int	main(int ac, char **av, char **ev)
 				printf("er_num = %d error de quotes\n", mini->er_num);
 			if (mini->er_num == 0)
 				parsing(mini);
-			if (mini->list == NULL && mini->er_num == 0)
-				printf("error during parsing\n");
-				/*
-			if (check_syntax(mini) == EXIT_FAILURE)
-				printf("syntax error\n");
-			*/
-			// if (mini->er_num == 0 && extract_lst(mini->list))
-			// 	print_lst(&mini->list);
+			// if (mini->list == NULL && mini->er_num == 0)
+			// 	printf("error during parsing\n");
+			// if (check_syntax(mini) == EXIT_FAILURE)
+			// 	printf("syntax error\n");
+			// if (mini->er_num != -1 && extract_lst(mini->list))
+			//  	print_lst(&mini->list);
+			// //if (mini->list && mini->list->log == 4)
+			// //	ft_export("TUTU", "tata", &mini->cp_ev);
+			// if (mini->list && mini->er_num != -1 && mini->list->log == 6)
+			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 3)
-			// 	ft_pwd(1);
+			//  	ft_pwd(1);
+			// if (mini->er_num == 0 && mini->list->log == 2)
+			// 	ft_cd(mini->tab_separ[1]);
 			// if (mini->er_num == 0 && mini->list->log == 6)
 			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 4)

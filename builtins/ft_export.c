@@ -103,19 +103,23 @@ int	ft_export(char **str, char ***tab_env)
 	data = NULL;
 	while (str[i])
 	{
-		printf("str[i] = %s\n", str[i]);
-		split_data(&name, &data, str[i]);
-		printf("name = %s\n", name);
-		printf("data = %s\n", data);
-		if (look_name(name, *tab_env) == -1)
+		if (ft_check_export_format(str[i]))
 		{
-			dprintf(2, "add_env()\n");
-			*tab_env = add_env(name, data, *tab_env);
-		}
-		else
-		{
-			dprintf(2, "change_env()\n");
-			*tab_env = change_env(name, data, *tab_env);
+			split_data(&name, &data, str[i]);
+			if (look_name(name, *tab_env) == -1)
+			{
+				dprintf(2, "add_env()\n");
+				*tab_env = add_env(name, data, *tab_env);
+			}
+			else
+			{
+				dprintf(2, "change_env()\n");
+				*tab_env = change_env(name, data, *tab_env);
+			}
+			free(name);
+			free(data);
+			name = NULL;
+			data = NULL;
 		}
 		free(name);
 		free(data);

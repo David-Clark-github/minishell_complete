@@ -74,7 +74,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g -fsanitize=address
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g #-fsanitize=address
 
 CC		= gcc
 

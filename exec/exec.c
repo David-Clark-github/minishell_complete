@@ -6,7 +6,11 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/09 19:37:37 by seciurte         ###   ########.fr       */
+=======
+/*   Updated: 2022/03/15 19:31:13 by seciurte         ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +35,7 @@ int	is_builtin(int log)
 	return (log >= BECHO && log <= EXIT);
 }
 
+<<<<<<< HEAD
 void	free_cmd(char **cmd)
 {
 	int		i;
@@ -42,6 +47,11 @@ void	free_cmd(char **cmd)
 		i++;
 	}
 	free(cmd);
+=======
+int	is_arg_and_redir(int log)
+{
+	return (log == 0 || is_redir(log));
+>>>>>>> master
 }
 
 void	dup_and_close_in_fork(t_mini *mini)
@@ -80,38 +90,166 @@ void	close_out_fork(t_mini *mini)
 		mini->unused_fds[1] = -42;
 }
 
+int	get_nb_of_args(t_lst *lst)
+{
+	int		nb_args;
+
+	nb_args = 0;
+	while (lst && lst->log != PIPE)
+	{
+		if (lst->log == 0 || is_builtin(lst->log))
+			nb_args++;
+		if (is_redir(lst->log))
+			lst = lst->next->next;
+		else
+			lst = lst->next;
+	}
+	return (nb_args);
+}
+
+char	**get_args(t_lst *lst)
+{
+	char	**cmd;
+	int		i;
+	int		nb_args;
+
+	i = 0;
+	nb_args = get_nb_of_args(lst);
+	cmd = malloc(sizeof(char *) * (nb_args + 1));
+	if (cmd == NULL)
+		return (NULL);
+	while (lst && lst->log != PIPE)
+	{
+		if (lst->log == 0 || is_builtin(lst->log))
+		{
+			cmd[i] = lst->str;
+			i++;
+			lst = lst->next;
+		}
+		else
+			lst = lst->next->next;
+	}
+	cmd[i] = NULL;
+	return (cmd);
+}
+
 void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 {
 	char		**cmd;
 
+<<<<<<< HEAD
 	cmd = ft_split(lst->str, ' ');
+=======
+	take_signal();
+	cmd = get_args(lst);
+>>>>>>> master
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
 	*pid = fork();
 	if (*pid < 0)
 		exit_error(__LINE__);
 	if (*pid == 0)
 	{
-		// dprintf(2, "cmd = %s | pid = %d\n", cmd[0], getpid());
 		dup_and_close_in_fork(mini);
 		execve(cmd[0], cmd, mini->cp_ev);
 		exit_error(__LINE__);
 	}
 	else
 	{
-		free_cmd(cmd);
 		close_out_fork(mini);
+	}
+}
+
+<<<<<<< HEAD
+void	exec_echo(t_mini *mini, t_lst *lst)
+{
+	if (mini->io_fds_redir[1] != -42)
+		mini->er_num = ft_echo();
+=======
+void	exec_cd(t_mini *mini, t_lst *lst)
+{
+	char	**args;
+
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	if (args[0] == NULL)
+		mini->er_num = ft_cd(NULL);
+	else
+	{
+		// printf("%s\n", cmd[1]);
+		mini->er_num = ft_cd(args[1]);
 	}
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
 {
+	char	**args;
+
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	if (args[0] == NULL)
+	{
+		if (mini->io_fds_redir[1] != -42)
+			mini->er_num = ft_echo(args, 0, mini->io_fds_redir[1]);
+		else
+			mini->er_num = ft_echo(args, 0, STDOUT_FILENO);
+	}
+	else
+	{
+		if (mini->io_fds_redir[1] != -42)
+			mini->er_num = ft_echo(&args[1], 0, mini->io_fds_redir[1]);
+		else
+			mini->er_num = ft_echo(&args[1], 0, STDOUT_FILENO);
+	}
+}
+
+void	exec_env(t_mini *mini)
+{
 	if (mini->io_fds_redir[1] != -42)
-		mini->er_num = ft_echo();
+		mini->er_num = ft_env(mini->cp_ev, mini->io_fds_redir[1]);
+	else
+		mini->er_num = ft_env(mini->cp_ev, STDOUT_FILENO);
+}
+
+void	exec_export(t_mini *mini, t_lst *lst)
+{
+	(void)mini;
+	(void)lst;
+}
+
+void	exec_pwd(t_mini *mini)
+{
+	if (mini->io_fds_redir[1] != -42)
+		mini->er_num = ft_pwd(mini->io_fds_redir[1]);
+	else
+		mini->er_num = ft_pwd(STDOUT_FILENO);
+}
+
+void	exec_unset(t_mini *mini, t_lst *lst)
+{
+	char	**args;
+
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	if (args[0] == NULL)
+		mini->er_num = ft_unset(&args[0]);
+	else
+		mini->er_num = ft_unset(&args[1]);
+>>>>>>> master
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)
 {
+<<<<<<< HEAD
 	if (lst->log == BECHO)
+=======
+	// printf("lst->log = %d\n", lst->log);
+	if (lst->log == CD)
+		exec_cd(mini, lst);
+	else if (lst->log == BECHO)
+>>>>>>> master
 		exec_echo(mini, lst);
 }
 
@@ -152,16 +290,17 @@ void	exec_instructions(t_mini *mini)
 	lst = mini->list;
 	pipeline = create_pipeline(lst);
 	pipe_index = 0;
-	while(lst && lst->str)
+	while(lst)
 	{
+		// dprintf(2, "lst->str = %s\n", lst->str);
 		redirections(mini, lst, pipeline, &pipe_index);
 		if (lst && is_cmd(lst->log))
 			exec(mini, lst);
-		if (lst && is_redir(lst->log))
+		if (is_redir(lst->log))
 			lst = skip_redir(lst);
-		else if (lst && lst->next && is_redir(lst->next->log))
-			lst = skip_redir(lst->next);
-		else if (lst)
+		else if (lst->log == 0 || is_builtin(lst->log))
+			lst = skip_redir_and_args(lst);
+		else
 			lst = lst->next;
 	}
 	wait_for_forks(mini);
