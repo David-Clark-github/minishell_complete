@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 15:12:59 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:36:40 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,39 +29,50 @@ static char	*get_var_value(t_mini *mini, char *var, int var_len)
 	int			env_index;
 
 	env_index = 0;
+		printf("%s | %d\n", var, var_len);
 	while (mini->cp_ev[env_index])
 	{
-		if (ft_strncmp(mini->cp_ev[env_index], var, var_len) == 0)
+		if (ft_strncmp(mini->cp_ev[env_index], var, var_len - 1) == 0)
 			return (mini->cp_ev[env_index]);
 		env_index++;
 	}
 	return (NULL);
 }
 
+static void	expand(t_mini *mini, int fd, char *buffer, int *buff_index)
+{
+	int		var_len;
+	char	*var_value;
+
+	var_len = 1;
+	if (ft_strncmp(&buffer[(*buff_index)], "$?", 2) == 0)
+	{
+		ft_putnbr_fd(g_err_num, fd);
+		(*buff_index)++;
+	}
+	else if (buffer[(*buff_index) + var_len]
+		&& buffer[(*buff_index) + var_len] != '$')
+	{
+		while (buffer[(*buff_index) + var_len]
+				&& ft_isalpha(buffer[(*buff_index) + var_len]))
+			var_len++;
+		var_value = get_var_value(mini, &buffer[(*buff_index) + 1], var_len);
+		write(fd, &var_value[var_len], ft_strlen(&var_value[var_len]));
+		(*buff_index) += var_len - 1;
+	}
+	else
+		write(fd, &buffer[(*buff_index)], 1);
+}
+
 static void	write_with_expansion(t_mini *mini, int fd, char *buffer)
 {
 	int		buff_index;
-	int		var_len;
-	char	*var_value;
 
 	buff_index = 0;
 	while (buffer && buffer[buff_index])
 	{
-		// dprintf(2, "here\n");
-		var_len = 0;
-		if (buffer[buff_index] == '$' && (ft_isalpha(buffer[buff_index + 1]) || buffer[buff_index + 1] == '?'))
-		{
-			while (buffer[buff_index + var_len] && buffer[buff_index + var_len] != ' ')
-				var_len++;
-			var_value = get_var_value(mini, &buffer[buff_index + 1], var_len - 1);
-			if (var_value != NULL)
-			{
-				write(fd, &var_value[var_len], ft_strlen(&var_value[var_len]));
-				buff_index += var_len - 1;
-			}
-			else
-				write(fd, &buffer[buff_index], 1);
-		}
+		if (buffer[buff_index] == '$')
+			expand(mini, fd, buffer, &buff_index);
 		else
 			write(fd, &buffer[buff_index], 1);
 		buff_index++;

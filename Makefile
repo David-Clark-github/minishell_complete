@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/16 14:43:11 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/17 15:22:39 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strlcpy.c \
 			utils/ft_memcpy.c \
 			utils/my_strjoin.c \
+			utils/ft_putnbr_fd.c \
+			utils/ft_putstr_fd.c \
+			utils/ft_putchar_fd.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \

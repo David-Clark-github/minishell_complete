@@ -6,13 +6,13 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 17:35:49 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/17 14:41:35 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_err_num;
+int	g_err_num = 0;
 
 int	main(int ac, char **av, char **ev)
 {
@@ -22,16 +22,16 @@ int	main(int ac, char **av, char **ev)
 	mini = get_mini();
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
-	char	**name = NULL;
-	name = malloc(sizeof(char*) * 3);
-	char	**data = NULL;
-	data = malloc(sizeof(char*) * 3);
-	name[0] = strdup("toto");
-	name[1] = strdup("tutu");
-	name[2] = '\0';
-	data[0] = '\0';
-	data[1] = strdup("data");
-	data[2] = '\0';
+	// char	**name = NULL;
+	// name = malloc(sizeof(char*) * 3);
+	// char	**data = NULL;
+	// data = malloc(sizeof(char*) * 3);
+	// name[0] = strdup("toto");
+	// name[1] = strdup("tutu");
+	// name[2] = '\0';
+	// data[0] = '\0';
+	// data[1] = strdup("data");
+	// data[2] = '\0';
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
