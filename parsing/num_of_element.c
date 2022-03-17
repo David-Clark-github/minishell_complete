@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:33:16 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 18:58:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/17 11:13:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ static void	simple_quotes(int *res, int *i, char *str)
 		*i = *i + 1;
 	*i = *i + 1;
 }
-/*
+
 static void	double_quotes(int *res, int *i, char *str)
 {
-//	printf("avant double\n");
 	*res = *res + 1;
 	if (str[*i] == '\"')
 		*i = *i + 1;
@@ -31,9 +30,22 @@ static void	double_quotes(int *res, int *i, char *str)
 		*i = *i + 1;
 	if (str[*i] && str[*i] == '\"')
 		*i = *i + 1;
-//	printf("apres double\n");
 }
-*/
+
+static void	algo1(int *res, int *i, char *str)
+{
+	*res = *res + 1;
+	while (str[*i] && ft_checkcara(str[*i], " <>|\'\"\t") == 0)
+		*i = *i + 1 ;
+}
+
+static void	algo2(int *res, int *i, char *str)
+{
+	*res = *res + 1;
+	*i = *i + 1;
+	if (str[*i] && str[*i] == str[*i - 1])
+		*i = *i + 1 ;
+}
 
 int	num_of_element(char *str)
 {
@@ -47,31 +59,13 @@ int	num_of_element(char *str)
 		while (str[i] == ' ')
 			i++;
 		if (str[i] == '\'')
-			simple_quotes(&res, &i, &str[i]);
+			simple_quotes(&res, &i, str);
 		else if (str[i] == '\"')
-			//double_quotes(&res, &i, &str[i]);
-		{
-			res++;
-			if (str[i] == '\"')
-				i++;
-			while (str[i] && str[i] != '\"')
-				i++;
-			if (str[i] && str[i] == '\"')
-				i++;
-		}
+			double_quotes(&res, &i, str);
 		else if (ft_checkcara(str[i], "<>|") == 0)
-		{
-			res++;
-			while (str[i] && ft_checkcara(str[i], " <>|\'\"\t") == 0)
-				i++;
-		}
+			algo1(&res, &i, str);
 		else if (ft_checkcara(str[i], "<>") == 1)
-		{
-			res++;
-			i++;
-			if (str[i] && str[i] == str[i - 1])
-				i++;
-		}
+			algo2(&res, &i, str);
 		else if (ft_checkcara(str[i], "|") == 1)
 		{
 			res++;

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 18:44:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/17 12:12:36 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	**ft_separ(char *str, int *tk_len);
+void	simple_q(int *i_str, int *i_dest, char *str, char **dest);
+void	double_q(int *i_str, int *i_dest, char *str, char **dest);
+void	zero_cara(int *i_str, int *i_dest, char *str, char **dest);
+void	one_cara(int *i_str, int *i_dest, char *str, char **dest);
+void	one_pipe(int *i_str, int *i_dest, char *str, char **dest);
+void	init_token(char **token, int len);
 int		num_of_element(char *str);
 int		extract_lst(t_lst *list);
 int		check_tab(char **tab_separ);

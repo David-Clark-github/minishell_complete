@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/16 18:45:04 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/17 12:13:20 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS	=	parsing/add_lst_bck2.c \
 			parsing/expension.c \
 			parsing/tab_to_list.c \
 			parsing/ft_separ2.c \
+			parsing/ft_separ_utils.c \
+			parsing/init_token.c \
 			parsing/num_of_element.c \
 			parsing/extract_lst.c \
 			parsing/ft_getenv.c \
@@ -81,7 +83,7 @@ NAME	= minishell
 
 OBJS	= $(SRCS:.c=.o)
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g #-fsanitize=address
+CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER) -g -fsanitize=address
 
 CC		= gcc
 
