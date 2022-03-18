@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/18 17:59:59 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/18 18:53:14 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,9 +102,9 @@ fclean:	clean
 	rm -f $(NAME)
 
 re:		fclean
-	make
+	@make
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -lreadline
 
 .PHONY: all clean fclean re

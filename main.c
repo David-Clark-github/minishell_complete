@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 17:10:46 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:37:02 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av, char **ev)
 	custom_sig();
 	while (1)
 	{
-		mini->prompt = readline("Minishell~ ");
+		mini->prompt = readline("\33[2K\r Minishell~ ");
 		if (mini->prompt == NULL)
 			ft_exit(mini->er_num);
 		if (ft_strlen(mini->prompt) != 0)

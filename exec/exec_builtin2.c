@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 17:40:47 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:01:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	exec_exit(t_lst *lst)
 	args = get_args(lst);
 	if (ft_tablen(args) > 2)
 		exit_error(__LINE__);
-	if (ft_tablen(args) == 2)
+	if (ft_tablen(args) == 2 && ft_check_exit_format(args[1]))
 		ft_exit((ft_atoi(args[1]) % 256));
 	else
 		ft_exit(g_err_num);

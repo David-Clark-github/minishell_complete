@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 17:35:08 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:13:40 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	arg_unset(char **tabx, t_mini *mini);
 int		ft_strlen(const char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
+int		ft_isdigit(int c);
 char	*ft_strdup(char *s);
 char	*ft_itoa(int n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -162,6 +163,7 @@ int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
 int		ft_check_echo_arg(char **cmd);
 int		ft_check_export_format(char *str);
+int		ft_check_exit_format(char *str);
 t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
@@ -236,7 +238,7 @@ void	close_out_fork(t_mini *mini);
 void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid);
 
 //EXEC ERRORS
-void	error_unexpected_token(t_mini *mini, char *token);
+void	error_unexpected_token(char *token);
 int		check_errors_before_exec(t_mini *mini);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 14:46:01 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:36:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static void	custom_sigint(int sig)
 {
 	if (sig == SIGINT)
 	{
-		printf("\n");
+		ft_putchar_fd('\n', STDOUT_FILENO);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
-		get_mini()->er_num = 130;
+		g_err_num = 130;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 22:33:45 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 15:44:21 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:13:56 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	check_errors_before_exec(t_mini *mini)
 	while (tmp)
 	{
 		if (is_redir(tmp->log) && !tmp->next)
-			return (error_unexpected_token(mini, "newline"), 2);
+			return (error_unexpected_token("newline"), 2);
 		else if (is_redir(tmp->log) && (!tmp->next
 				|| (tmp->next->log <= 12 && tmp->next->log > 0)))
-			return (error_unexpected_token(mini, "newline"), 2);
+			return (error_unexpected_token("newline"), 2);
 		else if (tmp->log == PIPE && (!tmp->next || tmp->next->log == PIPE
 				|| prev == NULL))
-			return (error_unexpected_token(mini, "|"), 2);
+			return (error_unexpected_token("|"), 2);
 		prev = tmp;
 		tmp = tmp->next;
 	}
