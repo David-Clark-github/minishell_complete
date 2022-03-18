@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/18 14:27:31 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/18 17:56:29 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strlen.c \
 			utils/ft_tablen.c \
 			utils/ft_isalpha.c \
+			utils/ft_isdigit.c \
 			utils/ft_itoa.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
@@ -44,6 +45,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_checkquote.c \
 			utils/ft_checkcara.c \
 			utils/ft_check_echo_arg.c\
+			utils/ft_check_exit_format.c \
 			utils/ft_split.c \
 			utils/ft_memset.c \
 			utils/ft_strlcpy.c \

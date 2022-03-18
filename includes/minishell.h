@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 14:58:36 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/18 17:35:08 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		ft_export(char **str, char ***tab_env);
 void	take_data_name(char **name, char **data, char *str);
 int		ft_unset(char **name);
 int		ft_cd(char *path);
-int		ft_exit(int num, int print, int fd);
+int		ft_exit(int num);
 
 //ARG_BUILTIN
 void	arg_unset(char **tabx, t_mini *mini);
@@ -168,6 +168,10 @@ size_t	ft_strlcpy(char *dst, char *src, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*my_strjoin(char *s1, char *s2);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+int		ft_atoi(const char *nptr);
 
 //INSTRUCTION TYPES
 int		is_redir_stdin(int log);
