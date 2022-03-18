@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 17:35:08 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:20:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	arg_unset(char **tabx, t_mini *mini);
 int		ft_strlen(const char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
+int		ft_isdigit(int c);
 char	*ft_strdup(char *s);
 char	*ft_itoa(int n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
