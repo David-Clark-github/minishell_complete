@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 15:45:21 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:39:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_path(char **path)
 	int		i;
 
 	i = 0;
+	if (!path)
+		return ;
 	while (path[i])
 	{
 		free(path[i]);

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:18:22 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 15:48:32 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:36:27 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,13 @@ void	exec_env(t_mini *mini)
 
 void	exec_export(t_mini *mini, t_lst *lst)
 {
-	(void)mini;
-	(void)lst;
-	// char	**args;
+	char	**args;
 
-	// args = get_args(lst);
-	// if (args == NULL)
-	// 	exit_error(__LINE__);
-	// if (ft_check_export_format(args[0]))
-	// 	exit_error(__LINE__);
-	// if (args[0] == NULL)
-	// 	g_err_num = ft_cd(NULL);
-	// if (ft_tablen(args) > 2)
-	// 	exit_error(__LINE__);
-	// else
-	// 	g_err_num = ft_cd(args[1]);
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	g_err_num = ft_export(args, &mini->cp_ev);
+	free(args);
 }
 
 void	exec_pwd(t_mini *mini)
