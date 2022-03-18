@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 11:27:43 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 17:44:18 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/18 17:34:30 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/18 17:34:41 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_exit(int num)
+int	ft_atoi(const char *nptr)
 {
-	ft_free_mini(get_mini(), 0);
-	write(STDERR_FILENO, "exit\n", 5);
-	exit(num);
+	int		nbr;
+	int		sign;
+
+	nbr = 0;
+	sign = 1;
+	while (*nptr && (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r')))
+		nptr++;
+	if (*nptr && (*nptr == '-' || *nptr == '+'))
+		if (*nptr++ == '-')
+			sign *= -1;
+	while (*nptr && *nptr >= '0' && *nptr <= '9')
+		nbr = nbr * 10 + (*nptr++ - '0');
+	return (nbr * sign);
 }

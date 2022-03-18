@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 16:58:49 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:35:08 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ char	*my_strjoin(char *s1, char *s2);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
+int		ft_atoi(const char *nptr);
 
 //INSTRUCTION TYPES
 int		is_redir_stdin(int log);
