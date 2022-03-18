@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:42:15 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 15:06:55 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:45:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 	else
 	{
 		custom_sig();
+		free(cmd[0]);
+		free(cmd);
 		close_out_fork(mini);
 	}
 }

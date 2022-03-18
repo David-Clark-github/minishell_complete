@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 17:28:00 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:43:21 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ void	exec_instructions(t_mini *mini)
 	wait_for_forks(mini);
 	free_pipeline(pipeline);
 	free_pids(&(mini->pids));
+	free_path(mini->path);
 }

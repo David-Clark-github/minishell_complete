@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/17 18:36:40 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:45:41 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void	expand(t_mini *mini, int fd, char *buffer, int *buff_index)
 				&& ft_isalpha(buffer[(*buff_index) + var_len]))
 			var_len++;
 		var_value = get_var_value(mini, &buffer[(*buff_index) + 1], var_len);
-		write(fd, &var_value[var_len], ft_strlen(&var_value[var_len]));
+		if (var_value != NULL)
+			write(fd, &var_value[var_len], ft_strlen(&var_value[var_len]));
 		(*buff_index) += var_len - 1;
 	}
 	else

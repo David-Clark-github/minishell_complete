@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 12:39:59 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:45:21 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ char	*get_cmd_path(char **path, char *cmd)
 		free(tmp);
 		i++;
 	}
-	return (cmd);
+	return (ft_strdup(cmd));
 }

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 16:48:31 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:32:55 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 	args = get_args(lst);
 	if (args == NULL)
 		exit_error(__LINE__);
-	if (args[0] == NULL)
-		g_err_num = ft_unset(&args[0]);
-	else
-		g_err_num = ft_unset(&args[1]);
+	g_err_num = ft_unset(args);
+	free(args);
 }
 
 void	exec_builtin(t_mini *mini, t_lst *lst)
