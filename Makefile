@@ -51,6 +51,10 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_strlcpy.c \
 			utils/ft_memcpy.c \
 			utils/my_strjoin.c \
+			utils/ft_putnbr_fd.c \
+			utils/ft_putstr_fd.c \
+			utils/ft_putchar_fd.c \
+			utils/ft_atoi.c \
 			builtins/ft_echo.c \
 			builtins/ft_pwd.c \
 			builtins/ft_cd.c \

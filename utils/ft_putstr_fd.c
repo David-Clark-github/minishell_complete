@@ -1,43 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 14:46:01 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/17 15:03:55 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/17 15:14:46 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
-void	default_sig(void)
+void	ft_putstr_fd(char *s, int fd)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-}
-
-// void	heredoc_sig(void)
-// {
-	
-// }
-
-static void	custom_sigint(int sig)
-{
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		get_mini()->er_num = 130;
-	}
-}
-
-void	custom_sig(void)
-{
-	signal(SIGINT, custom_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	if (!s)
+		return ;
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

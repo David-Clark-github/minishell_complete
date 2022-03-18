@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 14:46:01 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/18 17:34:30 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/18 17:34:41 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
-void	default_sig(void)
+int	ft_atoi(const char *nptr)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-}
+	int		nbr;
+	int		sign;
 
-// void	heredoc_sig(void)
-// {
-	
-// }
-
-static void	custom_sigint(int sig)
-{
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		get_mini()->er_num = 130;
-	}
-}
-
-void	custom_sig(void)
-{
-	signal(SIGINT, custom_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	nbr = 0;
+	sign = 1;
+	while (*nptr && (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r')))
+		nptr++;
+	if (*nptr && (*nptr == '-' || *nptr == '+'))
+		if (*nptr++ == '-')
+			sign *= -1;
+	while (*nptr && *nptr >= '0' && *nptr <= '9')
+		nbr = nbr * 10 + (*nptr++ - '0');
+	return (nbr * sign);
 }

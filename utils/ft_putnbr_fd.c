@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_signal.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 14:46:01 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/17 14:58:12 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/17 15:15:46 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <signal.h>
 
-void	default_sig(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-}
-
-// void	heredoc_sig(void)
-// {
-	
-// }
-
-static void	custom_sigint(int sig)
-{
-	if (sig == SIGINT)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		get_mini()->er_num = 130;
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(n *= -1, fd);
 	}
-}
-
-void	custom_sig(void)
-{
-	signal(SIGINT, custom_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	else if (n < 10)
+		ft_putchar_fd((n + '0'), fd);
+	else
+	{
+		ft_putnbr_fd((n / 10), fd);
+		ft_putnbr_fd((n % 10), fd);
+	}
 }

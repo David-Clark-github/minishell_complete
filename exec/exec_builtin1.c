@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:18:22 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/16 16:48:11 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:36:27 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	exec_cd(t_mini *mini, t_lst *lst)
 		exit_error(__LINE__);
 	else
 		g_err_num = ft_cd(args[1]);
+	free(args);
 }
 
 void	exec_echo(t_mini *mini, t_lst *lst)
@@ -36,23 +37,14 @@ void	exec_echo(t_mini *mini, t_lst *lst)
 	args = get_args(lst);
 	if (args == NULL)
 		exit_error(__LINE__);
-	if (args[0] == NULL)
-	{
-		if (mini->io_fds_redir[1] != -42)
-			g_err_num = ft_echo(args, 0, mini->io_fds_redir[1]);
-		else
-			g_err_num = ft_echo(args, 0, STDOUT_FILENO);
-	}
+	opt = 0;
+	if (ft_check_echo_arg(args))
+		opt = 1;
+	if (mini->io_fds_redir[1] != -42)
+		g_err_num = ft_echo(&args[1 + opt], opt, mini->io_fds_redir[1]);
 	else
-	{
-		opt = 0;
-		if (ft_check_echo_arg(args))
-			opt = 1;
-		if (mini->io_fds_redir[1] != -42)
-			g_err_num = ft_echo(&args[2], opt, mini->io_fds_redir[1]);
-		else
-			g_err_num = ft_echo(&args[2], opt, STDOUT_FILENO);
-	}
+		g_err_num = ft_echo(&args[1 + opt], opt, STDOUT_FILENO);
+	free(args);
 }
 
 void	exec_env(t_mini *mini)
@@ -65,21 +57,13 @@ void	exec_env(t_mini *mini)
 
 void	exec_export(t_mini *mini, t_lst *lst)
 {
-	(void)mini;
-	(void)lst;
-	// char	**args;
+	char	**args;
 
-	// args = get_args(lst);
-	// if (args == NULL)
-	// 	exit_error(__LINE__);
-	// if (ft_check_export_format(args[0]))
-	// 	exit_error(__LINE__);
-	// if (args[0] == NULL)
-	// 	g_err_num = ft_cd(NULL);
-	// if (ft_tablen(args) > 2)
-	// 	exit_error(__LINE__);
-	// else
-	// 	g_err_num = ft_cd(args[1]);
+	args = get_args(lst);
+	if (args == NULL)
+		exit_error(__LINE__);
+	g_err_num = ft_export(args, &mini->cp_ev);
+	free(args);
 }
 
 void	exec_pwd(t_mini *mini)
