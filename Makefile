@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/17 12:13:20 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/18 14:27:31 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,6 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_checkquote.c \
 			utils/ft_checkcara.c \
 			utils/ft_check_echo_arg.c\
-			utils/ft_check_export_format.c \
 			utils/ft_split.c \
 			utils/ft_memset.c \
 			utils/ft_strlcpy.c \
@@ -55,6 +54,8 @@ SRCS	=	parsing/add_lst_bck2.c \
 			builtins/ft_cd.c \
 			builtins/ft_env.c \
 			builtins/ft_export.c \
+			builtins/take_data_name.c \
+			builtins/ft_check_export_format.c \
 			builtins/ft_unset.c \
 			builtins/ft_exit.c \
 			exec/cmd_path.c \
@@ -73,7 +74,6 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/exec.c \
 			exec/check_errors_before_exec.c \
 			exec/exec_errors/unexpected_token.c \
-			arg_builtin/arg_export.c \
 			signal/take_signal.c \
 			main.c
 

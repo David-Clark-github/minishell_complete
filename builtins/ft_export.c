@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 12:54:00 by david             #+#    #+#             */
-/*   Updated: 2022/03/15 14:04:08 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/18 15:36:57 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/18 15:37:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,31 @@ static char	**change_env(char *name, char *data, char **tab_env)
 	return (ft_freetab(tab_env), dest);
 }
 
-int	ft_export(char **name, char **data, int len_data, char ***tab_env)
+int	ft_export(char **str, char ***tab_env)
 {
-	int i;
+	char	*name;
+	char	*data;
+	int		i;
 
-	i = 0;
-//	printf("name = %s\n", name);
-//	printf("data = %s\n", data);
-	while (i < len_data)
+	i = -1;
+	name = NULL;
+	data = NULL;
+	if (str == NULL)
+		return (EXIT_SUCCESS);
+	while (str[++i])
 	{
-		if (look_name(name[i], *tab_env) == -1)
+		if (ft_check_export_format(str[i]))
 		{
-			dprintf(2, "add_env()\n");
-			*tab_env = add_env(name[i], data[i], *tab_env);
+			take_data_name(&name, &data, str[i]);
+			if (look_name(name, *tab_env) == -1)
+				*tab_env = add_env(name, data, *tab_env);
+			else
+				*tab_env = change_env(name, data, *tab_env);
 		}
-		else
-		{
-			dprintf(2, "change_env()\n");
-			*tab_env = change_env(name[i], data[i], *tab_env);
-		}
-		i++;
+		free(name);
+		free(data);
+		data = NULL;
+		name = NULL;
 	}
 	return (EXIT_SUCCESS);
 }

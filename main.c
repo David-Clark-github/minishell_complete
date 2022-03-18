@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/16 17:35:49 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:35:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ int	main(int ac, char **av, char **ev)
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
 	char	**name = NULL;
-	name = malloc(sizeof(char*) * 3);
-	char	**data = NULL;
-	data = malloc(sizeof(char*) * 3);
-	name[0] = strdup("toto");
-	name[1] = strdup("tutu");
-	name[2] = '\0';
-	data[0] = '\0';
-	data[1] = strdup("data");
-	data[2] = '\0';
+	name = malloc(sizeof(char*) * 5);
+	name[0] = strdup("toto=data");
+	name[1] = strdup("tutu=");
+	name[2] = strdup("rtyurytu");
+	name[3] = strdup("env=env");
+	name[4] = '\0';
 	if (ac != 1)
 	{
 		printf("Aucun argument nécessaire pour minishell.\n");
@@ -42,7 +39,7 @@ int	main(int ac, char **av, char **ev)
 	{
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
-			ft_exit(mini->er_num);
+			ft_exit(mini->er_num, 1, 2);
 		if (ft_strlen(mini->prompt) != 0)
 		{
 			add_history(mini->prompt);
@@ -61,24 +58,25 @@ int	main(int ac, char **av, char **ev)
 			// if (check_syntax(mini) == EXIT_FAILURE)
 			// 	printf("syntax error\n");
 			// if (mini->er_num != -1 && extract_lst(mini->list))
-
-			// //if (mini->list && mini->list->log == 4)
-			// //	ft_export("TUTU", "tata", &mini->cp_ev);
+			if (mini->list && mini->list->log == 4)
+				ft_export(name, &mini->cp_ev);
+			if (mini->list && mini->list->log == 5)
+				ft_unset(name);
 			// if (mini->list && mini->er_num != -1 && mini->list->log == 6)
 			// 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 3)
 			//  	ft_pwd(1);
 			// if (mini->er_num == 0 && mini->list->log == 2)
 			// 	ft_cd(mini->tab_separ[1]);
-			// if (mini->er_num == 0 && mini->list->log == 6)
-			// 	ft_env(mini->cp_ev, 1);
+			 if (mini->er_num == 0 && mini->list->log == 6)
+			 	ft_env(mini->cp_ev, 1);
 			// if (mini->er_num == 0 && mini->list->log == 4)
 			// 	arg_export(mini->tab_separ, mini);
 			// if (mini->er_num != 0)
 			// 	printf("er_num = %d\n", mini->er_num);
 			// ft_freetab(mini->tab_separ);
 			print_lst(&mini->list);
-			exec_instructions(mini);
+			//exec_instructions(mini);
 		}
 		if (check_error_quotes(mini->prompt, &mini->er_num) != 0)
 			mini->er_num = 0;
