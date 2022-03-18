@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/17 15:22:24 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:34:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@
 
 extern int	g_err_num;
 
-typedef struct	s_lst {
+typedef struct s_lst {
 	struct s_lst	*next;
 	char			*str;
 	int				log;
@@ -115,6 +115,13 @@ int		check_error_quotes(char *prompt, int *er);
 void	add_lst_back(t_lst **head, char *str, int log, int iter);
 void	print_lst(t_lst **head);
 char	**ft_separ(char *str, int *tk_len);
+void	simple_q(int *i_str, int *i_dest, char *str, char **dest);
+void	double_q(int *i_str, int *i_dest, char *str, char **dest);
+void	zero_cara(int *i_str, int *i_dest, char *str, char **dest);
+void	one_cara(int *i_str, int *i_dest, char *str, char **dest);
+void	one_pipe(int *i_str, int *i_dest, char *str, char **dest);
+void	init_token(char **token, int len);
+int		num_of_element(char *str);
 int		extract_lst(t_lst *list);
 int		check_tab(char **tab_separ);
 int		check_cmd(char **tab_separ);
@@ -127,13 +134,13 @@ int		diff_redir(char *str);
 int		ft_echo(char **str, int arg, int fd);
 int		ft_pwd(int fd);
 int		ft_env(char **tab_env, int fd);
-int		ft_export(char **name, char **data, int len_data, char ***tab_env);
+int		ft_export(char **str, char ***tab_env);
+void	take_data_name(char **name, char **data, char *str);
 int		ft_unset(char **name);
 int		ft_cd(char *path);
-int		ft_exit(int	num);
+int		ft_exit(int num, int print, int fd);
 
 //ARG_BUILTIN
-void	arg_export(char **tabx, t_mini *mini);
 void	arg_unset(char **tabx, t_mini *mini);
 
 //UTILS

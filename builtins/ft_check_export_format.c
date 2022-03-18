@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:58:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 11:15:31 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/18 14:55:53 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,13 @@ int	ft_check_export_format(char *str)
 	if (str == NULL || (str && str[0] == '='))
 		return (0);
 	while (str[++i] && flag == 0)
+	{
 		if (str[i] == '=')
 			flag = 1;
-	if (flag == 0)
-		return (0);
-	i = 0;
-	while (str[i] && str[i] != '=')
-	{
-		if (ft_isalpha(str[i]))
-			i++;
-		else
+		if (ft_isalpha(str[i]) == 0 && flag == 0)
 			return (0);
 	}
+	if (flag == 0)
+		return (0);
 	return (1);
 }

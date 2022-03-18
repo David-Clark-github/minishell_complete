@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   init_token.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 11:27:43 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 12:21:36 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/17 11:21:15 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/17 11:22:32 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_exit(int num, int print, int fd)
+void	init_token(char **token, int len)
 {
-	get_mini()->er_num = num;
-	ft_free_mini(get_mini(), 0);
-	if (print == 1)
-		write(fd, "exit", ft_strlen("exit"));
-	exit(get_mini()->er_num);
+	int	i;
+
+	i = 0;
+	while (len-- > 0)
+	{
+		token[i] = 0;
+		i++;
+	}
 }
