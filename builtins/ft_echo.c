@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:29:02 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 19:42:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/18 19:46:19 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
  * there will be no \n at the end
  */
 
+static int	write_error(void)
+{
+	write(2, "Minishell: write error: no space left on device\n", 48);
+	return (EXIT_FAILURE);
+}
+
 int	ft_echo(char **str, int arg, int fd)
 {
 	int	i;
@@ -35,10 +41,7 @@ int	ft_echo(char **str, int arg, int fd)
 	{
 		res_w = write(fd, str[i], ft_strlen(str[i]));
 		if (res_w == -1)
-		{
-			write(2, "Minishell: write error: no space left on device\n", 48);
-			return (EXIT_FAILURE);
-		}
+			return (write_error());
 		if (i != (len - 1))
 			write(fd, " ", 1);
 		i++;
@@ -46,9 +49,6 @@ int	ft_echo(char **str, int arg, int fd)
 	if (arg == 0)
 		res_w = write(fd, "\n", 1);
 	if (res_w == -1)
-	{
-		write(2, "Minishell: write error: no space left on device\n", 48);
-		return (EXIT_FAILURE);
-	}
+		return (write_error());
 	return (EXIT_SUCCESS);
 }
