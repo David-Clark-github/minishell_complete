@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 16:32:55 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:02:06 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,16 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 	free(args);
 }
 
+void	exec_exit(void)
+{
+	ft_exit(g_err_num);
+}
+
 void	exec_builtin(t_mini *mini, t_lst *lst)
 {
-	// printf("lst->log = %d\n", lst->log);
+	int		nb_pipes;
+
+	nb_pipes = get_nb_of_args(mini->list);
 	if (lst->log == CD)
 		exec_cd(mini, lst);
 	else if (lst->log == BECHO)
@@ -39,5 +46,7 @@ void	exec_builtin(t_mini *mini, t_lst *lst)
 		exec_pwd(mini);
 	else if (lst->log == UNSET)
 		exec_unset(mini, lst);
+	else if (lst->log == EXIT && nb_pipes == 0)
+		exec_exit();
 	close_out_fork(mini);
 }

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 16:37:12 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:03:17 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **ev)
 	{
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
-			ft_exit(mini->er_num, 1, 2);
+			ft_exit(mini->er_num);
 		if (ft_strlen(mini->prompt) != 0)
 		{
 			add_history(mini->prompt);
