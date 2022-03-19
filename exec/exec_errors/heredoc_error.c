@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:42:23 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:23:05 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 21:58:44 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	heredoc_eof_error(char *token)
 	char	*tmp;
 	char	*tmp1;
 
-	tmp = my_strjoin(HEREDOC_EOF, token);
+	tmp = my_strjoin(HEREDOC_EOF1 HEREDOC_EOF2, token);
 	if (tmp == NULL)
 		fatal_error();
 	tmp1 = my_strjoin(tmp, "')\n");

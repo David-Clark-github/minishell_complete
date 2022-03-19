@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 19:18:56 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:56:37 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@
 
 //BASH PARSING ERRORS
 # define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
-# define HEREDOC_EOF "Minishell: here-document delimited by end-of-file (wanted `"
+# define HEREDOC_EOF1 "Minishell: here-document"
+# define HEREDOC_EOF2 " delimited by end-of-file (wanted `"
 # define CORE_DUMP "Quit (core dumped)\n"
 # define WRITE_ERR "write error: no space left on device"
 
