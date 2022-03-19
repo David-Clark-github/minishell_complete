@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 19:14:13 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 15:07:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	p2(char *buf, int size, int fd)
 	res_w = write(fd, buf, ft_strlen(buf));
 	if (res_w == -1)
 	{
-		write(2, "Minishell: pwd: write error: No space left on device\n", 53);
+		write(2, "pwd: write error: No space left on device\n", 31);
 		free(buf);
 		return (EXIT_FAILURE);
 	}
