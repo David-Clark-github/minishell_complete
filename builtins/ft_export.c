@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:36:57 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 15:37:41 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 12:30:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,18 @@ int	ft_export(char **str, char ***tab_env)
 	char	*name;
 	char	*data;
 	int		i;
+	int		res;
 
 	i = -1;
+	res = EXIT_SUCCESS;
 	name = NULL;
 	data = NULL;
 	if (str == NULL)
 		return (EXIT_SUCCESS);
 	while (str[++i])
 	{
+		if (ft_check_export_error(str[i]) == 0)
+			res = EXIT_FAILURE;
 		if (ft_check_export_format(str[i]))
 		{
 			take_data_name(&name, &data, str[i]);
@@ -99,5 +103,5 @@ int	ft_export(char **str, char ***tab_env)
 		data = NULL;
 		name = NULL;
 	}
-	return (EXIT_SUCCESS);
+	return (res);
 }

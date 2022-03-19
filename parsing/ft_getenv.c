@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 10:45:48 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/15 11:48:26 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 12:40:59 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_getenv(char *name, char **cp_ev)
 	if (ft_strlen(name) == 0)
 		return (zero_name());
 	if (ft_strcmp(name, "?") == 0)
-		return (ft_itoa(get_mini()->er_num));
+		return (ft_itoa(g_err_num));
 	else
 		return (env_var(name, cp_ev));
 }
