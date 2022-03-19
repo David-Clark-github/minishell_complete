@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:02:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:32:50 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ void	exec(t_mini *mini, t_lst *lst)
 	if (check_for_redir_error(mini) == 0)
 	{
 		if (mini->io_fds_redir[0] > 0)
+		{
 			close(mini->io_fds_redir[0] > 0);
+			mini->io_fds_redir[0] = -42;
+		}
 		if (mini->io_fds_redir[1] > 0)
+		{
 			close(mini->io_fds_redir[1] > 0);
+			mini->io_fds_redir[1] = -42;
+		}
 		return ;
 	}
 	if (lst->log == 0)

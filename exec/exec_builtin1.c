@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:18:22 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 16:36:27 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:12:45 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	exec_cd(t_mini *mini, t_lst *lst)
 	if (args[0] == NULL)
 		g_err_num = ft_cd(NULL);
 	if (ft_tablen(args) > 2)
-		exit_error(__LINE__);
+		cd_arg_error();
 	else
 		g_err_num = ft_cd(args[1]);
 	free(args);

@@ -6,12 +6,27 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 14:50:11 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:35:06 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <signal.h>
+
+void	error_code_fork(void)
+{
+	if (WIFEXITED(g_err_num))
+	{
+		g_err_num = WEXITSTATUS(g_err_num);
+	}
+	else if (WIFSIGNALED(g_err_num))
+	{
+		g_err_num = WTERMSIG(g_err_num);
+		g_err_num += 128;
+		if (g_err_num == 131)
+			write(STDERR_FILENO, CORE_DUMP, ft_strlen(CORE_DUMP));
+	}
+}
 
 void	default_sig(void)
 {
