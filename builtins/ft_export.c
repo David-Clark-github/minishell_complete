@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:36:57 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 21:10:32 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 00:34:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ int	ft_export(char **str, char ***tab_env)
 	int		i;
 	int		res;
 
-	i = 0;
+	i = -1;
 	init_ele(&name, &data, &res);
 	if (str == NULL)
 		return (EXIT_SUCCESS);
-	while (str[i])
+	while (str[++i])
 	{
 		if (ft_check_export_format(str[i]))
 		{
@@ -103,10 +103,11 @@ int	ft_export(char **str, char ***tab_env)
 				*tab_env = add_env(name, data, *tab_env);
 			else
 				*tab_env = change_env(name, data, *tab_env);
+			free(name);
+			free(data);
 		}
-		i++;
-		free(name);
-		free(data);
+		name = NULL;
+		data = NULL;
 	}
 	return (res);
 }
