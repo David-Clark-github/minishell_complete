@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_to_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/03/19 20:52:12 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:18:25 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ t_lst	*tab_to_list(char **tabx, int tk_len)
 	list = NULL;
 	i_tab = 0;
 	cmd_f = 0;
-	if (tabx[i_tab] == NULL)
-		return (NULL);
 	while (i_tab < tk_len)
 	{
 		*g_flag() = 0;
-		// if (tabx[i_tab] == NULL)
-		// 	algo1(&tk_len, &i_tab, g_flag());
 		if (cmd_f == 0 && diff_cmd(tabx[i_tab]) != 0 && *g_flag() == 0)
 			algo2(&cmd_f, tabx, &i_tab, &list);
 		else if (cmd_f != 0 && diff_redir(tabx[i_tab]) == 12 && *g_flag() == 0)

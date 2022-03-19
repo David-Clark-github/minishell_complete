@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:29:02 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 20:01:51 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 21:04:45 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ int	ft_echo(char **str, int arg, int fd)
 	len = ft_tablen(str);
 	while (str[i])
 	{
-		if (ft_strlen(str[i]) == 0)
-			res_w = write(fd, " ", 1);
-		else
-			res_w = write(fd, str[i], ft_strlen(str[i]));
+		res_w = write(fd, str[i], ft_strlen(str[i]));
 		if (res_w == -1)
 			return (end_echo(fd, arg));
 		if (i != (len - 1))
