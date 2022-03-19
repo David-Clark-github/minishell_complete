@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:42:15 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 12:38:22 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 13:45:41 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 		dup_and_close_in_fork(mini);
 		execve(cmd[0], cmd, mini->cp_ev);
 		custom_sig();
-		exit_error(__LINE__);
+		error_exec_bin(lst->str);
 	}
 	else
 	{

@@ -6,11 +6,27 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 18:01:38 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 13:50:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int    ft_check_exit_format(char *str)
+{
+    int    i;
+    while (str[i] && str[i] == ' ')
+        i++;
+    if (str[i] && (str[i] == '+' || str[i] == '-'))
+        i++;
+    while (str[i])
+    {
+        if (ft_isdigit(str[i]) == 0)
+            return (0);
+        i++;
+    }
+    return (1);
+}
 
 void	exec_unset(t_mini *mini, t_lst *lst)
 {
@@ -20,7 +36,10 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 	args = get_args(lst);
 	if (args == NULL)
 		exit_error(__LINE__);
-	g_err_num = ft_unset(args);
+	if (ft_tablen(args) > 1)
+		g_err_num = ft_unset(&args[1]);
+	else
+		g_err_num = ft_unset(NULL);
 	free(args);
 }
 

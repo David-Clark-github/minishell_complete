@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 13:37:28 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 13:51:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
 int		ft_check_echo_arg(char **cmd);
 int		ft_check_export_format(char *str);
-int		ft_check_exit_format(char *str);
+//int		ft_check_exit_format(char *str);
 int		ft_check_export_error(char *str);
 t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);
@@ -242,6 +242,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid);
 void	error_unexpected_token(char *token);
 int		check_errors_before_exec(t_mini *mini);
 void	redir_error(char *token);
+void	error_exec_bin(char *token);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT

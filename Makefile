@@ -81,6 +81,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/check_errors_before_exec.c \
 			exec/exec_errors/unexpected_token.c \
 			exec/exec_errors/redir_error.c \
+			exec/exec_errors/error_exec_bin.c \
 			signal/take_signal.c \
 			main.c
 
