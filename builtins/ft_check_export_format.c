@@ -23,7 +23,8 @@ int	ft_check_export_format(char *str)
 		return (0);
 	if (ft_isalpha(str[0]) == 0)
 		return (0);
-	while ((str[i] && flag == 0) && (ft_isalnum(str[i]) || str[i] == '_'))
+	while ((str[i] && flag == 0) && \
+	(ft_isalnum(str[i]) || str[i] == '_' || str[i] == '='))
 	{
 		if (str[i] == '=')
 			flag = 1;
@@ -34,16 +35,20 @@ int	ft_check_export_format(char *str)
 	return (1);
 }
 
-int	ft_check_export_error(char *str)
-{
-	int	i;
+// int	ft_check_export_error(char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i] && str[i] != '=')
-	{
-		if (ft_isalpha(str[i]) == 0)
-			return (1);
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	if (str == NULL || !str)
+// 		return (0);
+// 	if (ft_isalpha(str[0]) == 0)
+// 		return (0);
+// 	while (str[i] && str[i] != '=')
+// 	{
+// 		if (ft_isalnum(str[i]) == 0 || )
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }

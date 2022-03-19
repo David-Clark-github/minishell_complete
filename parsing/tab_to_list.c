@@ -6,18 +6,18 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/03/14 19:15:33 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 20:52:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	algo1(int *tk_len, int *i_tab, int *flag)
-{
-	*tk_len = *tk_len - 1;
-	*i_tab = *i_tab + 1;
-	*flag = 1;
-}
+// static void	algo1(int *tk_len, int *i_tab, int *flag)
+// {
+// 	*tk_len = *tk_len - 1;
+// 	*i_tab = *i_tab + 1;
+// 	*flag = 1;
+// }
 
 static void	algo2(int *cmd_f, char **tabx, int *i_tab, t_lst **list)
 {
@@ -52,8 +52,8 @@ t_lst	*tab_to_list(char **tabx, int tk_len)
 	while (i_tab < tk_len)
 	{
 		*g_flag() = 0;
-		if (tabx[i_tab] == NULL)
-			algo1(&tk_len, &i_tab, g_flag());
+		// if (tabx[i_tab] == NULL)
+		// 	algo1(&tk_len, &i_tab, g_flag());
 		if (cmd_f == 0 && diff_cmd(tabx[i_tab]) != 0 && *g_flag() == 0)
 			algo2(&cmd_f, tabx, &i_tab, &list);
 		else if (cmd_f != 0 && diff_redir(tabx[i_tab]) == 12 && *g_flag() == 0)

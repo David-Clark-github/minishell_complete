@@ -90,25 +90,25 @@ int	ft_export(char **str, char ***tab_env)
 	int		i;
 	int		res;
 
-	i = -1;
+	i = 0;
 	init_ele(&name, &data, &res);
 	if (str == NULL)
 		return (EXIT_SUCCESS);
-	while (str[++i])
+	while (str[i])
 	{
-		if (ft_check_export_error(str[i]) == 0)
-			res = EXIT_FAILURE;
+		// if (ft_check_export_error(str[i]) == 0)
+		// 	res = EXIT_FAILURE;
 		if (ft_check_export_format(str[i]))
 		{
-			printf("str[i] = %s\n", str[i]);
 			take_data_name(&name, &data, str[i]);
-			printf("name = %s\n", name);
-			printf("data = %s\n", data);
+			// printf("name = %s\n", name);
+			// printf("data = %s\n", data);
 			if (look_name(name, *tab_env) == -1)
 				*tab_env = add_env(name, data, *tab_env);
 			else
 				*tab_env = change_env(name, data, *tab_env);
 		}
+		i++;
 		free(name);
 		free(data);
 	}

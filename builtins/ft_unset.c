@@ -66,7 +66,6 @@ int	ft_unset(char **name)
 	while (name[loop])
 	{
 		i = look_name(name[loop]);
-		printf("i = %d\n", i);
 		if (i != -1)
 			get_mini()->cp_ev = unset(i, get_mini()->cp_ev);
 		loop++;
