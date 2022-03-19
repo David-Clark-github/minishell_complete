@@ -6,18 +6,11 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 12:31:48 by david             #+#    #+#             */
-/*   Updated: 2022/03/19 21:18:25 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 21:19:28 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// static void	algo1(int *tk_len, int *i_tab, int *flag)
-// {
-// 	*tk_len = *tk_len - 1;
-// 	*i_tab = *i_tab + 1;
-// 	*flag = 1;
-// }
 
 static void	algo2(int *cmd_f, char **tabx, int *i_tab, t_lst **list)
 {

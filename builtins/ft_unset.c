@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 18:01:15 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:12:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	look_name(char *name)
 	while (get_mini()->cp_ev[i])
 	{
 		if (ft_strncmp(name, get_mini()->cp_ev[i], ft_strlen(name)) == 0 && \
-			get_mini()->cp_ev[i][ft_strlen(name)] == '=') {
+			get_mini()->cp_ev[i][ft_strlen(name)] == '=')
+		{
 			return (i);
-	}
+		}
 		i++;
 	}
 	return (-1);
@@ -57,19 +58,21 @@ int	ft_unset(char **name)
 {
 	int		i;
 	int		loop;
-	//char	***cp_env;
+	char	**env_t;
 
 	loop = 0;
+	env_t = get_mini()->cp_ev;
+	(void)env_t;
 	if (name == NULL)
 		return (EXIT_SUCCESS);
-	//cp_env = &get_mini()->cp_ev;
 	while (name[loop])
 	{
 		i = look_name(name[loop]);
 		if (i != -1)
-			get_mini()->cp_ev = unset(i, get_mini()->cp_ev);
+		{
+			env_t = unset(i, get_mini()->cp_ev);
+		}
 		loop++;
 	}
-	//cp_env = NULL;
 	return (EXIT_SUCCESS);
 }
