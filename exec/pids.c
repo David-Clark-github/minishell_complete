@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:38:33 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:07:03 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:45:52 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	wait_for_forks(t_mini *mini)
 	pid = mini->pids;
 	while (pid)
 	{
+		signal(SIGINT, SIG_IGN);
 		waitpid(pid->pid, &g_err_num, 0);
+		custom_sig();
+		error_code_fork();
 		pid = pid->next;
 	}
 }

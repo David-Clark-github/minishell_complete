@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/19 13:40:58 by dclark           ###   ########.fr        #
+#    Updated: 2022/03/19 15:12:08 by seciurte         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/exec_errors/redir_error.c \
 			exec/exec_errors/error_exec_bin.c \
 			exec/exec_errors/heredoc_error.c \
+			exec/exec_errors/cd_arg_error.c \
 			signal/take_signal.c \
 			main.c
 

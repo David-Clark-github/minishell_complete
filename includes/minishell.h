@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 13:51:49 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 15:11:35 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 //BASH PARSING ERRORS
 # define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
 # define HEREDOC_EOF "Minishell: here-document delimited by end-of-file (wanted `"
+# define CORE_DUMP "Quit (core dumped)\n"
 
 extern int	g_err_num;
 
@@ -245,6 +246,8 @@ int		check_errors_before_exec(t_mini *mini);
 void	redir_error(char *token);
 void	error_exec_bin(char *token);
 void	heredoc_EOF_error(char *token);
+void	error_code_fork(void);
+void	cd_arg_error(void);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
