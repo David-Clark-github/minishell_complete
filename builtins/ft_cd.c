@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:26:49 by david             #+#    #+#             */
-/*   Updated: 2022/03/19 17:54:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:34:34 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ static int	only_home(void)
 	}
 	else
 	{
+		if (tmp == NULL)
+			write(STDERR_FILENO, "Minishell: cd: HOME not set\n", 28);
+		else
+			arg_error(tmp);
 		free(tmp);
-		perror("Minishell: cd");
-		return (errno);
+		return (EXIT_FAILURE);
 	}
 }
 
@@ -40,7 +43,7 @@ static int	ft_chdir(char *path)
 	}
 	else
 	{
-		perror("Minishell: cd");
+		arg_error(path);
 		if (path != NULL)
 			free(path);
 		return (errno);

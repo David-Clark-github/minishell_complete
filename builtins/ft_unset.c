@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 14:27:12 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:22:33 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	**unset(int i, char **tab_env)
 	t = 0;
 	while (t < (ft_tablen(tab_env)))
 	{
-		if (y != i)
+		if (t != i)
 		{
 			dest[y] = strdup(tab_env[t]);
 			y++;

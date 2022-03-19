@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:47:29 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:42:51 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ void	exec_exit(t_lst *lst)
 	char	**args;
 
 	args = get_args(lst);
-	if (ft_tablen(args) > 2)
+	if (ft_tablen(args) >= 2 && ft_check_exit_format(args[1]) == 0)
+		arg_format_error(args[1]);
+	else if (ft_tablen(args) > 2)
 		nb_arg_error(args[0]);
-	// if (ft_check_exit_format(args[1]) == 0)
-	// {
-	// 	write(STDERR_FILENO, "Minishell: exit: ")
-	// }
 	if (ft_tablen(args) == 2 && ft_check_exit_format(args[1]))
 		ft_exit((ft_atoi(args[1]) % 256));
 	else

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 17:27:33 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:37:53 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,8 @@ void	heredoc_eof_error(char *token);
 void	error_code_fork(void);
 void	nb_arg_error(char *token);
 void	fatal_error(void);
+void	arg_error(char *token);
+void	arg_format_error(char *token);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
