@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 20:07:18 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:53:35 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ int	main(int ac, char **av, char **ev)
 	{
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
-			ft_exit(mini->er_num);
+			ft_exit(g_err_num);
 		if (ft_strlen(mini->prompt) != 0)
 		{
 			add_history(mini->prompt);
-			mini->er_num = check_error_quotes(mini->prompt, &mini->er_num);
+			g_err_num = check_error_quotes(mini->prompt, &g_err_num);
 		}
-		if (mini->er_num != 0)
-			printf("er_num = %d error de quotes\n", mini->er_num);
-		if (ft_strlen(mini->prompt) != 0 && mini->er_num == 0)
+		if (g_err_num != 0)
+			printf("er_num = %d error de quotes\n", g_err_num);
+		if (ft_strlen(mini->prompt) != 0 && g_err_num == 0)
 		{
 			if (mini->er_num != -1)
 				parsing(mini);
 			exec_instructions(mini);
 		}
-		if (check_error_quotes(mini->prompt, &mini->er_num) != 0)
-			mini->er_num = 0;
+		if (check_error_quotes(mini->prompt, &g_err_num) != 0)
+			g_err_num = 0;
 		ft_free_mini(mini, 1);
 	}
 }

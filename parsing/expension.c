@@ -45,7 +45,7 @@ static char	*ft_getname(char *str, int len)
 	i_str = 0;
 	dest = malloc(sizeof(char) * len + 1);
 	if (dest == NULL)
-		printf("malloc NULL\n");
+		fatal_error();
 	if (str[i_str] == '$')
 		i_str++;
 	while (i < len)

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing2.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 20:52:15 by dclark           ###   ########.fr       */
+/*   Created: 2022/03/19 19:17:00 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/19 19:18:37 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//EXPENSION: si variable d'environement, elle l'etend
-void	parsing(t_mini *mini)
+int	ft_isalnum(int c)
 {
-	expension(mini);
-	if (mini->exp == NULL)
-		return ;
-	mini->tab_separ = ft_separ(mini->exp, &mini->tab_len);
-	mini->list = tab_to_list(mini->tab_separ, mini->tab_len);
-	print_lst(&mini->list);
+	if (ft_isalpha(c) != 0 || ft_isdigit(c) != 0)
+		return (1);
+	return (0);
 }

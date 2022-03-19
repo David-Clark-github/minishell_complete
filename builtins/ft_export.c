@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:36:57 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 12:30:49 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 19:35:39 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ static char	**change_env(char *name, char *data, char **tab_env)
 	return (ft_freetab(tab_env), dest);
 }
 
+static void	init_ele(char **name, char **data, int *res)
+{
+	*res = EXIT_SUCCESS;
+	*name = NULL;
+	*data = NULL;
+	(void)res;
+	(void)name;
+	(void)data;
+}
+
 int	ft_export(char **str, char ***tab_env)
 {
 	char	*name;
@@ -80,28 +90,27 @@ int	ft_export(char **str, char ***tab_env)
 	int		i;
 	int		res;
 
-	i = -1;
-	res = EXIT_SUCCESS;
-	name = NULL;
-	data = NULL;
+	i = 0;
+	init_ele(&name, &data, &res);
 	if (str == NULL)
 		return (EXIT_SUCCESS);
-	while (str[++i])
+	while (str[i])
 	{
-		if (ft_check_export_error(str[i]) == 0)
-			res = EXIT_FAILURE;
+		// if (ft_check_export_error(str[i]) == 0)
+		// 	res = EXIT_FAILURE;
 		if (ft_check_export_format(str[i]))
 		{
 			take_data_name(&name, &data, str[i]);
+			// printf("name = %s\n", name);
+			// printf("data = %s\n", data);
 			if (look_name(name, *tab_env) == -1)
 				*tab_env = add_env(name, data, *tab_env);
 			else
 				*tab_env = change_env(name, data, *tab_env);
 		}
+		i++;
 		free(name);
 		free(data);
-		data = NULL;
-		name = NULL;
 	}
 	return (res);
 }

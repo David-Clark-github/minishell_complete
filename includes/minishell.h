@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 18:37:53 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:18:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ int		ft_strlen(const char *str);
 int		ft_tablen(char **tableau);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
+int		ft_isalnum(int c);
 char	*ft_strdup(char *s);
 char	*ft_itoa(int n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -169,6 +170,7 @@ int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
 int		ft_check_echo_arg(char **cmd);
 int		ft_check_export_format(char *str);
+//int		ft_check_exit_format(char *str);
 int		ft_check_export_error(char *str);
 t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);

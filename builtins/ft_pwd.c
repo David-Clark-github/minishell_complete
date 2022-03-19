@@ -33,7 +33,7 @@ static int	p2(char *buf, int size, int fd)
 	res_w = write(fd, buf, ft_strlen(buf));
 	if (res_w == -1)
 	{
-		write(2, "Minishell: pwd: write error: No space left on device\n", 53);
+		write(2, "pwd: write error: No space left on device\n", 31);
 		free(buf);
 		return (EXIT_FAILURE);
 	}
