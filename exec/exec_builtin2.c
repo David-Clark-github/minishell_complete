@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:50:49 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 20:53:28 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ static int	ft_check_exit_format(char *str)
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	check_format_on_all(char **args)
+{
+	int		i;
+
+	i = 0;
+	while (args[i])
+	{
+		if (ft_check_exit_format(args[i]) == 0)
 			return (0);
 		i++;
 	}
@@ -49,7 +63,15 @@ void	exec_exit(t_lst *lst)
 	char	**args;
 
 	args = get_args(lst);
-	if (ft_tablen(args) >= 2 && ft_check_exit_format(args[1]) == 0)
+	if (args == NULL)
+		fatal_error();
+	if (ft_tablen(args) >= 2 && check_format_on_all(args) == 1)
+	{
+		write(2, "exit\n", 5);
+		g_err_num = 1;
+		return ;
+	}
+	else if (ft_tablen(args) >= 2 && check_format_on_all(args) == 0)
 		arg_format_error(args[1]);
 	else if (ft_tablen(args) > 2)
 		nb_arg_error(args[0]);
@@ -64,7 +86,7 @@ void	exec_builtin(t_mini *mini, t_lst *lst)
 	int		nb_pipes;
 
 	nb_pipes = get_nb_of_pipes(mini->list);
-	if (lst->log == CD)
+	if (lst->log == CD && nb_pipes == 0)
 		exec_cd(mini, lst);
 	else if (lst->log == BECHO)
 		exec_echo(mini, lst);

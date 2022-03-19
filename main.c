@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 20:12:40 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:17:40 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	g_err_num = 0;
 
 int	main(int ac, char **av, char **ev)
 {
-	(void)av;
 	t_mini	*mini;
 
+	(void)av;
 	mini = get_mini();
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
@@ -30,6 +30,7 @@ int	main(int ac, char **av, char **ev)
 	custom_sig();
 	while (1)
 	{
+		g_err_num = 0;
 		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
 			ft_exit(g_err_num);
@@ -39,15 +40,13 @@ int	main(int ac, char **av, char **ev)
 			g_err_num = check_error_quotes(mini->prompt, &g_err_num);
 		}
 		if (g_err_num != 0)
-			printf("er_num = %d error de quotes\n", g_err_num);
-		if (ft_strlen(mini->prompt) != 0 && g_err_num == 0)
+			ft_putstr_fd("Minishell: Quotes error\n", STDERR_FILENO);
+		if (/*ft_strlen(mini->prompt) != 0 && */g_err_num == 0)
 		{
-			if (mini->er_num != -1)
-				parsing(mini);
+			parsing(mini);
+			print_lst(&mini->list);
 			exec_instructions(mini);
 		}
-		if (check_error_quotes(mini->prompt, &g_err_num) != 0)
-			g_err_num = 0;
 		ft_free_mini(mini, 1);
 	}
 }

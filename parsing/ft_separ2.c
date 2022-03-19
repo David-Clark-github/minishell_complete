@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_separ2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
 /*   Updated: 2022/03/19 21:25:51 by dclark           ###   ########.fr       */

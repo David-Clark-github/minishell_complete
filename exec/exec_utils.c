@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:36:00 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 15:48:13 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:28:02 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ char	**get_args(t_lst *lst)
 	{
 		if (lst->log == 0 || is_builtin(lst->log))
 		{
-			cmd[i] = lst->str;
+			if (ft_strlen(lst->str) == 0)
+				cmd[i] = "";
+			else
+				cmd[i] = lst->str;
 			i++;
 			lst = lst->next;
 		}

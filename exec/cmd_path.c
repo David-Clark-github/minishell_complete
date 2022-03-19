@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:06:18 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:57:57 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	*get_cmd_path(char **path, char *cmd)
 	char	*tmp;
 
 	i = 0;
+	if (ft_strncmp("./", cmd, 2) == 0 || ft_strncmp("/", cmd, 1) == 0)
+		return (ft_strdup(cmd));
 	while (path && path[i])
 	{
 		tmp = my_strjoin(path[i], cmd);

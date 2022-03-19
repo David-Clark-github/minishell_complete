@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:35:40 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 15:56:10 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:40:57 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static void	do_redirections(t_mini *mini, t_lst *lst)
 			redirect_heredoc(mini, lst);
 		else if (is_redir_stdout(lst->log))
 			redirect_stdout(mini, lst);
+		if (mini->io_fds_redir[0] == -1 || mini->io_fds_redir[1] == -1)
+			return ;
 		if (is_redir(lst->log))
 			lst = lst->next->next;
 	}
@@ -53,12 +55,16 @@ static void	do_redirections_and_args(t_mini *mini, t_lst *lst)
 {
 	while (lst && (is_redir(lst->log) || is_cmd(lst->log)))
 	{
+		if (mini->io_fds_redir[0] == -1 || mini->io_fds_redir[1] == -1)
+			return ;
 		if (lst->log == INPUT)
 			redirect_input(mini, lst);
 		else if (lst->log == HEREDOC)
 			redirect_heredoc(mini, lst);
 		else if (is_redir_stdout(lst->log))
 			redirect_stdout(mini, lst);
+		if (mini->io_fds_redir[0] == -1 || mini->io_fds_redir[1] == -1)
+			return ;
 		if (is_redir(lst->log))
 			lst = lst->next->next;
 		else

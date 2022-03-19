@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:29:52 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:13:14 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 19:32:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	redirect_stdout(t_mini *mini, t_lst *lst)
 	}
 	if (log == TRUNC)
 		mini->io_fds_redir[1] = open(lst->str, \
-			O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+			O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR, 0644);
 	else
 		mini->io_fds_redir[1] = open(lst->str, \
-			O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+			O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR, 0644);
 	if (mini->io_fds_redir[1] < 0)
 		redir_error(lst->str);
 }
