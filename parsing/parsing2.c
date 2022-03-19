@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 10:38:17 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 20:52:15 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:14:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	parsing(t_mini *mini)
 		return ;
 	mini->tab_separ = ft_separ(mini->exp, &mini->tab_len);
 	mini->list = tab_to_list(mini->tab_separ, mini->tab_len);
-	print_lst(&mini->list);
 }

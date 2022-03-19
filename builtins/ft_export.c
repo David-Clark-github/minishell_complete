@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:36:57 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 19:35:39 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:10:32 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,9 @@ int	ft_export(char **str, char ***tab_env)
 		return (EXIT_SUCCESS);
 	while (str[i])
 	{
-		// if (ft_check_export_error(str[i]) == 0)
-		// 	res = EXIT_FAILURE;
 		if (ft_check_export_format(str[i]))
 		{
 			take_data_name(&name, &data, str[i]);
-			// printf("name = %s\n", name);
-			// printf("data = %s\n", data);
 			if (look_name(name, *tab_env) == -1)
 				*tab_env = add_env(name, data, *tab_env);
 			else

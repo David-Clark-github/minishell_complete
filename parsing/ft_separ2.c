@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 10:00:55 by david             #+#    #+#             */
-/*   Updated: 2022/03/17 12:28:57 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:08:16 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	**ft_separ(char *str, int *tk_len)
 	init_elem(&i_dest, &i_str, tk_len, str);
 	dest = (char **)malloc(sizeof(char *) * (*tk_len + 1));
 	init_token(dest, *tk_len + 1);
-	// printf("len tab = %d\n", num_of_element(str));
 	while (str[i_str] == ' ')
 		i_str++;
 	while (str[i_str])
