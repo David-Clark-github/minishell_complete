@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_error.c                                      :+:      :+:    :+:   */
+/*   error_exec_bin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 17:52:11 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:36:50 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/19 13:41:13 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/19 13:44:01 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	redir_error(char *token)
+void	error_exec_bin(char *token)
 {
 	char	*tmp;
 	char	*tmp1;
@@ -35,5 +35,5 @@ void	redir_error(char *token)
 	write(STDERR_FILENO, msg, ft_strlen(msg));
 	write(STDOUT_FILENO, "\n", 1);
 	free(msg);
-	g_err_num = 1;
+	g_err_num = errno;
 }
