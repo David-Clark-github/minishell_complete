@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:29:02 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 19:42:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 10:34:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@
  * if arg == 1
  * there will be no \n at the end
  */
+
+static int	end_echo(int fd, int arg)
+{
+	int	res_w;
+
+	if (arg == 0)
+		res_w = write(fd, "\n", 1);
+	if (res_w == -1)
+	{
+		write(2, "Minishell: write error: no space left on device\n", 48);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
 
 int	ft_echo(char **str, int arg, int fd)
 {
@@ -43,12 +57,5 @@ int	ft_echo(char **str, int arg, int fd)
 			write(fd, " ", 1);
 		i++;
 	}
-	if (arg == 0)
-		res_w = write(fd, "\n", 1);
-	if (res_w == -1)
-	{
-		write(2, "Minishell: write error: no space left on device\n", 48);
-		return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+	return (end_echo(fd, arg));
 }
