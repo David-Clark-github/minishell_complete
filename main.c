@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 15:44:52 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 20:07:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	g_err_num = 0;
 
 int	main(int ac, char **av, char **ev)
 {
-	(void)av;
 	t_mini	*mini;
 
+	(void)av;
 	mini = get_mini();
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
