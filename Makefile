@@ -84,7 +84,8 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/exec_errors/redir_error.c \
 			exec/exec_errors/error_exec_bin.c \
 			exec/exec_errors/heredoc_error.c \
-			exec/exec_errors/nb_arg_error.c \
+			exec/exec_errors/arg_error.c \
+			exec/exec_errors/arg_format_error.c \
 			signal/take_signal.c \
 			fatal_error.c \
 			main.c

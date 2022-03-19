@@ -252,6 +252,8 @@ void	heredoc_eof_error(char *token);
 void	error_code_fork(void);
 void	nb_arg_error(char *token);
 void	fatal_error(void);
+void	arg_error(char *token);
+void	arg_format_error(char *token);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
