@@ -36,6 +36,7 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 	args = get_args(lst);
 	if (args == NULL)
 		exit_error(__LINE__);
+	printf("var = %s | %s | %d\n", args[0], args[1], ft_tablen(args));
 	if (ft_tablen(args) > 1)
 		g_err_num = ft_unset(&args[1]);
 	else

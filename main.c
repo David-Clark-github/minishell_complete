@@ -40,7 +40,8 @@ int	main(int ac, char **av, char **ev)
 	custom_sig();
 	while (1)
 	{
-		mini->prompt = readline("\33[2K\rMinishell~ ");
+		//\33[2K\r
+		mini->prompt = readline("Minishell~ ");
 		if (mini->prompt == NULL)
 			ft_exit(g_err_num);
 		if (ft_strlen(mini->prompt) != 0)
