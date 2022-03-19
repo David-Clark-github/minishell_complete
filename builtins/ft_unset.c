@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 21:12:42 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 00:40:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	**unset(int i, char **tab_env)
 
 	dest = malloc(sizeof(char *) * ft_tablen(tab_env));
 	if (dest == NULL)
-		return (NULL);
+		fatal_error();
 	y = 0;
 	t = 0;
 	while (t < (ft_tablen(tab_env)))
@@ -58,21 +58,19 @@ int	ft_unset(char **name)
 {
 	int		i;
 	int		loop;
-	char	**env_t;
+	char	***env_t;
 
 	loop = 0;
-	env_t = get_mini()->cp_ev;
-	(void)env_t;
+	env_t = &get_mini()->cp_ev;
 	if (name == NULL)
 		return (EXIT_SUCCESS);
 	while (name[loop])
 	{
 		i = look_name(name[loop]);
 		if (i != -1)
-		{
-			env_t = unset(i, get_mini()->cp_ev);
-		}
+			*env_t = unset(i, *env_t);
 		loop++;
 	}
+	env_t = NULL;
 	return (EXIT_SUCCESS);
 }
