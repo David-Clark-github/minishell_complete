@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 13:08:21 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 13:09:13 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,7 @@ int		ft_checkquote(char c);
 int		ft_checkcara(char c, char *str);
 int		ft_check_echo_arg(char **cmd);
 int		ft_check_export_format(char *str);
-<<<<<<< HEAD
-int		ft_check_exit_format(char *str);
-=======
 int		ft_check_export_error(char *str);
->>>>>>> origin/cd_reparation
 t_mini	*get_mini(void);
 char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
