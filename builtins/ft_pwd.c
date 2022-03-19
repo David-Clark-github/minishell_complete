@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:42:45 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 19:14:13 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:10:46 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ int	ft_pwd(int fd)
 	size = 512;
 	buf = malloc(sizeof(char) * size);
 	if (buf == NULL)
-		printf("malloc of ft_pwd failed :(\n");
-	if (buf == NULL)
-		return (EXIT_FAILURE);
+		fatal_error();
 	if (p2(buf, size, fd) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
