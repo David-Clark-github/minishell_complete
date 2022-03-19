@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:42:15 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:45:41 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:31:17 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 {
 	char		**cmd;
 
-	default_sig();
 	cmd = get_args(lst);
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
 	*pid = fork();
@@ -60,14 +59,13 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
 		exit_error(__LINE__);
 	if (*pid == 0)
 	{
+		default_sig();
 		dup_and_close_in_fork(mini);
 		execve(cmd[0], cmd, mini->cp_ev);
-		custom_sig();
 		error_exec_bin(lst->str);
 	}
 	else
 	{
-		custom_sig();
 		free(cmd[0]);
 		free(cmd);
 		close_out_fork(mini);

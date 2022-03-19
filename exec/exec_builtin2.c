@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 13:47:34 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:25:45 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	exec_unset(t_mini *mini, t_lst *lst)
 	args = get_args(lst);
 	if (args == NULL)
 		exit_error(__LINE__);
+	printf("var = %s | %s | %d\n", args[0], args[1], ft_tablen(args));
 	if (ft_tablen(args) > 1)
-		g_err_num = ft_unset(args[1]);
+		g_err_num = ft_unset(&args[1]);
 	else
 		g_err_num = ft_unset(NULL);
 	free(args);

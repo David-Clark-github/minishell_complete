@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 16:12:26 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 17:58:05 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 14:27:12 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	look_name(char *name)
 	while (get_mini()->cp_ev[i])
 	{
 		if (ft_strncmp(name, get_mini()->cp_ev[i], ft_strlen(name)) == 0 && \
-			get_mini()->cp_ev[i][ft_strlen(name) + 1] == '=')
+			get_mini()->cp_ev[i][ft_strlen(name)] == '=')
 			return (i);
 		i++;
 	}
