@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:29:52 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/15 14:09:16 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:55:02 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	redirect_heredoc(t_mini *mini, t_lst *lst)
 	}
 	heredoc(mini, lst);
 	if (mini->io_fds_redir[0] < 0)
-		exit_error(__LINE__);
+		redir_error(lst->next->str);
 }
 
 void	redirect_input(t_mini *mini, t_lst *lst)
@@ -33,7 +33,7 @@ void	redirect_input(t_mini *mini, t_lst *lst)
 	}
 	mini->io_fds_redir[0] = open(lst->next->str, O_RDONLY);
 	if (mini->io_fds_redir[0] < 0)
-		exit_error(__LINE__);
+		redir_error(lst->next->str);
 }
 
 void	redirect_stdout(t_mini *mini, t_lst *lst)
@@ -53,6 +53,6 @@ void	redirect_stdout(t_mini *mini, t_lst *lst)
 	else
 		mini->io_fds_redir[1] = open(lst->str, O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
 	if (mini->io_fds_redir[1] < 0)
-		exit_error(__LINE__);
+		redir_error(lst->str);
 	// printf("%s\n", lst->str);
 }

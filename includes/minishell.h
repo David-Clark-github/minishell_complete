@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/18 19:39:30 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:30:31 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid);
 //EXEC ERRORS
 void	error_unexpected_token(char *token);
 int		check_errors_before_exec(t_mini *mini);
+void	redir_error(char *token);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT
