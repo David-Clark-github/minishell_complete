@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 12:36:28 by david             #+#    #+#             */
-/*   Updated: 2022/03/14 13:52:05 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/19 21:01:20 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ static void	ft_freelst(t_lst **list)
 		free(*list);
 		*list = tmp;
 	}
+}
+
+static void	free_separ(char **tabx, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(tabx[i]);
+		i++;
+	}
+	free(tabx);
 }
 
 static void	rest(t_mini *mini)
@@ -43,7 +56,7 @@ static void	rest(t_mini *mini)
 	}
 	if (mini->tab_separ != NULL)
 	{
-		ft_freetab(mini->tab_separ);
+		free_separ(mini->tab_separ, mini->tab_len);
 		mini->tab_separ = NULL;
 	}
 }
