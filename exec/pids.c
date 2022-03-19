@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:38:33 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 15:45:52 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:08:39 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_pids	*create_pid(void)
 
 	pid = malloc(sizeof(t_pids));
 	if (pid == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	pid->pid = 0;
 	pid->next = NULL;
 	return (pid);

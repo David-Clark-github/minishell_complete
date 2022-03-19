@@ -6,37 +6,37 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:32:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 14:25:45 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:47:29 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int    ft_check_exit_format(char *str)
+static int	ft_check_exit_format(char *str)
 {
-    int    i;
-    while (str[i] && str[i] == ' ')
-        i++;
-    if (str[i] && (str[i] == '+' || str[i] == '-'))
-        i++;
-    while (str[i])
-    {
-        if (ft_isdigit(str[i]) == 0)
-            return (0);
-        i++;
-    }
-    return (1);
+	int		i;
+
+	while (str[i] && str[i] == ' ')
+		i++;
+	if (str[i] && (str[i] == '+' || str[i] == '-'))
+		i++;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 void	exec_unset(t_mini *mini, t_lst *lst)
 {
-	(void)mini;
 	char	**args;
 
+	(void)mini;
 	args = get_args(lst);
 	if (args == NULL)
-		exit_error(__LINE__);
-	printf("var = %s | %s | %d\n", args[0], args[1], ft_tablen(args));
+		fatal_error();
 	if (ft_tablen(args) > 1)
 		g_err_num = ft_unset(&args[1]);
 	else
@@ -50,7 +50,11 @@ void	exec_exit(t_lst *lst)
 
 	args = get_args(lst);
 	if (ft_tablen(args) > 2)
-		exit_error(__LINE__);
+		nb_arg_error(args[0]);
+	// if (ft_check_exit_format(args[1]) == 0)
+	// {
+	// 	write(STDERR_FILENO, "Minishell: exit: ")
+	// }
 	if (ft_tablen(args) == 2 && ft_check_exit_format(args[1]))
 		ft_exit((ft_atoi(args[1]) % 256));
 	else

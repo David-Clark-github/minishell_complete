@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:11:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 14:00:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:06:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	**get_path(char **env)
 		return (NULL);
 	path = ft_split(&env[i][5], ':');
 	if (path == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	i = 0;
 	while (path[i])
 	{
@@ -64,7 +64,7 @@ char	*get_cmd_path(char **path, char *cmd)
 	{
 		tmp = my_strjoin(path[i], cmd);
 		if (tmp == NULL)
-			exit_error(__LINE__);
+			fatal_error();
 		if (access(tmp, X_OK) == 0)
 			return (tmp);
 		free(tmp);

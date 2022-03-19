@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:18:22 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 15:12:45 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:28:05 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	exec_cd(t_mini *mini, t_lst *lst)
 {
-	(void)mini;
 	char	**args;
 
+	(void)mini;
 	args = get_args(lst);
 	if (args == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	if (args[0] == NULL)
 		g_err_num = ft_cd(NULL);
 	if (ft_tablen(args) > 2)
-		cd_arg_error();
+		nb_arg_error(args[0]);
 	else
 		g_err_num = ft_cd(args[1]);
 	free(args);
@@ -36,7 +36,7 @@ void	exec_echo(t_mini *mini, t_lst *lst)
 
 	args = get_args(lst);
 	if (args == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	opt = 0;
 	if (ft_check_echo_arg(args))
 		opt = 1;
@@ -61,7 +61,7 @@ void	exec_export(t_mini *mini, t_lst *lst)
 
 	args = get_args(lst);
 	if (args == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	g_err_num = ft_export(args, &mini->cp_ev);
 	free(args);
 }

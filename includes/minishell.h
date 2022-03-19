@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 15:11:35 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:27:33 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@
 # define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
 # define HEREDOC_EOF "Minishell: here-document delimited by end-of-file (wanted `"
 # define CORE_DUMP "Quit (core dumped)\n"
+# define WRITE_ERR "write error: no space left on device"
+
+# define MAXUPRC 4
 
 extern int	g_err_num;
 
@@ -106,6 +109,7 @@ typedef struct s_minishell {
 	t_pids	*pids;
 	char	**path;
 	char	*buffer;
+	int		**pipeline;
 	t_lst	*list;
 }				t_mini;
 
@@ -218,9 +222,6 @@ void	add_pid_to_pids(t_mini *mini, t_pids *pid);
 void	wait_for_forks(t_mini *mini);
 void	free_pids(t_pids **pids);
 
-//TMP FUNCTIONS
-void	exit_error(int line);
-
 //ERRORS IN EXEC
 void	internal_error(t_mini *mini);
 
@@ -237,16 +238,18 @@ void	exec_builtin(t_mini *mini, t_lst *lst);
 void	exec_instructions(t_mini *mini);
 void	dup_and_close_in_fork(t_mini *mini);
 void	close_out_fork(t_mini *mini);
-void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid);
+void	exec_bin(t_mini *mini, t_lst *lst, t_pids *pid);
+void	free_in_exec(void);
 
 //EXEC ERRORS
 void	error_unexpected_token(char *token);
 int		check_errors_before_exec(t_mini *mini);
 void	redir_error(char *token);
 void	error_exec_bin(char *token);
-void	heredoc_EOF_error(char *token);
+void	heredoc_eof_error(char *token);
 void	error_code_fork(void);
-void	cd_arg_error(void);
+void	nb_arg_error(char *token);
+void	fatal_error(void);
 
 //DO NOT USE THE NAME "tab" FOR PARAMETER NAME
 //term.h USES IT

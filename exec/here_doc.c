@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 14:53:45 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:22:32 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char	*get_var_value(t_mini *mini, char *var, int var_len)
 	int			env_index;
 
 	env_index = 0;
-		printf("%s | %d\n", var, var_len);
 	while (mini->cp_ev[env_index])
 	{
 		if (ft_strncmp(mini->cp_ev[env_index], var, var_len - 1) == 0)
@@ -54,7 +53,7 @@ static void	expand(t_mini *mini, int fd, char *buffer, int *buff_index)
 		&& buffer[(*buff_index) + var_len] != '$')
 	{
 		while (buffer[(*buff_index) + var_len]
-				&& ft_isalpha(buffer[(*buff_index) + var_len]))
+			&& ft_isalpha(buffer[(*buff_index) + var_len]))
 			var_len++;
 		var_value = get_var_value(mini, &buffer[(*buff_index) + 1], var_len);
 		if (var_value != NULL)
@@ -96,18 +95,15 @@ void	heredoc(t_mini *mini, t_lst *lst)
 		mini->buffer = readline("> ");
 		if (mini->buffer == NULL)
 		{
-			free(mini->buffer);
-			heredoc_EOF_error(limiter);
+			heredoc_eof_error(limiter);
 			flag = 0;
 		}
 		else if (check_heredoc_end(mini->buffer, limiter))
-		{
-			free(mini->buffer);
-			mini->buffer = NULL;
 			flag = 0;
-		}
 		else
 			write_with_expansion(mini, hd_fd[1], mini->buffer);
+		free(mini->buffer);
+		mini->buffer = NULL;
 	}
 	close(hd_fd[1]);
 	mini->io_fds_redir[0] = hd_fd[0];

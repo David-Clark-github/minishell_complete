@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:14:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 13:16:34 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:08:59 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	**create_pipeline(t_lst *lst)
 		return (NULL);
 	pipeline = malloc(sizeof(int *) * (nb_pipes + 1));
 	if (pipeline == NULL)
-		exit_error(__LINE__);
+		fatal_error();
 	ft_memset(pipeline, 0, nb_pipes);
 	i = 0;
 	while (i < nb_pipes)
@@ -63,7 +63,7 @@ int	**create_pipeline(t_lst *lst)
 		if (pipeline[i] == NULL)
 		{
 			free_pipeline(pipeline);
-			exit_error(__LINE__);
+			fatal_error();
 		}
 		ft_memset(pipeline[i], -42, 2);
 		i++;

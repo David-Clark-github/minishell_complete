@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   internal_error.c                                   :+:      :+:    :+:   */
+/*   arg_format_error.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:58:24 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 17:14:52 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/19 17:33:07 by seciurte          #+#    #+#             */
+/*   Updated: 2022/03/19 17:45:08 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	malloc_error(t_mini *mini)
+int	arg_format_error(char **args)
 {
-	write(STDERR_FILENO, "Minishell: Out of memory\n", 25);
-	exit(EXIT_FAILURE);
+	
 }

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:33:51 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/14 15:44:36 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:18:25 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	redirect_pipe_stdin(t_mini *mini, int **pipeline, int *pipe_index)
 	if (nb_of_pipes > 0 && (*pipe_index) > 0)
 	{
 		mini->io_fds_redir[0] = pipeline[(*pipe_index) - 1][0];
-		// dprintf(2, "stdin %d | stdout %d | pipe stdin %d\n", mini->io_fds_redir[0], mini->io_fds_redir[1], (*pipe_index) - 1);
 	}
 }
 
@@ -32,12 +31,11 @@ void	redirect_pipe_stdout(t_mini *mini, int **pipeline, int *pipe_index)
 	if (nb_of_pipes > 0 && (*pipe_index) < nb_of_pipes)
 	{
 		if (pipe(pipeline[(*pipe_index)]) < 0)
-			exit_error(__LINE__);
+			fatal_error();
 		if ((*pipe_index) < nb_of_pipes)
 		{
 			mini->io_fds_redir[1] = pipeline[(*pipe_index)][1];
 			mini->unused_fds[0] = pipeline[(*pipe_index)][0];
-			// dprintf(2, "stdin %d | stdout %d | pipe stdout %d\n", mini->io_fds_redir[0], mini->io_fds_redir[1], (*pipe_index));
 		}
 		(*pipe_index)++;
 	}
