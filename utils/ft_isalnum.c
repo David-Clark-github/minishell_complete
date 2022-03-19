@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   files_error.c                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:44:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/09 17:03:59 by seciurte         ###   ########.fr       */
+/*   Created: 2022/03/19 19:17:00 by dclark            #+#    #+#             */
+/*   Updated: 2022/03/19 19:18:37 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	file_not_exist(t_mini *mini, t_lst *lst)
+int	ft_isalnum(int c)
 {
-	char	*error;
-	char	*tmp;
-
-	tmp = ft_strljoin("Minishell: ", lst->str, ft_strlen(lst->str));
-	if (tmp == NULL)
-
+	if (ft_isalpha(c) != 0 || ft_isdigit(c) != 0)
+		return (1);
+	return (0);
 }

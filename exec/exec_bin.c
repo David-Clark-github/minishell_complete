@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 14:42:15 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 15:06:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/19 17:06:30 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,35 @@ void	close_out_fork(t_mini *mini)
 		mini->unused_fds[1] = -42;
 }
 
-void	exec_bin(t_mini *mini, t_lst *lst, pid_t *pid)
+static void	free_and_close_on_error(char **cmd, t_pids *pid)
+{
+	if (get_mini()->io_fds_redir[0] != -42)
+		close(STDIN_FILENO);
+	if (get_mini()->io_fds_redir[1] != -42)
+		close(STDOUT_FILENO);
+	free(cmd[0]);
+	free(cmd);
+	free_in_exec();
+	free(pid);
+	ft_free_mini(get_mini(), 0);
+}
+
+void	exec_bin(t_mini *mini, t_lst *lst, t_pids *pid)
 {
 	char		**cmd;
 
 	cmd = get_args(lst);
 	cmd[0] = get_cmd_path(mini->path, cmd[0]);
-	*pid = fork();
-	if (*pid < 0)
-		exit_error(__LINE__);
-	if (*pid == 0)
+	pid->pid = fork();
+	if (pid->pid < 0)
+		fatal_error();
+	if (pid->pid == 0)
 	{
 		default_sig();
 		dup_and_close_in_fork(mini);
 		execve(cmd[0], cmd, mini->cp_ev);
 		error_exec_bin(lst->str);
+		free_and_close_on_error(cmd, pid);
 		exit(g_err_num);
 	}
 	else

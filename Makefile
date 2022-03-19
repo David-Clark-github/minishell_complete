@@ -6,7 +6,7 @@
 #    By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 14:52:07 by dclark            #+#    #+#              #
-#    Updated: 2022/03/19 15:12:08 by seciurte         ###   ########.fr        #
+#    Updated: 2022/03/19 19:19:20 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS	=	parsing/add_lst_bck2.c \
 			utils/ft_tablen.c \
 			utils/ft_isalpha.c \
 			utils/ft_isdigit.c \
+			utils/ft_isalnum.c \
 			utils/ft_itoa.c \
 			utils/ft_strncmp.c \
 			utils/ft_strcmp.c \
@@ -83,8 +84,9 @@ SRCS	=	parsing/add_lst_bck2.c \
 			exec/exec_errors/redir_error.c \
 			exec/exec_errors/error_exec_bin.c \
 			exec/exec_errors/heredoc_error.c \
-			exec/exec_errors/cd_arg_error.c \
+			exec/exec_errors/nb_arg_error.c \
 			signal/take_signal.c \
+			fatal_error.c \
 			main.c
 
 HEADER	=includes/
