@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   num_of_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:33:16 by dclark            #+#    #+#             */
 /*   Updated: 2022/03/20 03:22:14 by dclark           ###   ########.fr       */

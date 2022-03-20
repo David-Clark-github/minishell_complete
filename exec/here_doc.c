@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:22:32 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 05:07:27 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ static int	check_heredoc_end(char *buffer, char *limiter)
 	if (ft_strlen(limiter) == 0 && ft_strlen(buffer) > 0)
 		return (0);
 	else if (buffer && ft_strncmp(buffer, limiter, ft_strlen(limiter)) == 0)
-	{
-		write(STDIN_FILENO, "\n", 1);
 		return (1);
-	}
 	return (0);
 }
 
@@ -86,14 +83,14 @@ void	heredoc(t_mini *mini, t_lst *lst)
 	int		hd_fd[2];
 	int		flag;
 
-	limiter = lst->next->str;
+	limiter = lst->str;
 	if (pipe(hd_fd) < 0)
 		return ;
 	flag = 1;
-	while (flag)
+	while (flag && mini->heredoc_sigint == 0)
 	{
 		mini->buffer = readline("> ");
-		if (mini->buffer == NULL)
+		if (mini->buffer == NULL && mini->heredoc_sigint == 0)
 		{
 			heredoc_eof_error(limiter);
 			flag = 0;

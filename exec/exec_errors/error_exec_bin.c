@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 13:41:13 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 17:21:47 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 03:13:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	print_cmd_not_found(char *token)
 	char	*tmp1;
 	char	*msg;
 
-	tmp = my_strjoin("Minishell: ", token);
+	if (ft_strlen(token) > 0)
+		tmp = my_strjoin("Minishell: ", token);
+	else
+		tmp = my_strjoin("Minishell: ", "");
 	if (tmp == NULL)
 		fatal_error();
 	tmp1 = my_strjoin(tmp, ": ");
@@ -57,10 +60,14 @@ static void	print_exec_bin(char *token)
 {
 	char	*tmp;
 
-	tmp = my_strjoin("Minishell: ", token);
+	if (ft_strlen(token) > 0)
+		tmp = my_strjoin("Minishell: ", token);
+	else
+		tmp = my_strjoin("Minishell: ", "");
 	if (tmp == NULL)
 		fatal_error();
 	perror(tmp);
+	free(tmp);
 	g_err_num = errno;
 }
 

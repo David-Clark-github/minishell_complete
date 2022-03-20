@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 15:10:10 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 18:29:08 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 00:44:26 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	arg_error(char *token)
 	if (tmp == NULL)
 		fatal_error();
 	perror(tmp);
+	free(tmp);
 	g_err_num = 1;
 }
 

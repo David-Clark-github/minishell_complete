@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 22:33:45 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/18 18:13:56 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 03:18:59 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_errors_before_exec(t_mini *mini)
 	t_lst		*tmp;
 	t_lst		*prev;
 
-	if (mini->list == NULL || mini->list->str == NULL)
+	if (mini->list == NULL)
 		return (1);
 	tmp = mini->list;
 	prev = NULL;

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/20 00:57:01 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:10:56 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@
 
 //BASH PARSING ERRORS
 # define UNEXPECTED_TOKEN "Minishell: syntax error near unexpected token `"
-# define HEREDOC_EOF "Minishell: here-document delimited by end-of-file (wanted `"
+# define HEREDOC_EOF1 "Minishell: here-document"
+# define HEREDOC_EOF2 " delimited by end-of-file (wanted `"
 # define CORE_DUMP "Quit (core dumped)\n"
 # define WRITE_ERR "write error: no space left on device"
 
@@ -110,6 +111,8 @@ typedef struct s_minishell {
 	char	**path;
 	char	*buffer;
 	int		**pipeline;
+	int		heredoc_sigint;
+	int		save_stdin;
 	t_lst	*list;
 }				t_mini;
 
@@ -263,4 +266,5 @@ t_lst	*tab_to_list(char **tabx, int tk_len);
 //SIGNAL
 void	default_sig(void);
 void	custom_sig(void);
+void	heredoc_sig(int sig);
 #endif
