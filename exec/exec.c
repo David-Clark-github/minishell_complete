@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/20 00:20:18 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 05:13:56 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	free_in_exec(void)
 	free_path(get_mini()->path);
 }
 
-void	exec(t_mini *mini, t_lst *lst)
+static void	on_redir_err(t_mini *mini)
 {
-	t_pids		*pid;
-
 	if (mini->io_fds_redir[0] == -1 || mini->io_fds_redir[1] == -1)
 	{
 		if (mini->io_fds_redir[0] > 0)
@@ -36,6 +34,17 @@ void	exec(t_mini *mini, t_lst *lst)
 			close(mini->io_fds_redir[1] > 0);
 			mini->io_fds_redir[1] = -42;
 		}
+	}
+}
+
+void	exec(t_mini *mini, t_lst *lst)
+{
+	t_pids		*pid;
+
+	if (mini->io_fds_redir[0] == -1 || mini->io_fds_redir[1] == -1
+		|| mini->heredoc_sigint == 1)
+	{
+		on_redir_err(mini);
 		return ;
 	}
 	if (lst->log == 0)
