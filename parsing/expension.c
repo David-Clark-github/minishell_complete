@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/19 13:07:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 04:02:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	found_env_len(char *str)
 		res++;
 		return (res);
 	}
-	while (str[i] && ft_isalpha(str[i]))
+	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 	{
 		res++;
 		i++;
