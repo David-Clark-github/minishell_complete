@@ -6,7 +6,7 @@
 /*   By: david <dclark@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 18:35:01 by david             #+#    #+#             */
-/*   Updated: 2022/03/19 13:07:27 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 03:59:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	found_env_len(char *str)
 		res++;
 		return (res);
 	}
-	while (str[i] && ft_isalpha(str[i]))
+	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 	{
 		res++;
 		i++;
@@ -96,6 +96,7 @@ static void	algo(t_mini *mini, int *i, int *flag)
 	env = NULL;
 	env_len = found_env_len(&mini->prompt[*i]);
 	name_env = ft_getname(&mini->prompt[*i], env_len);
+	printf("name_env [%s]\n", name_env);
 	env = ft_getenv(name_env, mini->cp_ev);
 	mini->exp = ft_strjoin_env(mini->exp, env);
 	while (env_len-- > 0)
