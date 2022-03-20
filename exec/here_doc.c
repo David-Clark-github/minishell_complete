@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:17:01 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/20 02:33:41 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 04:16:31 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ void	heredoc(t_mini *mini, t_lst *lst)
 	int		hd_fd[2];
 	int		flag;
 
-	limiter = lst->next->str;
+	limiter = lst->str;
 	if (pipe(hd_fd) < 0)
 		return ;
 	flag = 1;
 	while (flag && mini->heredoc_sigint == 0)
 	{
 		mini->buffer = readline("> ");
-		if (mini->buffer == NULL)
+		if (mini->buffer == NULL && mini->heredoc_sigint == 0)
 		{
 			heredoc_eof_error(limiter);
 			flag = 0;

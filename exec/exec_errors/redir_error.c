@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 17:52:11 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 19:37:38 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 03:51:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,14 @@
 void	redir_error(char *token)
 {
 	char	*tmp;
-	char	*tmp1;
 
-	tmp = my_strjoin("Minishell: ", token);
+	if (ft_strlen(token) > 0)
+		tmp = my_strjoin("Minishell: ", token);
+	else
+		tmp = my_strjoin("Minishell: ", "");
 	if (tmp == NULL)
 		fatal_error();
-	tmp1 = my_strjoin(tmp, ": ");
-	if (tmp1 == NULL)
-	{
-		free(tmp);
-		fatal_error();
-	}
+	perror(tmp);
 	free(tmp);
-	perror(tmp1);
-	free(tmp1);
 	g_err_num = errno;
 }

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/20 02:30:17 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 04:15:40 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	heredoc_sig(int sig)
 	if (sig == SIGINT)
 	{
 		get_mini()->heredoc_sigint = 1;
+		close(STDIN_FILENO);
+		dup2(STDIN_FILENO, get_mini()->save_stdin);
 		custom_sig();
-		ft_putchar_fd('\n', STDOUT_FILENO);
-		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
 		g_err_num = 130;
 	}
 }

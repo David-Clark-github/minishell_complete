@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   num_of_element.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:33:16 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/17 11:13:54 by dclark           ###   ########.fr       */
+/*   Updated: 2022/03/20 03:22:44 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	algo2(int *res, int *i, char *str)
 {
 	if (ft_strlen(&str[*i]) > 0)
 		*res = *res + 1;
-	*res = *res + 1;
 	*i = *i + 1;
 	if (str[*i] && str[*i] == str[*i - 1])
 		*i = *i + 1 ;

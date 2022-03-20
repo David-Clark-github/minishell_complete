@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:59:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/20 02:40:18 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 04:10:56 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_minishell {
 	char	*buffer;
 	int		**pipeline;
 	int		heredoc_sigint;
+	int		save_stdin;
 	t_lst	*list;
 }				t_mini;
 
