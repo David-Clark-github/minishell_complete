@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 21:17:40 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 00:57:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	main(int ac, char **av, char **ev)
 		if (ft_strlen(mini->prompt) != 0)
 		{
 			add_history(mini->prompt);
-			g_err_num = check_error_quotes(mini->prompt, &g_err_num);
+			g_err_num = check_error_quotes(mini->prompt);
 		}
 		if (g_err_num != 0)
 			ft_putstr_fd("Minishell: Quotes error\n", STDERR_FILENO);
 		if (/*ft_strlen(mini->prompt) != 0 && */g_err_num == 0)
 		{
 			parsing(mini);
-			print_lst(&mini->list);
+			//print_lst(&mini->list);
 			exec_instructions(mini);
 		}
 		ft_free_mini(mini, 1);
