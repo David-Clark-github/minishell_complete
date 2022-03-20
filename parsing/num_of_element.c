@@ -14,7 +14,8 @@
 
 static void	simple_quotes(int *res, int *i, char *str)
 {
-	*res = *res + 1;
+	if (ft_strlen(&str[*i]) > 0)
+		*res = *res + 1;
 	*i = *i + 1;
 	while (str[*i] && str[*i] != '\'')
 		*i = *i + 1;
@@ -23,7 +24,8 @@ static void	simple_quotes(int *res, int *i, char *str)
 
 static void	double_quotes(int *res, int *i, char *str)
 {
-	*res = *res + 1;
+	if (ft_strlen(&str[*i]) > 0)
+		*res = *res + 1;
 	if (str[*i] == '\"')
 		*i = *i + 1;
 	while (str[*i] && str[*i] != '\"')
@@ -34,13 +36,16 @@ static void	double_quotes(int *res, int *i, char *str)
 
 static void	algo1(int *res, int *i, char *str)
 {
-	*res = *res + 1;
+	if (ft_strlen(&str[*i]) > 0)
+		*res = *res + 1;
 	while (str[*i] && ft_checkcara(str[*i], " <>|\'\"\t") == 0)
 		*i = *i + 1 ;
 }
 
 static void	algo2(int *res, int *i, char *str)
 {
+	if (ft_strlen(&str[*i]) > 0)
+		*res = *res + 1;
 	*res = *res + 1;
 	*i = *i + 1;
 	if (str[*i] && str[*i] == str[*i - 1])
