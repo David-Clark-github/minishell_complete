@@ -15,6 +15,7 @@
 static void	init_elem(int *i_dest, int *i_str, int *tk_len, char *str)
 {
 	*tk_len = num_of_element(str);
+	printf("tk_len = %d\n", *tk_len);
 	*i_dest = 0;
 	*i_str = 0;
 }
