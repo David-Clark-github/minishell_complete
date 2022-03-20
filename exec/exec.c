@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 14:55:31 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 21:21:02 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 00:20:18 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	init_exec_utils(t_mini *mini)
 	mini->unused_fds[0] = -42;
 	mini->unused_fds[1] = -42;
 	mini->pids = NULL;
+	mini->heredoc_sigint = 0;
 	mini->path = get_path(mini->cp_ev);
 }
 

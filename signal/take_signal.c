@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 15:55:39 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/19 15:35:06 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 01:16:38 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ void	default_sig(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
+}
+
+void	heredoc_sig(int sig)
+{
+	if (sig == SIGINT)
+	{
+		get_mini()->heredoc_sigint = 1;
+		close(get_mini()->io_fds_redir[0]);
+		get_mini()->io_fds_redir[0] = -42;
+		rl_done = 0;
+		custom_sig();
+		g_err_num = 130;
+	}
 }
 
 static void	custom_sigint(int sig)

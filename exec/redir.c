@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:29:52 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/19 19:32:12 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 01:13:43 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	redirect_heredoc(t_mini *mini, t_lst *lst)
 		close(mini->io_fds_redir[0]);
 		mini->io_fds_redir[0] = -42;
 	}
+	signal(SIGINT, heredoc_sig);
 	heredoc(mini, lst);
 	if (mini->io_fds_redir[0] < 0)
 		redir_error(lst->next->str);
