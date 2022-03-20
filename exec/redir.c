@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:29:52 by seciurte          #+#    #+#             */
-/*   Updated: 2022/03/20 05:09:19 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 06:48:17 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ void	redirect_heredoc(t_mini *mini, t_lst *lst)
 		close(mini->io_fds_redir[0]);
 		mini->io_fds_redir[0] = -42;
 	}
-	mini->save_stdin = dup(STDIN_FILENO);
 	signal(SIGINT, heredoc_sig);
 	heredoc(mini, lst);
-	dup2(get_mini()->save_stdin, STDIN_FILENO);
+	dup2(mini->save_stdin, STDIN_FILENO);
 	if (mini->io_fds_redir[0] < 0)
 		redir_error(name);
+	if (mini->heredoc_sigint == 1)
+	{
+		close(mini->io_fds_redir[0]);
+		mini->io_fds_redir[0] = -42;
+	}
 }
 
 void	redirect_input(t_mini *mini, t_lst *lst)

@@ -6,7 +6,7 @@
 /*   By: seciurte <seciurte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 13:28:08 by dclark            #+#    #+#             */
-/*   Updated: 2022/03/20 03:52:16 by seciurte         ###   ########.fr       */
+/*   Updated: 2022/03/20 06:29:14 by seciurte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int ac, char **av, char **ev)
 	mini = get_mini();
 	init_mini(mini);
 	mini->cp_ev = ft_copy_env(ev, 0);
+	mini->save_stdin = dup(STDIN_FILENO);
 	custom_sig();
 	while (1)
 	{
